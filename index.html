@@ -29,6 +29,14 @@
     </div>
   </section>
 
+  <!-- Filter bar -->
+<div class="filter-bar">
+  <label for="categoryFilter">Szűrés kategória szerint:</label>
+  <select id="categoryFilter">
+    <option value="all">Összes</option>
+  </select>
+</div>
+
   <!-- RÉGISÉGEK LISTÁJA -->
   <section id="showcase" class="grid">
     <!-- ide jönnek a Firebase-ből betöltött kártyák -->
@@ -42,8 +50,10 @@
 
   <!-- Kép néző modal -->
   <div id="imageModal" class="img-modal">
-    <span class="img-modal-close">&times;</span>
-    <img class="img-modal-content" id="modalImage">
+    <div class="img-modal-inner">
+      <span class="img-modal-close">&times;</span>
+      <img class="img-modal-content" id="modalImage">
+    </div>
   </div>
 
   <!-- Kapcsolat / Footer -->

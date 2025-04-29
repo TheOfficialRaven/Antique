@@ -39,8 +39,19 @@
         <label for="price">Ár (Ft)</label>
         <input id="price" name="price" type="number" required>
 
-        <label for="imageInput">Kép</label>
-        <input id="imageInput" name="imageInput" type="file" accept="image/*" required>
+        <label for="imageInput">Képek (több is kiválasztható)</label>
+        <input id="imageInput" name="imageInput" type="file" accept="image/*"
+                multiple required>
+
+        <label for="categorySelect">Kategória</label>
+
+      <div class="category-group">
+        <select id="categorySelect" name="category" required>
+          <option value="">-- Válassz kategóriát --</option>
+        </select>
+        <input id="newCategoryInput" type="text" placeholder="Új kategória">
+        <button type="button" id="addCategoryBtn" class="btn small">+</button>
+      </div>
 
         <button type="submit" class="btn">Mentés</button>
       </form>
