@@ -83,6 +83,20 @@ document.addEventListener('mouseover', e => {
   }
 });
 
+  // Thumbnail-row scroll on hover/move (lassú, 1px lépés)
+  document.querySelectorAll('.thumb-row').forEach(row => {
+    row.addEventListener('mousemove', e => {
+      const rect = row.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const speed = 1; // 1px per mozgás
+      if (x > rect.width / 2) {
+        row.scrollBy({ left: speed });
+      } else {
+        row.scrollBy({ left: -speed });
+      }
+    });
+  });
+
 // --- Lightbox galéria ---
 const imgModal    = document.getElementById("imageModal");
 const modalInner  = document.querySelector(".img-modal-inner");
