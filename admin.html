@@ -1,18 +1,52 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Admin – Antik Régiségek</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin – Antik Kincsek</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- ide teheted a bejelentkezőt vagy auth-flagot -->
-  <button id="logoutBtn">Kijelentkezés</button>
-  <section id="admin-showcase" class="grid"></section>
-  <button id="addNew">+ Új tétel</button>
 
-  <!-- modal/form az új/törlés/szerkesztés gombokhoz -->
+  <!-- Header -->
+  <header class="site-header">
+    <h1 class="logo">Antik <span>Kincsek</span></h1>
+    <nav>
+      <a href="index.html" class="btn">Vissza a főoldalra</a>
+      <button id="logoutBtn" class="btn">Kijelentkezés</button>
+    </nav>
+  </header>
+
+  <!-- Admin Showcase -->
+  <section id="admin-showcase" class="grid">
+    <!-- ide a JS betölti a <article class="item-card admin"> elemeket -->
+  </section>
+  <button id="addNew" class="btn admin-btn">+ Új tétel</button>
+
+  <!-- Új tétel Modal -->
+  <div id="addItemModal" class="modal">
+    <div class="modal-content">
+      <button id="modal-close-btn" class="modal-close">&times;</button>
+      <h3>Új antik tétel</h3>
+      <form id="addItemForm" class="addItemForm">
+        <label for="title">Cím</label>
+        <input id="title" name="title" type="text" required>
+
+        <label for="desc">Leírás</label>
+        <textarea id="desc" name="desc" rows="4" required></textarea>
+
+        <label for="price">Ár (Ft)</label>
+        <input id="price" name="price" type="number" required>
+
+        <label for="imageInput">Kép</label>
+        <input id="imageInput" name="imageInput" type="file" accept="image/*" required>
+
+        <button type="submit" class="btn">Mentés</button>
+      </form>
+    </div>
+  </div>
+
   <script type="module" src="js/admin.js"></script>
 </body>
 </html>

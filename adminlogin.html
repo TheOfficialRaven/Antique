@@ -2,18 +2,18 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8">
-  <title>Admin belépés</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin Belépés</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <h2>Admin belépés</h2>
-  <form id="login-form">
-    <label for="email">Email:</label>
-    <input id="email" type="email" required>
-    <label for="password">Jelszó:</label>
-    <input id="password" type="password" required>
-    <button type="submit">Bejelentkezés</button>
-  </form>
+  <main class="login-form">
+    <h2>Admin Belépés</h2>
+    <input id="email"    type="email"    placeholder="Email">
+    <input id="password" type="password" placeholder="Jelszó">
+    <button id="loginBtn">Belépés</button>
+    <p id="loginError" class="error"></p>
+  </main>
   <script type="module" src="js/login.js"></script>
 </body>
 </html>

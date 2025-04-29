@@ -1,17 +1,60 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Antik Régiségek</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Antik Kincsek</title>
+  <!-- Betűtípusok -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Hero, About, stb. marad -->
-  <section id="showcase" class="showcase container">
-    <h2>Elérhető régiségek</h2>
-    <div id="items-container" class="grid"></div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <h1 class="logo">Antik <span>Kincsek</span></h1>
+    <nav>
+      <a href="#hero">Kezdőlap</a>
+      <a href="#showcase">Régiségek</a>
+      <a href="#about">Rólunk</a>
+      <a href="#contact">Kapcsolat</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <h2>Fedezd fel az idők varázsát</h2>
+      <p>Kézzel válogatott antik tárgyak egyenesen Önhöz</p>
+    </div>
   </section>
+
+  <!-- RÉGISÉGEK LISTÁJA -->
+  <section id="showcase" class="grid">
+    <!-- ide jönnek a Firebase-ből betöltött kártyák -->
+  </section>
+
+  <!-- Rólunk -->
+  <section id="about" class="about">
+    <h2 class="section-title">Rólunk</h2>
+    <p>Az Antik Kincsek csapata több mint 20 éve gyűjti és kínálja eladásra a valódi, gondosan restaurált régiségeket.</p>
+  </section>
+
+  <!-- Kép néző modal -->
+  <div id="imageModal" class="img-modal">
+    <span class="img-modal-close">&times;</span>
+    <img class="img-modal-content" id="modalImage">
+  </div>
+
+  <!-- Kapcsolat / Footer -->
+  <footer id="contact" class="site-footer">
+    <h2>Kapcsolat</h2>
+    <p>Email: <a href="mailto:info@antik-kincsek.hu">info@antik-kincsek.hu</a></p>
+    <p>Telefon: +36 30 123 4567</p>
+    <p>&copy; 2025 Antik Kincsek</p>
+  </footer>
+
+  <!-- JS: ugyanaz az admin.js, ami kezeli auth, feltöltés, kirenderelést -->
   <script type="module" src="js/index.js"></script>
 </body>
 </html>
