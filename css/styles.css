@@ -26,6 +26,7 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  font-size: 20px;
 }
 
 .site-header .logo,
@@ -75,7 +76,7 @@ body,
   color: var(--accent);
 }
 nav a, nav button {
-  margin-left: 1rem;
+  margin-left: 1.5rem;
 }
 
 /* Hero */
@@ -99,6 +100,30 @@ nav a, nav button {
   margin-bottom: .5rem;
 }
 .hero-content p {
+  font-size: 1.2rem;
+}
+
+/************ Regisegek Hero ****************/
+.hero-2 {
+  height: 30vh;
+  background:
+  linear-gradient(rgb(28 20 13 / 68%), rgb(30 21 13 / 62%)),
+    url('/pics/antique-shop-bg.jpg') center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-2-content {
+  position: relative;
+  text-align: center;
+  color: #fff;
+}
+.hero-2-content h2 {
+  font-size: 3rem;
+  margin-bottom: .5rem;
+}
+.hero-2-content p {
   font-size: 1.2rem;
 }
 

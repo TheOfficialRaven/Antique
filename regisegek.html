@@ -14,20 +14,28 @@
   <header class="site-header">
     <h1 class="logo">Régisegek  , antik tárgyak<span> JÓCITÓL</span></h1>
     <nav>
-      <a href="index.html">Kezdőlap</a>
-      <a href="regisegek.html">Régiségek</a>
-      <a href="rolunk.html">Rólunk</a>
-      <a href="kapcsolat.html">Kapcsolat</a>
+        <a href="index.html">Kezdőlap</a>
+        <a href="regisegek.html">Régiségek</a>
+        <a href="rolunk.html">Rólunk</a>
+        <a href="kapcsolat.html">Kapcsolat</a>
     </nav>
   </header>
 
   <!-- Hero -->
-  <section id="hero" class="hero">
-    <div class="hero-content">
+  <section id="hero" class="hero-2">
+    <div class="hero-2-content">
       <h2>Fedezd fel az idők varázsát</h2>
       <p>Kézzel válogatott antik tárgyak egyenesen Önhöz</p>
     </div>
   </section>
+
+  <!-- Filter bar -->
+<div class="filter-bar">
+  <label for="categoryFilter">Szűrés kategória szerint:</label>
+  <select id="categoryFilter">
+    <option value="all">Összes</option>
+  </select>
+</div>
 
   <!-- RÉGISÉGEK LISTÁJA -->
   <section id="showcase" class="grid">
@@ -51,6 +59,6 @@
   </footer>
 
   <!-- JS: ugyanaz az admin.js, ami kezeli auth, feltöltés, kirenderelést -->
-  <script type="module" src="js/index.js"></script>
+  <script type="module" src="js/regisegek.js"></script>
 </body>
 </html>
