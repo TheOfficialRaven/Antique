@@ -130,7 +130,7 @@ function loadAdmin() {
     row.addEventListener('mousemove', e => {
       const rect = row.getBoundingClientRect();
       const x = e.clientX - rect.left;
-      const speed = 1; // 1px per mozgás
+      const speed = 1.8; // 1px per mozgás
       if (x > rect.width / 2) {
         row.scrollBy({ left: speed });
       } else {
@@ -194,4 +194,6 @@ function loadAdmin() {
     form.reset();
     modal.classList.remove("show");
   };
+
+  
 }

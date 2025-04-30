@@ -83,19 +83,25 @@ document.addEventListener('mouseover', e => {
   }
 });
 
- // Thumbnail-row scroll on hover/move (lassú, 1px lépés)
- document.querySelectorAll('.thumb-row').forEach(row => {
-    row.addEventListener('mousemove', e => {
-      const rect = row.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const speed = 1; // 1px per mozgás
-      if (x > rect.width / 2) {
-        row.scrollBy({ left: speed });
-      } else {
-        row.scrollBy({ left: -speed });
-      }
+// egyetlen listener, event delegation és raf-throttling
+(() => {
+  const speed = 1.8;           // 1px per frame
+
+  document.addEventListener('mousemove', e => {
+    // megnézzük, hogy a kurzor egy .thumb-row-on belül van-e
+    const row = e.target.closest('.thumb-row');
+    if (!row) return;
+
+    
+
+    // és kérünk egy új frame-et
+    rafId = requestAnimationFrame(() => {
+      const { left, width } = row.getBoundingClientRect();
+      const x = e.clientX - left;
+      row.scrollBy({ left: x > width/2 ? speed : -speed });
     });
   });
+})();
 
 // --- Lightbox galéria ---
 const imgModal    = document.getElementById("imageModal");
