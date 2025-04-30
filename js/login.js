@@ -13,6 +13,7 @@ const firebaseConfig = {
 };
 initializeApp(firebaseConfig);
 const auth = getAuth();
+document.getElementById('password').type = 'text';
 
 const loginBtn = document.getElementById("loginBtn"),
       errMsg   = document.getElementById("loginError");
@@ -23,4 +24,5 @@ loginBtn.onclick = () => {
   signInWithEmailAndPassword(auth, email, pw)
     .then(() => location.href = "admin.html")
     .catch(e => errMsg.textContent = e.message);
+
 };

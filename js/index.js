@@ -83,8 +83,8 @@ document.addEventListener('mouseover', e => {
   }
 });
 
-  // Thumbnail-row scroll on hover/move (lassú, 1px lépés)
-  document.querySelectorAll('.thumb-row').forEach(row => {
+ // Thumbnail-row scroll on hover/move (lassú, 1px lépés)
+ document.querySelectorAll('.thumb-row').forEach(row => {
     row.addEventListener('mousemove', e => {
       const rect = row.getBoundingClientRect();
       const x = e.clientX - rect.left;

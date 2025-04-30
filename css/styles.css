@@ -618,7 +618,7 @@ nav a, nav button {
 
 /* About */
 .about {
-  background: var(--footer-text) url('images/pattern.png') repeat;
+  background: #ffff;
   padding: 4rem 2rem;
   color: var(--text-main);
   max-width: 800px;
@@ -638,6 +638,21 @@ nav a, nav button {
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 1.5rem;
+}
+.flex-box {
+  display: flex;
+  gap: 20px;
+}
+.col-50 {
+  width: 50%;
+  margin-top: 20px;
+}
+
+.about-img {
+  width: 100%;
+  border-radius: 5%;
+
+  
 }
 
 /* Footer */
