@@ -11,16 +11,33 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="site-header">
-    <h1 class="logo">Régisegek  , antik tárgyak<span> JÓCITÓL</span></h1>
-    <nav>
-        <a href="index.html">Kezdőlap</a>
-        <a href="regisegek.html">Régiségek</a>
-        <a href="rolunk.html">Rólunk</a>
-        <a href="kapcsolat.html">Kapcsolat</a>
-    </nav>
-  </header>
+ <!-- Header -->
+ <header class="site-header">
+  <h1 class="logo">Antik <span>Kincsek</span></h1>
+
+  <!-- Desktop nav -->
+  <nav class="desktop-nav">
+    <a href="index.html">Kezdőlap</a>
+    <a href="regisegek.html">Régiségek</a>
+    <a href="rolunk.html">Rólunk</a>
+    <a href="kapcsolat.html">Kapcsolat</a>
+  </nav>
+
+  <!-- Hamburger for mobile -->
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Mobile overlay nav -->
+  <nav class="nav-overlay">
+    <a href="index.html">Kezdőlap</a>
+    <a href="regisegek.html">Régiségek</a>
+    <a href="rolunk.html">Rólunk</a>
+    <a href="kapcsolat.html">Kapcsolat</a>
+  </nav>
+</header>
 
   <!-- Hero -->
   <section id="hero" class="hero-2">
@@ -61,5 +78,6 @@
 
   <!-- JS: ugyanaz az admin.js, ami kezeli auth, feltöltés, kirenderelést -->
   <script type="module" src="js/regisegek.js"></script>
+  <script type="module" src="js/nav.js"></script>
 </body>
 </html>

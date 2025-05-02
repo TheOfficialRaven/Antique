@@ -11,16 +11,33 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="site-header">
-    <h1 class="logo">Régisegek  , antik tárgyak<span> JÓCITÓL</span></h1>
-    <nav>
-        <a href="index.html">Kezdőlap</a>
-        <a href="regisegek.html">Régiségek</a>
-        <a href="rolunk.html">Rólunk</a>
-        <a href="kapcsolat.html">Kapcsolat</a>
-    </nav>
-  </header>
+ <!-- Header -->
+ <header class="site-header">
+  <h1 class="logo">Antik <span>Kincsek</span></h1>
+
+  <!-- Desktop nav -->
+  <nav class="desktop-nav">
+    <a href="index.html">Kezdőlap</a>
+    <a href="regisegek.html">Régiségek</a>
+    <a href="rolunk.html">Rólunk</a>
+    <a href="kapcsolat.html">Kapcsolat</a>
+  </nav>
+
+  <!-- Hamburger for mobile -->
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Mobile overlay nav -->
+  <nav class="nav-overlay">
+    <a href="index.html">Kezdőlap</a>
+    <a href="regisegek.html">Régiségek</a>
+    <a href="rolunk.html">Rólunk</a>
+    <a href="kapcsolat.html">Kapcsolat</a>
+  </nav>
+</header>
 
 <!-- Hero -->
 <section id="hero" class="hero-3">
@@ -30,11 +47,6 @@
     </div>
   </section>
 
-  <!-- RÉGISÉGEK LISTÁJA -->
-  <section id="showcase" class="grid">
-    <!-- ide jönnek a Firebase-ből betöltött kártyák -->
-  </section>
-
   <!-- Rólunk -->
   <section id="about" class="about">
     <h2 class="section-title">Rólunk</h2>
@@ -42,7 +54,9 @@
       <div class="col-50">
         <p>Az Antik Kincsek csapata több mint 20 éve gyűjti és kínálja eladásra a valódi, gondosan restaurált régiségeket.</p>
       </div>
-      <div class="col-50">
+      <div class="col-50 img-50">
+      <div class="overlay">
+      </div>
         <img class="about-img" src="pics/antique-hero.jpg">
       </div>
   </container>
@@ -66,5 +80,6 @@
 
   <!-- JS: ugyanaz az admin.js, ami kezeli auth, feltöltés, kirenderelést -->
   <script type="module" src="js/index.js"></script>
+  <script type="module" src="js/nav.js"></script>
 </body>
 </html>
