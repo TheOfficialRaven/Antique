@@ -85,6 +85,7 @@ document.addEventListener('mouseover', e => {
 
 // egyetlen listener, event delegation és raf-throttling
 (() => {
+  let rafId = null;
   const speed = 1.8;           // 1px per frame
 
   document.addEventListener('mousemove', e => {

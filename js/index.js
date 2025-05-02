@@ -1,0 +1,62 @@
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js';
+import {
+  getDatabase,
+  ref as dbRef,
+  query,
+  orderByKey,
+  limitToLast,
+  onValue
+} from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js';
+
+// Firebase konfiguráció (maradjon, ahogy a regisegek.js-ben is van)
+const firebaseConfig = {
+  apiKey: "AIzaSyDuyEa0t2FUFGGcVspBLomreRxmkMaeYZE",
+  authDomain: "antique-showcase-website.firebaseapp.com",
+  databaseURL: "https://antique-showcase-website-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "antique-showcase-website",
+  storageBucket: "antique-showcase-website.appspot.com",
+  messagingSenderId: "287979700668",
+  appId: "1:287979700668:web:7cda667f12b7e8a061abb9"
+};
+
+const app = initializeApp(firebaseConfig);
+const db  = getDatabase(app);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const row = document.querySelector('.thumb-row-recent');
+  if (!row) {
+    console.error('thumb-row-recent elem nem található!');
+    return;
+  }
+
+  // Lekérjük a legutolsó 6 bejegyzést push-key szerint:
+  const antiquesQuery = query(
+    dbRef(db, 'antiques'),
+    orderByKey(),
+    limitToLast(6)
+  );
+
+  onValue(antiquesQuery, snap => {
+    row.innerHTML = '';  // üresre töröljük minden frissítésnél
+
+    const data = snap.val() || {};
+    // Az Object.entries itt key rendezett (régi→új), ezért fordítsuk meg, hogy új legyen elöl
+    Object.entries(data)
+      .reverse()
+      .forEach(([id, item]) => {
+        const url = Array.isArray(item.imageUrls) && item.imageUrls[0];
+        if (!url) return;
+
+        const a = document.createElement('a');
+        a.href      = `/termek.html?id=${encodeURIComponent(id)}`;
+        a.className = 'thumb-recent';
+
+        const img = document.createElement('img');
+        img.src     = url;
+        img.alt     = item.title || '';
+
+        a.appendChild(img);
+        row.appendChild(a);
+      });
+  });
+});

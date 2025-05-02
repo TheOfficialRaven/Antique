@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Antik Kincsek</title>
   <!-- Betűtípusok -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -29,18 +30,25 @@
     </div>
   </section>
 
-  <!-- RÉGISÉGEK LISTÁJA -->
-  <section id="showcase" class="grid">
-    <!-- ide jönnek a Firebase-ből betöltött kártyák -->
-  </section>
-
-  <!-- Kép néző modal -->
-  <div id="imageModal" class="img-modal">
-    <div class="img-modal-inner">
-      <span class="img-modal-close">&times;</span>
-      <img class="img-modal-content" id="modalImage">
+<!-- Kapcsolat űrlap -->
+<section id="contact-form" class="contact-section">
+  <h2 class="section-title">Kapcsolatfelvétel</h2>
+  <form class="contact-form">
+    <div class="form-group">
+      <label for="cf-name">Név</label>
+      <input type="text" id="cf-name" name="name" required>
     </div>
-  </div>
+    <div class="form-group">
+      <label for="cf-email">Email</label>
+      <input type="email" id="cf-email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="cf-message">Üzenet</label>
+      <textarea id="cf-message" name="message" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn">Küldés</button>
+  </form>
+</section>
 
   <!-- Kapcsolat / Footer -->
   <footer id="contact" class="site-footer">

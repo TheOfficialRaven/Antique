@@ -103,6 +103,12 @@ nav a, nav button {
   font-size: 1.2rem;
 }
 
+.hero-img {
+  height: 60vh;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
 /************ Regisegek Hero ****************/
 .hero-2 {
   height: 30vh;
@@ -125,6 +131,102 @@ nav a, nav button {
 }
 .hero-2-content p {
   font-size: 1.2rem;
+}
+
+.hero-3 {
+  height: 30vh;
+  background:
+  linear-gradient(rgb(28 20 13 / 68%), rgb(30 21 13 / 62%)),
+    url('/pics/Hero-2.jpg') center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-3-content {
+  position: relative;
+  text-align: center;
+  color: #fff;
+}
+.hero-3-content h2 {
+  font-size: 3rem;
+  margin-bottom: .5rem;
+}
+.hero-3-content p {
+  font-size: 1.2rem;
+}
+
+/* ===== CSS a thumb-row-hoz ===== */
+/* ---------- Szekció stílusa ---------- */
+.recent-products {
+  background-color: #faf7f2;           /* világos, krémszínű háttér az antik hatásért */
+  padding: 3rem 1rem;                  /* nagyobb függőleges térköz */
+}
+.recent-products .container {
+  max-width: 1200px;
+  margin: 0 auto;                      /* horizontálisan középre */
+}
+.recent-products h2 {
+  font-family: 'Merriweather', serif;  /* elegáns, klasszikus betűtípus */
+  font-size: 2rem;
+  color: #5a4632;                      /* meleg barna árnyalat */
+  text-align: center;                  /* cím középre */
+  margin-bottom: 2rem;
+}
+
+/* ---------- Thumb-row középre tolása ---------- */
+.thumb-row-recent {
+  display: flex;
+  justify-content: center;             /* középre rendezi a képeket */
+  align-items: center;
+  gap: 1.5rem;                         /* nagyobb hézag a thumbs-ok között */
+  flex-wrap: wrap;                     /* mobilon tördel, ha szűkül a hely */
+  padding-bottom: 1rem;
+}
+
+/* ---------- Thumb-képek stílusa ---------- */
+.thumb-recent {
+  width: 120px;
+  height: 120px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.thumb-recent img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.thumb-recent:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* a containeren belül középre rendezzük az inline elemeket */
+.recent-products .container {
+  text-align: center;
+}
+
+/* a link stílusa */
+.recent-products .center-link {
+  display: inline-block;       /* hogy text-align:center működjön rá */
+  margin: 2rem auto 0;         /* felül távolság, alul nulla */
+  padding: 0.75rem 1.5rem;
+  font-family: 'Merriweather', serif;
+  font-size: 1rem;
+  color: #5a4632;
+  text-decoration: none;
+  border: 2px solid #5a4632;
+  border-radius: 8px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.recent-products .center-link:hover {
+  background-color: var(--text-main);
+  color: #faf7f2;
 }
 
 /********** Szűrés ***********/
@@ -213,6 +315,87 @@ nav a, nav button {
   border-color: var(--accent-dark);
 }
 
+/* Kapcsolat űrlap */
+.contact-section {
+  background: #fff;
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+.contact-section .section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  color: var(--accent-dark);
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.3rem;
+  font-family: 'Lora', serif;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #faf8f5;
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(162,137,103,0.2);
+  outline: none;
+}
+
+.contact-form .btn {
+  justify-self: start;
+  background-color: var(--text-main);
+  color: var(--footer-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.contact-form .btn:hover {
+  background-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+@media (min-width: 480px) {
+  .contact-form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .contact-form .form-group:nth-child(3) {
+    grid-column: span 2;
+  }
+  .contact-form .btn {
+    grid-column: span 2;
+  }
+}
+
 /* Footer */
 .site-footer {
   background: var(--footer-bg);
@@ -225,7 +408,6 @@ nav a, nav button {
 }
 .site-footer h2 {
   font-size: 1.8rem;
-  color: var(--accent);
 }
 .site-footer p,
 .site-footer a {
@@ -310,9 +492,7 @@ nav a, nav button {
   cursor: pointer;
 }
 .modal-content h3 {
-  font-family: 'Playfair Display', serif;
   font-size: 1.6rem;
-  color: var(--text-main);
   text-align: center;
   border-bottom: 1px solid var(--accent);
   padding-bottom: 0.5rem;
@@ -454,42 +634,76 @@ nav a, nav button {
   margin: 1rem 2rem;
 }
 
-/* About */
+/* About Section */
 .about {
-  background: #ffff;
+  background:
+    linear-gradient(rgba(243,236,227,0.85), rgba(243,236,227,0.85)),
+    url('/pics/parchment-texture.jpg') center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
   padding: 4rem 2rem;
-  color: var(--text-main);
-  max-width: 800px;
-  margin: 2rem auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  text-align: left;
+  max-width: 900px;
+  margin: 3rem auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
-.section-title {
-  text-align: center;
+/* Subtle parchment overlay */
+.about::before {
+  content: '';
+  position: absolute;
+  top: -20%; left: -20%;
+  width: 140%; height: 140%;
+  background: rgba(255,255,255,0.2);
+  transform: rotate(-3deg);
+  pointer-events: none;
+}
+/* Decorative underline for title */
+.about .section-title {
+  position: relative;
   font-size: 2.5rem;
   color: var(--accent-dark);
-  margin-bottom: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
 }
-.about p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
+.about .section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--accent);
+  margin: 0.5rem auto 0;
 }
-.flex-box {
-  display: flex;
-  gap: 20px;
+/* Grid layout for content */
+.about .about-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
 }
-.col-50 {
-  width: 50%;
-  margin-top: 20px;
+/* Blockquote styling */
+.about blockquote {
+  font-style: italic;
+  border-left: 4px solid var(--accent);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: var(--text-main);
 }
-
-.about-img {
+/* Image styling within about */
+.about .about-img {
   width: 100%;
-  border-radius: 5%;
-
-  
+  border-radius: 8px;
+  border: 2px solid var(--accent-dark);
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about {
+    padding: 3rem 1rem;
+    margin: 2rem 1rem;
+  }
+  .about .section-title {
+    font-size: 2rem;
+  }
 }
 
 .img-modal-inner {
