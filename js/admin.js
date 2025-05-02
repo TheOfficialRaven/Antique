@@ -20,6 +20,7 @@ import {
   getDownloadURL,
   deleteObject
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js";
+import Sortable from "https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/modular/sortable.esm.js";
 
 // Firebase konfiguráció
 const firebaseConfig = {
@@ -33,8 +34,8 @@ const firebaseConfig = {
 };
 initializeApp(firebaseConfig);
 
-const auth = getAuth();
-const db = getDatabase();
+const auth    = getAuth();
+const db      = getDatabase();
 const storage = getStorage();
 
 // Auth állapot ellenőrzése
@@ -45,16 +46,19 @@ onAuthStateChanged(auth, user => {
 
 document.getElementById("logoutBtn").onclick = () => signOut(auth);
 
-function loadAdmin() {
-  const list = document.getElementById("admin-showcase");
-  const addNewBtn = document.getElementById("addNew");
-  const modal = document.getElementById("addItemModal");
-  const closeBtn = document.getElementById("modal-close-btn");
-  const form = document.getElementById("addItemForm");
-  const imageIn = document.getElementById("imageInput");
-  const catSelect = document.getElementById("categorySelect");
-  const newCatInput = document.getElementById("newCategoryInput");
+async function loadAdmin() {
+  const list           = document.getElementById("admin-showcase");
+  const addNewBtn      = document.getElementById("addNew");
+  const modal          = document.getElementById("addItemModal");
+  const closeBtn       = document.getElementById("modal-close-btn");
+  const form           = document.getElementById("addItemForm");
+  const imageIn        = document.getElementById("imageInput");
+  const catSelect      = document.getElementById("categorySelect");
+  const newCatInput    = document.getElementById("newCategoryInput");
   const addCategoryBtn = document.getElementById("addCategoryBtn");
+  const confirmModal   = document.getElementById('confirmModal');
+  const yesBtn         = document.getElementById('confirmYes');
+  const noBtn          = document.getElementById('confirmNo');
 
   // Kategóriák kezelése
   const categoriesRef = dbRef(db, "categories");
@@ -87,113 +91,137 @@ function loadAdmin() {
     const data = snap.val() || {};
 
     Object.entries(data).forEach(([id, it]) => {
-      const imageUrls = Array.isArray(it.imageUrls) ? it.imageUrls : [];
-      const storagePaths = Array.isArray(it.storagePaths) ? it.storagePaths : [];
-      const mainImgSrc = imageUrls[0] || '';
-      const thumbs = imageUrls.map(url =>
-        `<img src="${url}" class="thumb" data-url="${url}" />`
-      ).join('');
+      // Thumb-ek HTML
+      const thumbsHTML = Array.isArray(it.imageUrls)
+        ? it.imageUrls.map(url => `<img src="${url}" class="thumb" data-url="${url}">`).join("")
+        : "";
 
+      // Main kép src és storagePaths
+      const mainImgSrc   = it.imageUrls?.[0] || "";
+      const storagePaths = Array.isArray(it.storagePaths) ? it.storagePaths : [];
+
+      // Kártya markup
       const card = document.createElement('article');
       card.className = 'item-card admin';
       card.innerHTML = `
         <div class="main-image">
-          <img src="${mainImgSrc}" alt="${it.title}" />
+          <img src="${mainImgSrc}" alt="${it.title}">
         </div>
         <div class="thumb-row">
-          ${thumbs}
+          ${thumbsHTML}
         </div>
         <div class="card-body">
           <p><strong>Kategória:</strong> ${it.category || 'Nincs'}</p>
           <h3><input class="edit-title" data-id="${id}" value="${it.title}"></h3>
-          <p><textarea class="edit-desc" data-id="${id}">${it.desc}</textarea></p>
-          <p><input class="edit-price" data-id="${id}" value="${it.price}"></p>
+          <textarea class="edit-desc" data-id="${id}">${it.desc}</textarea>
+          <input class="edit-price" data-id="${id}" value="${it.price}">
           <div class="button-group">
             <button class="save-btn" data-id="${id}">Mentés</button>
             <button class="delete-btn" data-id="${id}" data-paths='${JSON.stringify(storagePaths)}'>Törlés</button>
           </div>
         </div>`;
+
+      // Append
       list.appendChild(card);
-    });
 
-    // Thumbnail hover: fő kép frissítése
-    list.querySelectorAll('.thumb').forEach(thumb => {
-      thumb.addEventListener('mouseover', () => {
-        const card = thumb.closest('.item-card');
-        const mainImg = card.querySelector('.main-image img');
-        mainImg.src = thumb.dataset.url;
+      // Thumbnail hover → fő kép
+      card.querySelectorAll('.thumb').forEach(thumb => {
+        thumb.addEventListener('mouseover', () => {
+          const mainImg = card.querySelector('.main-image img');
+          mainImg.src = thumb.dataset.url;
+        });
       });
-    });
 
-  // Thumbnail-row scroll on hover/move (lassú, 1px lépés)
-  document.querySelectorAll('.thumb-row').forEach(row => {
-    row.addEventListener('mousemove', e => {
-      const rect = row.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const speed = 1.8; // 1px per mozgás
-      if (x > rect.width / 2) {
-        row.scrollBy({ left: speed });
-      } else {
-        row.scrollBy({ left: -speed });
+      // Thumb-row scroll on hover/move
+      const scrollRow = card.querySelector('.thumb-row');
+      scrollRow.addEventListener('mousemove', e => {
+        const rect = scrollRow.getBoundingClientRect();
+        const x    = e.clientX - rect.left;
+        const speed = 1.8;
+        scrollRow.scrollBy({ left: x > rect.width / 2 ? speed : -speed });
+      });
+
+      // SortableJS
+      if (scrollRow.children.length > 1) {
+        Sortable.create(scrollRow, {
+          animation: 150,
+          onEnd: async () => {
+            const newOrder = Array.from(scrollRow.children).map(img => img.dataset.url);
+            await update(dbRef(db, `antiques/${id}`), { imageUrls: newOrder });
+          }
+        });
       }
     });
-  });
 
-    // Mentés gomb események
+    // Mentés esemény
     list.querySelectorAll('.save-btn').forEach(btn => {
       btn.onclick = async () => {
-        const id = btn.dataset.id;
-        const title = document.querySelector(`.edit-title[data-id="${id}"]`).value;
-        const desc = document.querySelector(`.edit-desc[data-id="${id}"]`).value;
-        const price = document.querySelector(`.edit-price[data-id="${id}"]`).value;
-        const category = catSelect.value;
-        await update(dbRef(db, `antiques/${id}`), { title, desc, price, category });
+        const id    = btn.dataset.id;
+        const title = list.querySelector(`.edit-title[data-id="${id}"]`).value;
+        const desc  = list.querySelector(`.edit-desc[data-id="${id}"]`).value;
+        const price = list.querySelector(`.edit-price[data-id="${id}"]`).value;
+        await update(dbRef(db, `antiques/${id}`), { title, desc, price });
       };
     });
 
-    // Törlés gomb események
+    // Törlés esemény
     list.querySelectorAll('.delete-btn').forEach(btn => {
-      btn.onclick = async () => {
-        if (!confirm("Biztos törlöd?")) return;
-        const id = btn.dataset.id;
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        const id    = btn.dataset.id;
         const paths = JSON.parse(btn.dataset.paths || '[]');
-        for (const p of paths) {
-          try { await deleteObject(storageRef(storage, p)); } catch (err) { console.error(err); }
-        }
-        await remove(dbRef(db, `antiques/${id}`));
-      };
+
+        // Megjelenítjük a modalt
+        confirmModal.classList.add('show');
+
+        // Igen
+        yesBtn.onclick = async () => {
+          for (const p of paths) {
+            try { await deleteObject(storageRef(storage, p)); }
+            catch (err) { console.error(err); }
+          }
+          await remove(dbRef(db, `antiques/${id}`));
+          confirmModal.classList.remove('show');
+        };
+
+        // Mégse
+        noBtn.onclick = () => {
+          confirmModal.classList.remove('show');
+        };
+      });
     });
   });
 
-  // Modal megjelenítése/elrejtése
+  // Modal show/hide és új tétel mentés
   addNewBtn.onclick = () => modal.classList.add("show");
-  closeBtn.onclick = () => modal.classList.remove("show");
+  closeBtn.onclick  = () => modal.classList.remove("show");
 
-  // Új tétel mentése (párhuzamos upload)
   form.onsubmit = async e => {
     e.preventDefault();
-    const title = form.title.value.trim();
-    const desc = form.desc.value.trim();
-    const price = Number(form.price.value);
+    const title    = form.title.value.trim();
+    const desc     = form.desc.value.trim();
+    const price    = Number(form.price.value);
     const category = catSelect.value;
-    const files = Array.from(imageIn.files);
+    const files    = Array.from(imageIn.files);
+
     if (!title || !desc || !price || !category) return alert("Tölts ki minden mezőt!");
     if (files.length === 0) return alert("Legalább egy képet válassz!");
+
     const uploadOps = files.map(async file => {
       const filePath = `antiques/${Date.now()}_${file.name}`;
-      const sRef = storageRef(storage, filePath);
+      const sRef     = storageRef(storage, filePath);
       await uploadBytes(sRef, file);
-      const url = await getDownloadURL(sRef);
+      const url      = await getDownloadURL(sRef);
       return { url, path: filePath };
     });
     const results = await Promise.all(uploadOps);
-    const imageUrls = results.map(r => r.url);
+    const imageUrls    = results.map(r => r.url);
     const storagePaths = results.map(r => r.path);
+
     const newRef = push(dbRef(db, "antiques"));
     await update(newRef, { title, desc, price, category, imageUrls, storagePaths });
+
     form.reset();
     modal.classList.remove("show");
   };
-
-  
 }
