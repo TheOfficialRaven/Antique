@@ -192,7 +192,7 @@ nav:not(.nav-overlay) button {
 .custom-dropdown {
   position: relative;
   width: 100%;
-  max-width: 200px;
+  max-width: 250px;
   font-family: 'Lora', serif;
   user-select: none;
 }
@@ -310,6 +310,7 @@ nav:not(.nav-overlay) button {
 .item-card img {
   width: 100%;
   object-fit: cover;
+  max-height: 180px;
 }
 .item-card .card-body {
   padding: 1rem;
