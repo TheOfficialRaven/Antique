@@ -18,6 +18,9 @@ const db = getDatabase();
 // DOM elemek
 const showcase = document.getElementById("showcase");
 const filterEl = document.getElementById('categoryFilter');
+const dropdown = document.getElementById('categoryDropdown');
+const selected = dropdown.querySelector('.selected');
+const optionsContainer = dropdown.querySelector('.options');
 let allItems = [];
 
 // Adatok betöltése és szűrő opciók generálása
@@ -25,45 +28,36 @@ onValue(ref(db, "antiques"), snap => {
   const data = snap.val() || {};
   allItems = Object.entries(data).map(([id, it]) => ({ id, ...it }));
 
-  // Kategóriák a szűrőnek
-  const categories = Array.from(
-    new Set(allItems.map(item => item.category).filter(c => c))
-  );
+  // native select opciók
+  const categories = Array.from(new Set(allItems.map(i => i.category).filter(c => c)));
   filterEl.innerHTML = '<option value="all">Összes</option>' +
     categories.map(c => `<option value="${c}">${c}</option>`).join('');
 
-  // Alapértelmezett renderelés
+  // custom dropdown opciók
+  optionsContainer.innerHTML = '<li data-value="all">Összes</li>' +
+    categories.map(c => `<li data-value="${c}">${c}</li>`).join('');
+
   renderItems(allItems);
 });
 
-// Szűrő esemény
+// native select onchange
 filterEl.onchange = () => {
   const sel = filterEl.value;
-  const filtered = sel === 'all'
-    ? allItems
-    : allItems.filter(item => item.category === sel);
-  renderItems(filtered);
+  selected.textContent = filterEl.options[filterEl.selectedIndex].text;
+  renderItems(sel === 'all' ? allItems : allItems.filter(i => i.category === sel));
 };
 
-// Tételek kirenderelése a showcase szekcióba, thumbnail slider-rel
+// render
 function renderItems(items) {
   showcase.innerHTML = '';
   items.forEach(({ title, desc, price, imageUrls = [] }) => {
-    // fő kép és thumbnail-ek
-    const mainImgSrc = imageUrls[0] || '';
-    const thumbs = imageUrls.map(url => 
-      `<img src="${url}" alt="${title}" class="thumb" data-gallery='${JSON.stringify(imageUrls)}'>`
-    ).join('');
-
+    const main = imageUrls[0]||'';
+    const thumbs = imageUrls.map(u => `<img src="${u}" class="thumb">`).join('');
     const card = document.createElement('article');
     card.className = 'item-card';
     card.innerHTML = `
-      <div class="main-image">
-        <img src="${mainImgSrc}" alt="${title}" data-gallery='${JSON.stringify(imageUrls)}'>
-      </div>
-      <div class="thumb-row">
-        ${thumbs}
-      </div>
+      <div class="main-image"><img src="${main}"></div>
+      <div class="thumb-row">${thumbs}</div>
       <div class="card-body">
         <h3>${title}</h3>
         <p>${desc}</p>
@@ -72,6 +66,30 @@ function renderItems(items) {
     showcase.appendChild(card);
   });
 }
+
+// custom dropdown események
+selected.addEventListener('click', () => {
+  dropdown.classList.toggle('open');
+});
+optionsContainer.addEventListener('click', e => {
+  if (e.target.tagName === 'LI') {
+    const val = e.target.dataset.value;
+    // native select érték
+    filterEl.value = val;
+    filterEl.onchange();
+    // ui update
+    selected.textContent = e.target.textContent;
+    dropdown.classList.remove('open');
+    // aktív li
+    optionsContainer.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+    e.target.classList.add('active');
+  }
+});
+
+// kattintás máshova: dropdown bezárása
+document.addEventListener('click', e => {
+  if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
+});
 
 
 

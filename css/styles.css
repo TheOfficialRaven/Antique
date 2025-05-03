@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
 
+/* ===================================== */
+/*       FŐ STÍLUSOK (styles.css)        */
+/* ===================================== */
+
 /* ── THEME VARIABLES ── */
 :root {
   --bg-page: #f7f1e1;
@@ -13,7 +17,7 @@
   --transition: 0.3s ease;
 }
 
-/* RESET */
+/* ── RESET ── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -33,14 +37,14 @@ a {
 }
 a:hover { color: var(--accent); }
 
-/* TYPOGRAPHY */
+/* ── TYPOGRAPHY ── */
 .site-header .logo,
 .modal-content h3,
 .section-title {
   font-family: 'Cinzel', serif;
 }
 
-/* BUTTONS */
+/* ── BUTTONS ── */
 .btn {
   display: inline-block;
   padding: 0.5rem 1rem;
@@ -54,7 +58,7 @@ a:hover { color: var(--accent); }
   background: rgba(62,44,28,0.1);
 }
 
-/* HEADER */
+/* ── HEADER ── */
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -69,7 +73,7 @@ a:hover { color: var(--accent); }
 .logo { font-size: 1.5rem; }
 .logo span { color: var(--accent); }
 
-/* Desktop navigation */
+/* ── NAVIGÁCIÓ (desktop) ── */
 nav:not(.nav-overlay) {
   display: flex;
   align-items: center;
@@ -79,19 +83,17 @@ nav:not(.nav-overlay) button {
   margin-left: 1.5rem;
 }
 
-/* Hide overlay on desktop */
+/* ── NAVIGÁCIÓ (overlay & hamburger rejtése desktopon) ── */
 .nav-overlay,
 .hamburger {
   display: none;
 }
 
-/* MOBILE STYLES */
+/* ── MOBIL STÍLUSOK ── */
 @media (max-width: 768px) {
-  /* Hide desktop nav */
-  nav:not(.nav-overlay) {
-    display: none;
-  }
-  /* Show hamburger icon */
+  /* rejtjük desktop nav */
+  nav:not(.nav-overlay) { display: none; }
+  /* hamburger ikon */
   .hamburger {
     display: flex;
     width: 30px;
@@ -107,7 +109,7 @@ nav:not(.nav-overlay) button {
     background: var(--text-main);
     transition: transform var(--transition), opacity var(--transition);
   }
-  /* Show overlay nav */
+  /* overlay nav */
   .nav-overlay {
     display: flex;
     position: fixed;
@@ -136,13 +138,11 @@ nav:not(.nav-overlay) button {
     background-color: var(--accent);
     color: var(--bg-page);
   }
-  /* Adjust grid for mobile */
-  .grid {
-    grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
-  }
+  /* grid mobilon */
+  .grid { grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); }
 }
 
-/* Nav open state for animation toggle */
+/* ── NAV OPEN ANIMÁCIÓ ── */
 .nav-open .nav-overlay { left: 0; }
 .nav-open .hamburger span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
@@ -154,7 +154,7 @@ nav:not(.nav-overlay) button {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* HERO SECTIONS */
+/* ── HERO SZEKCIÓK ── */
 .hero, .hero-2, .hero-3 {
   position: relative;
   display: flex;
@@ -163,25 +163,19 @@ nav:not(.nav-overlay) button {
   text-align: center;
   color: #fff;
 }
-.hero { 
-  height: 60vh; 
-
-}
-.hero-2, .hero-3 { 
-  height: 30vh; 
-}
-
+.hero { height: 60vh; }
+.hero-2, .hero-3 { height: 30vh; }
 .hero-2 {
-  background-image:  url('/pics/Hero-3.jpg');
+  background-image: url('/pics/Hero-3.jpg');
   background-position: center;
-  background-size:     cover;
-  background-repeat:   no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .hero-3 {
-  background-image:  url('/pics/Hero-2.jpg');
+  background-image: url('/pics/Hero-2.jpg');
   background-position: center;
-  background-size:     cover;
-  background-repeat:   no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .hero-content h2,
 .hero-2-content h2,
@@ -194,74 +188,15 @@ nav:not(.nav-overlay) button {
   font-size: 1.2rem;
 }
 
-/* ── Antique-modern filter bar & custom dropdown ── */
-.filter-bar {
+/* ── CUSTOM-DROPDOWN ── */
+.custom-dropdown {
   position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem 2rem;
-  background: rgba(162,137,103,0.1);    /* halvány arany árnyalat */
-  border: 2px solid var(--accent);      /* antik arany keret */
-  border-radius: 8px;
-  max-width: 600px;
-  margin: 2rem auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.filter-bar label {
-  font-family: 'Cinzel', serif;
-  font-size: 1.1rem;
-  color: var(--text-main);
-}
-
-/* a natív nyíl eltüntetése és saját SVG nyíl beállítása */
-.filter-bar select.category-filter {
-  flex: 1;
-  padding: 0.6rem 2.5rem 0.6rem 0.8rem;
-  border: 2px solid var(--accent);
-  border-radius: 6px;
-  background-color: #faf8f5;
-  background-image:
-    url("data:image/svg+xml;charset=UTF-8,%3Csvg width='12' height='12' viewBox='0 0 24 24' fill='%23362e23' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.8rem center;
-  background-size: 1rem;
-  font-family: 'Lora', serif;
-  font-size: 1rem;
-  color: var(--text-main);
-  cursor: pointer;
-  outline: none;
-  /* natív megjelenés letiltása */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-
-.filter-bar select.category-filter:hover,
-.filter-bar select.category-filter:focus {
-  border-color: var(--accent-dark);
-  box-shadow: 0 0 0 3px rgba(162,137,103,0.2);
-}
-
-/* Firefoxban az opciók paneljének háttér-színe */
-.filter-bar select.category-filter option {
-  background-color: #faf8f5;
-  color: var(--text-main);
-  padding: 0.5rem 1rem;
-}
-
-/* ── Custom dropdown stílusok ── */
-.custom-select {
-  position: relative;
-  font-family: 'Lora', serif;
   width: 100%;
   max-width: 300px;
-  cursor: pointer;
+  font-family: 'Lora', serif;
+  user-select: none;
 }
-.custom-select .selected {
+.custom-dropdown .selected {
   padding: 0.6rem 1rem;
   border: 2px solid var(--accent);
   border-radius: 6px;
@@ -269,52 +204,94 @@ nav:not(.nav-overlay) button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  user-select: none;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
 }
-.custom-select .selected::after {
+.custom-dropdown .selected:hover {
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+.custom-dropdown .selected::after {
   content: '▾';
   font-size: 1rem;
   color: var(--text-main);
+  margin-left: 0.5rem;
+  transition: transform var(--transition);
 }
-.custom-select .options {
+.custom-dropdown.open .selected::after {
+  transform: rotate(180deg);
+}
+.custom-dropdown .options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   position: absolute;
   top: calc(100% + 0.25rem);
   left: 0; right: 0;
-  background: #faf8f5;
+  background: #ffffff;
   border: 2px solid var(--accent);
   border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  max-height: 200px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  max-height: 240px;
   overflow-y: auto;
   display: none;
   z-index: 20;
+  scroll-behavior: smooth;
 }
-.custom-select.open .options {
+.custom-dropdown.open .options {
   display: block;
 }
-.custom-select .options li {
-  padding: 0.6rem 1rem;
-  transition: background var(--transition);
+.custom-dropdown .options li {
+  padding: 0.75rem 1rem;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
 }
-.custom-select .options li:hover {
-  background: rgba(162,137,103,0.2);
+.custom-dropdown .options li:not(:last-child) {
+  border-bottom: 1px solid #f0eae0;
+}
+.custom-dropdown .options li:hover,
+.custom-dropdown .options li.active {
+  background: var(--accent);
+  color: #ffffff;
+}
+/* Scrollbar modernizálása WebKit & Firefox */
+.custom-dropdown .options::-webkit-scrollbar { width: 6px; }
+.custom-dropdown .options::-webkit-scrollbar-track { background: #faf8f5; border-radius: 3px; }
+.custom-dropdown .options::-webkit-scrollbar-thumb { background-color: var(--accent-dark); border-radius: 3px; }
+.custom-dropdown .options { scrollbar-width: thin; scrollbar-color: var(--accent-dark) #faf8f5; }
+
+/* elrejtjük a natív selectet */
+.filter-bar select.category-filter,
+.category-group select {
+  display: none;
 }
 
-
-
-/* Mobilra finomhangolva */
+/* ── FILTER-BAR ── */
+.filter-bar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: rgba(162,137,103,0.1);
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.filter-bar label {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  color: var(--text-main);
+}
 @media (max-width: 480px) {
-  .filter-bar {
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.8rem 1rem;
-  }
-  .filter-bar label {
-    font-size: 1rem;
-  }
+  .filter-bar { flex-direction: column; gap: 0.5rem; padding: 0.8rem 1rem; }
+  .filter-bar label { font-size: 1rem; }
 }
 
-/* Grid (showcase) */
+/* ── GRID & ITEM CARD ── */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
@@ -328,9 +305,6 @@ nav:not(.nav-overlay) button {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-}
-.item-card.admin {
-  overflow: hidden;
 }
 .item-card img {
   width: 100%;
@@ -355,53 +329,12 @@ nav:not(.nav-overlay) button {
   font-weight: bold;
   color: var(--accent);
 }
-
-/* Antique style for inputs and buttons in admin cards */
-.item-card.admin input,
-.item-card.admin textarea {
-  background-color: #fafaf7;
-  border: 1px solid var(--accent);
-  border-radius: 4px;
-  padding: 0.5rem;
-  font-family: inherit;
-  margin-bottom: 0.5rem;
-}
-.item-card.admin .save-btn,
-.item-card.admin .delete-btn {
-  padding: 0.4rem 0.8rem;
-  margin-right: 0.5rem;
-  background: transparent;
-  border: 2px solid var(--accent);
-  border-radius: 4px;
-  font-family: 'Playfair Display', serif;
-  color: var(--text-main);
-  transition: background .3s, color .3s;
-}
-.item-card.admin .save-btn:hover {
-  background: var(--accent);
-  color: #fff;
-}
-.item-card.admin .delete-btn:hover {
-  background: var(--accent-dark);
-  color: #fff;
-}
-
-.item-card:hover { 
-  transform: scale(1.02); 
+.item-card:hover {
+  transform: scale(1.02);
   transition: 0.3s ease-in-out;
 }
 
-.item-card.admin:hover { 
-  transform: none; 
-  transition: none;
-}
-
-.card-body h3 {
-  margin-bottom: 0;
-}
-
-
-/* THUMBNAIL SLIDER */
+/* ── THUMBNAIL SLIDER ── */
 .thumb-row {
   display: flex;
   overflow-x: auto;
@@ -430,15 +363,16 @@ nav:not(.nav-overlay) button {
 }
 
 .hero-img {
-height: 100%;
-object-fit: cover;
+  height: 100%;
+  object-fit: cover;
 }
 
 .c-item {
-  height: 60vh;position: relative;
+  height: 60vh;
+  position: relative;
 }
 
-/* RECENT PRODUCTS */
+/* ── RECENT PRODUCTS ── */
 .recent-products {
   background-color: #faf7f2;
   padding: 3rem 1rem;
@@ -491,7 +425,7 @@ object-fit: cover;
   color: var(--bg-page);
 }
 
-/* CONTACT FORM */
+/* ── CONTACT FORM ── */
 .contact-section {
   background: #fff;
   max-width: 800px;
@@ -548,7 +482,7 @@ object-fit: cover;
   .contact-form .btn { grid-column: span 2; justify-self: start; }
 }
 
-/* FOOTER */
+/* ── FOOTER ── */
 .site-footer {
   background: var(--footer-bg);
   color: var(--footer-text);
@@ -558,26 +492,119 @@ object-fit: cover;
   justify-content: space-between;
   gap: 2rem;
 }
-.site-footer h2 { 
-  font-size: 1.8rem; 
+.site-footer h2 { font-size: 1.8rem; }
+.site-footer p, .site-footer a { font-size: 0.95rem; line-height: 1.6; }
+.site-footer a { color: var(--accent); text-decoration: underline; }
+.site-footer ul { list-style: none; padding: 0; }
+.site-footer li { margin-bottom: 0.5rem; }
+
+/* ── ABOUT SECTION ── */
+.about {
+  background: linear-gradient(rgba(243,236,227,0.85), rgba(243,236,227,0.85)), url('/pics/parchment-texture.jpg') center/cover no-repeat;
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: 3rem auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  position: relative;
 }
-.site-footer p, .site-footer a { 
-  font-size: 0.95rem; 
-  line-height: 1.6; 
+.img-50 { position: relative; }
+.overlay {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(85, 42, 6, 0.342);
+  pointer-events: none;
 }
-.site-footer a { 
-  color: var(--accent); 
-  text-decoration: underline; 
+.about .section-title {
+  position: relative;
+  font-size: 2.5rem;
+  color: var(--accent-dark);
+  margin-bottom: 2rem;
+  text-align: center;
 }
-.site-footer ul { 
-  list-style: none; 
-  padding: 0; 
+.about .section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--accent);
+  margin: 0.5rem auto 0;
 }
-.site-footer li { 
-  margin-bottom: 0.5rem; 
+.about .about-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 2rem;
+}
+.about blockquote {
+  font-style: italic;
+  border-left: 4px solid var(--accent);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+}
+.about .about-img {
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid var(--accent-dark);
 }
 
-/* Admin Modal */
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hero-content h2 { font-size: 2.2rem; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); }
+  .about { padding: 3rem 1rem; margin: 2rem 1rem; }
+  .section-title { font-size: 2rem; }
+  .site-footer { flex-direction: column; align-items: center; text-align: center; }
+}
+
+/* ===================================== */
+/*       ADMIN STÍLUSOK (admin.css)      */
+/* ===================================== */
+
+/* Antique style for admin item cards */
+.item-card.admin {
+  overflow: hidden;
+}
+
+/* Antique-modern filter bar & custom dropdown */
+.item-card.admin input,
+.item-card.admin textarea {
+  background-color: #fafaf7;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-family: inherit;
+  margin-bottom: 0.5rem;
+}
+.item-card.admin .save-btn,
+.item-card.admin .delete-btn {
+  padding: 0.4rem 0.8rem;
+  margin-right: 0.5rem;
+  background: transparent;
+  border: 2px solid var(--accent);
+  border-radius: 4px;
+  font-family: 'Playfair Display', serif;
+  color: var(--text-main);
+  transition: background .3s, color .3s;
+}
+.item-card.admin .save-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+.item-card.admin .delete-btn:hover {
+  background: var(--accent-dark);
+  color: #fff;
+}
+
+/* Reset admin card hover */
+.item-card.admin:hover {
+  transform: none;
+  transition: none;
+}
+
+/* Admin Modals */
 .modal {
   position: fixed;
   inset: 0;
@@ -659,136 +686,42 @@ object-fit: cover;
   background-color: var(--accent-dark);
 }
 
-
 /* Confirm MODAL */
-.confirm-modal { 
-  position: fixed; 
-  inset: 0; 
-  display: none; 
-  align-items: center; 
-  justify-content: center; 
-  background: rgba(0,0,0,0.6); 
-  z-index: 1000; 
+.confirm-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  z-index: 1000;
 }
-.confirm-modal.show { 
-  display: flex; 
-}
+.confirm-modal.show { display: flex; }
 .confirm-modal-content {
   background: var(--bg-page);
   border: 2px solid var(--accent);
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   padding: 2rem;
-  max-width: 90%;
-  width: 400px;
+  max-width: 320px;
+  width: 100%;
   text-align: center;
-}
-.modal-close { 
-  position: absolute; 
-  top: 0.5rem; 
-  right: 0.5rem; 
-  background: rgba(0,0,0,0.5); 
-  color: var(--footer-text); 
-  border: none; 
-  border-radius: 50%;
-  width: 2.5rem; 
-  height: 2.5rem; 
-  font-size: 1.5rem; 
-  cursor: pointer; 
-}
-
-.confirm-modal-content { 
-  max-width: 320px; 
 }
 .confirm-text { 
-  font-family: 'Cinzel', serif; 
-  font-size: 1.2rem; 
-  margin-bottom: 1.5rem; 
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
 }
-.confirm-actions { 
-  display: flex; 
-  gap: 1rem; 
+.confirm-actions { display: flex; gap: 1rem; }
+.confirm-actions .btn { flex: 1; padding: 0.6rem; }
+.btn.confirm {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent-dark);
 }
-.confirm-actions .btn { 
-  flex: 1; 
-  padding: 0.6rem; 
+.btn.cancel {
+  background: transparent;
+  border-color: var(--text-main);
 }
-.btn.confirm { 
-  background: var(--accent); 
-  color: #fff; 
-  border-color: var(--accent-dark); 
-}
-.btn.cancel { 
-  background: transparent; 
-  border-color: var(--text-main); 
-}
-.btn.confirm:hover { 
-  background: var(--accent-dark); 
-}
-.btn.cancel:hover { 
-  background: rgba(62,44,28,0.1); 
-}
-
-/* ABOUT SECTION */
-.about {
-  background: linear-gradient(rgba(243,236,227,0.85), rgba(243,236,227,0.85)), url('/pics/parchment-texture.jpg') center/cover no-repeat;
-  padding: 4rem 2rem;
-  max-width: 900px;
-  margin: 3rem auto;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  position: relative;
-}
-
-.img-50 {
-position: relative;
-}
-.overlay { 
-  content: ''; 
-  position: absolute; 
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(85, 42, 6, 0.342); 
-  pointer-events: none; 
-}
-.about .section-title { 
-  position: relative; 
-  font-size: 2.5rem; 
-  color: var(--accent-dark); 
-  margin-bottom: 2rem; 
-  text-align: center;
-}
-.about .section-title::after { 
-  content: ''; 
-  display: block; 
-  width: 60px; 
-  height: 4px; 
-  background: var(--accent); 
-  margin: 0.5rem auto 0; 
-}
-.about .about-content { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); 
-  gap: 2rem; 
-}
-.about blockquote { 
-  font-style: italic; 
-  border-left: 4px solid var(--accent); 
-  padding-left: 1rem;
-  margin: 1.5rem 0; 
-}
-.about .about-img { 
-  width: 100%; 
-  border-radius: 8px; 
-  border: 2px solid var(--accent-dark); 
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .hero-content h2 { font-size: 2.2rem; }
-  .grid { grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); }
-  .about { padding: 3rem 1rem; margin: 2rem 1rem; }
-  .section-title { font-size: 2rem; }
-  .site-footer { flex-direction: column; align-items: center; text-align: center; }
-}
+.btn.confirm:hover { background: var(--accent-dark); }
+.btn.cancel:hover { background: rgba(62,44,28,0.1); }

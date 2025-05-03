@@ -48,12 +48,18 @@
     <div class="overlay"></div>
   </section>
 
-  <!-- Filter bar -->
+ <!-- Filter bar -->
 <div class="filter-bar">
   <label for="categoryFilter">Szűrés kategória szerint:</label>
+  <!-- a natív select, amit JS generál majd, de el van rejtve -->
   <select id="categoryFilter" class="category-filter">
     <option value="all">Összes</option>
   </select>
+  <!-- ide épül be a custom dropdown -->
+  <div class="custom-dropdown" id="categoryDropdown">
+    <div class="selected">Összes</div>
+    <ul class="options"></ul>
+  </div>
 </div>
 
   <!-- RÉGISÉGEK LISTÁJA -->

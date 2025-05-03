@@ -18,12 +18,14 @@
       <button id="logoutBtn" class="btn">Kijelentkezés</button>
     </nav>
   </header>
+<!-- Új tárgy hozzáadása gomb -->
+  <button id="addNew" class="btn admin-btn">+ Új tétel</button>
 
   <!-- Admin Showcase -->
   <section id="admin-showcase" class="grid">
     <!-- ide a JS betölti a <article class="item-card admin"> elemeket -->
   </section>
-  <button id="addNew" class="btn admin-btn">+ Új tétel</button>
+  
 
   <!-- Új tétel Modal -->
   <div id="addItemModal" class="modal">
@@ -46,13 +48,18 @@
 
         <label for="categorySelect">Kategória</label>
 
-      <div class="category-group">
-        <select id="categorySelect" name="category" required>
-          <option value="">-- Válassz kategóriát --</option>
-        </select>
-        <input id="newCategoryInput" type="text" placeholder="Új kategória">
-        <button type="button" id="addCategoryBtn" class="btn small">+</button>
-      </div>
+      <!-- a meglévő <select id="categorySelect"> eltűnik -->
+        <div class="category-group">
+          <select id="categorySelect" class="d-none">
+            <option value="">-- Válassz kategóriát --</option>
+          </select>
+          <div class="custom-dropdown" id="adminCategoryDropdown">
+            <div class="selected">-- Válassz kategóriát --</div>
+            <ul class="options"></ul>
+          </div>
+          <input id="newCategoryInput" type="text" placeholder="Új kategória">
+          <button type="button" id="addCategoryBtn" class="btn small">+</button>
+        </div>
 
         <button type="submit" class="btn">Mentés</button>
       </form>
