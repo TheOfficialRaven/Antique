@@ -416,13 +416,13 @@ nav:not(.nav-overlay) button {
   margin: 2rem auto 0;
   padding: 0.75rem 1.5rem;
   font-family: 'Merriweather', serif;
-  color: #5a4632;
-  border: 2px solid #5a4632;
+  color: var(--accent-dark);
+  border: 2px solid var(--accent-dark);
   border-radius: 8px;
   transition: background var(--transition), color var(--transition);
 }
 .recent-products .center-link:hover {
-  background: var(--text-main);
+  background: var(--accent-dark);
   color: var(--bg-page);
 }
 
@@ -564,6 +564,23 @@ nav:not(.nav-overlay) button {
 /*       ADMIN STÍLUSOK (admin.css)      */
 /* ===================================== */
 
+
+/* addNew Gomb */
+#addNew {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.addNew-center {
+  width: 100%;
+}
+
 /* Antique style for admin item cards */
 .item-card.admin {
   overflow: hidden;
@@ -625,7 +642,7 @@ nav:not(.nav-overlay) button {
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   padding: 2rem;
-  max-width: 400px;
+  max-width: 500px;
   width: 90%;
   display: grid;
   grid-template-rows: auto 1fr;
@@ -685,6 +702,10 @@ nav:not(.nav-overlay) button {
 }
 .modal-content button[type="submit"]:hover {
   background-color: var(--accent-dark);
+}
+
+.wide-dropdown {
+  max-width: 300px;
 }
 
 /* Confirm MODAL */
