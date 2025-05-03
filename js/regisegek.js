@@ -73,6 +73,8 @@ function renderItems(items) {
   });
 }
 
+
+
 // Thumbnail hover: main image frissítése
 document.addEventListener('mouseover', e => {
   const thumb = e.target;

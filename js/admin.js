@@ -131,63 +131,51 @@ async function loadAdmin() {
           mainImg.src = thumb.dataset.url;
         });
       });
-      
 
-      // Thumb-row Scrolling
-      (() => {
-        const speed    = 20;    // px/frame
-        const deadZone = 0.1;    // a sor szélességének 10%-a középső zónának
-        let rafId      = null;
-        let currentRow = null;
-        let mouseX     = 0;
-        let rowLeft    = 0;
-        let rowWidth   = 0;
-      
-        function step() {
-          if (currentRow) {
-            const center = rowLeft + rowWidth / 2;
-            const delta  = mouseX - center;
-            const zone   = rowWidth * deadZone; // 10% középső zóna
-            let dir = 0;
-      
-            if (delta > zone)       dir = +1;   // jobb oldalon → scroll balra
-            else if (delta < -zone) dir = -1;   // bal oldalon → scroll jobbra
-      
-            if (dir !== 0) {
-              currentRow.scrollLeft += dir * speed;
-            }
-            rafId = requestAnimationFrame(step);
-          } else {
-            rafId = null;
-          }
-        }
-      
-        document.addEventListener('pointermove', e => {
-          const row = e.target.closest('.thumb-row');
-          if (row) {
-            currentRow = row;
-            const rect = row.getBoundingClientRect();
-            rowLeft    = rect.left;
-            rowWidth   = rect.width;
-            mouseX     = e.clientX;
-      
-            if (!rafId) rafId = requestAnimationFrame(step);
-          } else {
-            currentRow = null;
-          }
-        });
-      })();
+// Thumb-row Scrolling
+(() => {
+  const speed    = 5;    // px/frame
+  const deadZone = 0.1;    // a sor szélességének 10%-a középső zónának
+  let rafId      = null;
+  let currentRow = null;
+  let mouseX     = 0;
+  let rowLeft    = 0;
+  let rowWidth   = 0;
 
-      // SortableJS
-      if (scrollRow.children.length > 1) {
-        Sortable.create(scrollRow, {
-          animation: 150,
-          onEnd: async () => {
-            const newOrder = Array.from(scrollRow.children).map(img => img.dataset.url);
-            await update(dbRef(db, `antiques/${id}`), { imageUrls: newOrder });
-          }
-        });
+  function step() {
+    if (currentRow) {
+      const center = rowLeft + rowWidth / 2;
+      const delta  = mouseX - center;
+      const zone   = rowWidth * deadZone; // 10% középső zóna
+      let dir = 0;
+
+      if (delta > zone)       dir = +1;   // jobb oldalon → scroll balra
+      else if (delta < -zone) dir = -1;   // bal oldalon → scroll jobbra
+
+      if (dir !== 0) {
+        currentRow.scrollLeft += dir * speed;
       }
+      rafId = requestAnimationFrame(step);
+    } else {
+      rafId = null;
+    }
+  }
+
+  document.addEventListener('pointermove', e => {
+    const row = e.target.closest('.thumb-row');
+    if (row) {
+      currentRow = row;
+      const rect = row.getBoundingClientRect();
+      rowLeft    = rect.left;
+      rowWidth   = rect.width;
+      mouseX     = e.clientX;
+
+      if (!rafId) rafId = requestAnimationFrame(step);
+    } else {
+      currentRow = null;
+    }
+  });
+})();
     });
 
     // Mentés esemény
