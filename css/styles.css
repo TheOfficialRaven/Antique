@@ -192,7 +192,7 @@ nav:not(.nav-overlay) button {
 .custom-dropdown {
   position: relative;
   width: 100%;
-  max-width: 300px;
+  max-width: 200px;
   font-family: 'Lora', serif;
   user-select: none;
 }
@@ -241,18 +241,19 @@ nav:not(.nav-overlay) button {
   display: block;
 }
 .custom-dropdown .options li {
-  padding: 0.75rem 1rem;
+  margin: 10px;
+  padding: 0.4rem 1rem;
   color: var(--text-main);
   cursor: pointer;
   transition: background var(--transition), color var(--transition);
 }
-.custom-dropdown .options li:not(:last-child) {
-  border-bottom: 1px solid #f0eae0;
-}
+
 .custom-dropdown .options li:hover,
 .custom-dropdown .options li.active {
   background: var(--accent);
   color: #ffffff;
+  margin: 10px;
+  
 }
 /* Scrollbar modernizálása WebKit & Firefox */
 .custom-dropdown .options::-webkit-scrollbar { width: 6px; }
@@ -500,7 +501,7 @@ nav:not(.nav-overlay) button {
 
 /* ── ABOUT SECTION ── */
 .about {
-  background: linear-gradient(rgba(243,236,227,0.85), rgba(243,236,227,0.85)), url('/pics/parchment-texture.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(243,236,227,0.85), rgba(243,236,227,0.85));
   padding: 4rem 2rem;
   max-width: 900px;
   margin: 3rem auto;
