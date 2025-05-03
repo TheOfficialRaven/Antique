@@ -83,24 +83,49 @@ document.addEventListener('mouseover', e => {
   }
 });
 
-// egyetlen listener, event delegation és raf-throttling
+
+// Thumb-row Scrolling
 (() => {
-  let rafId = null;
-  const speed = 1.8;           // 1px per frame
+  const speed    = 5;    // px/frame
+  const deadZone = 0.1;    // a sor szélességének 10%-a középső zónának
+  let rafId      = null;
+  let currentRow = null;
+  let mouseX     = 0;
+  let rowLeft    = 0;
+  let rowWidth   = 0;
 
-  document.addEventListener('mousemove', e => {
-    // megnézzük, hogy a kurzor egy .thumb-row-on belül van-e
+  function step() {
+    if (currentRow) {
+      const center = rowLeft + rowWidth / 2;
+      const delta  = mouseX - center;
+      const zone   = rowWidth * deadZone; // 10% középső zóna
+      let dir = 0;
+
+      if (delta > zone)       dir = +1;   // jobb oldalon → scroll balra
+      else if (delta < -zone) dir = -1;   // bal oldalon → scroll jobbra
+
+      if (dir !== 0) {
+        currentRow.scrollLeft += dir * speed;
+      }
+      rafId = requestAnimationFrame(step);
+    } else {
+      rafId = null;
+    }
+  }
+
+  document.addEventListener('pointermove', e => {
     const row = e.target.closest('.thumb-row');
-    if (!row) return;
+    if (row) {
+      currentRow = row;
+      const rect = row.getBoundingClientRect();
+      rowLeft    = rect.left;
+      rowWidth   = rect.width;
+      mouseX     = e.clientX;
 
-    
-
-    // és kérünk egy új frame-et
-    rafId = requestAnimationFrame(() => {
-      const { left, width } = row.getBoundingClientRect();
-      const x = e.clientX - left;
-      row.scrollBy({ left: x > width/2 ? speed : -speed });
-    });
+      if (!rafId) rafId = requestAnimationFrame(step);
+    } else {
+      currentRow = null;
+    }
   });
 })();
 
