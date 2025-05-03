@@ -115,7 +115,6 @@ async function loadAdmin() {
   };
 
   // Antik tárgyak betöltése (több kép támogatással)
-  // Antik tárgyak betöltése (több kép támogatással)
   const itemsRef = dbRef(db, "antiques");
   onValue(itemsRef, snap => {
     list.innerHTML = "";
@@ -157,16 +156,52 @@ async function loadAdmin() {
         });
       });
 
-      // Thumb-row scroll on hover/move
-      const scrollRow = card.querySelector('.thumb-row');
-      scrollRow.addEventListener('mousemove', e => {
-        const rect = scrollRow.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const speed = 1.8;
-        scrollRow.scrollBy({ left: x > rect.width / 2 ? speed : -speed });
-      });
+      // Thumb-row Scrolling
+(() => {
+  const speed    = 5;    // px/frame
+  const deadZone = 0.1;    // a sor szélességének 10%-a középső zónának
+  let rafId      = null;
+  let currentRow = null;
+  let mouseX     = 0;
+  let rowLeft    = 0;
+  let rowWidth   = 0;
 
-      // SortableJS
+  function step() {
+    if (currentRow) {
+      const center = rowLeft + rowWidth / 2;
+      const delta  = mouseX - center;
+      const zone   = rowWidth * deadZone; // 10% középső zóna
+      let dir = 0;
+
+      if (delta > zone)       dir = +1;   // jobb oldalon → scroll balra
+      else if (delta < -zone) dir = -1;   // bal oldalon → scroll jobbra
+
+      if (dir !== 0) {
+        currentRow.scrollLeft += dir * speed;
+      }
+      rafId = requestAnimationFrame(step);
+    } else {
+      rafId = null;
+    }
+  }
+
+  document.addEventListener('pointermove', e => {
+    const row = e.target.closest('.thumb-row');
+    if (row) {
+      currentRow = row;
+      const rect = row.getBoundingClientRect();
+      rowLeft    = rect.left;
+      rowWidth   = rect.width;
+      mouseX     = e.clientX;
+
+      if (!rafId) rafId = requestAnimationFrame(step);
+    } else {
+      currentRow = null;
+    }
+  });
+})();
+
+      const scrollRow = card.querySelector('.thumb-row');
       if (scrollRow.children.length > 1) {
         Sortable.create(scrollRow, {
           animation: 150,
