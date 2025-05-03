@@ -335,6 +335,92 @@ nav:not(.nav-overlay) button {
   transition: 0.3s ease-in-out;
 }
 
+/* Képre kattintva Nagyítás */
+
+/* Modal és képnéző marad változatlan */
+.img-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  align-items: center;
+  justify-content: center;
+}
+.img-modal.show { display: flex; }
+.img-modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  border: 4px solid var(--accent);
+  border-radius: 8px;
+}
+
+.img-modal-inner {
+  position: relative;
+  display: inline-block; /* csak a kép mérete kerüljön belülre */
+}
+
+.img-modal-content {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+  margin: auto;
+}
+
+/* Bezáró gomb a kép jobb felső sarkában */
+.img-modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+  font-size: 2rem;
+  color: #f7f1e1;
+  cursor: pointer;
+  background: rgba(0,0,0,0.5);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 2.3rem;
+  text-align: center;
+}
+
+/* Nyilak a kép két oldalán */
+.img-modal-inner::before,
+.img-modal-inner::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2rem;
+  height: 2rem;
+  background: rgba(0,0,0,0.4);
+  cursor: pointer;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  z-index: 1;
+}
+
+.img-modal-inner::before {
+  left: 0.5rem;
+  mask-image: url("data:image/svg+xml;utf8,<svg fill='white' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><polygon points='15.41,7.41 14,6 8,12 14,18 15.41,16.59 10.83,12'/></svg>");
+}
+
+.img-modal-inner::after {
+  right: 0.5rem;
+  mask-image: url("data:image/svg+xml;utf8,<svg fill='white' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><polygon points='8.59,16.59 10,18 16,12 10,6 8.59,7.41 13.17,12'/></svg>");
+}
+
+/* Hover-effekt a nyilakon */
+.img-modal-inner::before:hover,
+.img-modal-inner::after:hover {
+  background: rgba(0,0,0,0.6);
+}
+
 /* ── THUMBNAIL SLIDER ── */
 .thumb-row {
   display: flex;

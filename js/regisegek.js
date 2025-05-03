@@ -47,17 +47,25 @@ filterEl.onchange = () => {
   renderItems(sel === 'all' ? allItems : allItems.filter(i => i.category === sel));
 };
 
-// render
+// Tételek kirenderelése a showcase szekcióba, thumbnail slider-rel
 function renderItems(items) {
   showcase.innerHTML = '';
   items.forEach(({ title, desc, price, imageUrls = [] }) => {
-    const main = imageUrls[0]||'';
-    const thumbs = imageUrls.map(u => `<img src="${u}" class="thumb">`).join('');
+    // fő kép és thumbnail-ek
+    const mainImgSrc = imageUrls[0] || '';
+    const thumbs = imageUrls.map(url => 
+      `<img src="${url}" alt="${title}" class="thumb" data-gallery='${JSON.stringify(imageUrls)}'>`
+    ).join('');
+
     const card = document.createElement('article');
     card.className = 'item-card';
     card.innerHTML = `
-      <div class="main-image"><img src="${main}"></div>
-      <div class="thumb-row">${thumbs}</div>
+      <div class="main-image">
+        <img src="${mainImgSrc}" alt="${title}" data-gallery='${JSON.stringify(imageUrls)}'>
+      </div>
+      <div class="thumb-row">
+        ${thumbs}
+      </div>
       <div class="card-body">
         <h3>${title}</h3>
         <p>${desc}</p>
@@ -66,32 +74,6 @@ function renderItems(items) {
     showcase.appendChild(card);
   });
 }
-
-// custom dropdown események
-selected.addEventListener('click', () => {
-  dropdown.classList.toggle('open');
-});
-optionsContainer.addEventListener('click', e => {
-  if (e.target.tagName === 'LI') {
-    const val = e.target.dataset.value;
-    // native select érték
-    filterEl.value = val;
-    filterEl.onchange();
-    // ui update
-    selected.textContent = e.target.textContent;
-    dropdown.classList.remove('open');
-    // aktív li
-    optionsContainer.querySelectorAll('li').forEach(li => li.classList.remove('active'));
-    e.target.classList.add('active');
-  }
-});
-
-// kattintás máshova: dropdown bezárása
-document.addEventListener('click', e => {
-  if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
-});
-
-
 
 // Thumbnail hover: main image frissítése
 document.addEventListener('mouseover', e => {
@@ -103,49 +85,24 @@ document.addEventListener('mouseover', e => {
   }
 });
 
-
-// Thumb-row Scrolling
+// egyetlen listener, event delegation és raf-throttling
 (() => {
-  const speed    = 5;    // px/frame
-  const deadZone = 0.1;    // a sor szélességének 10%-a középső zónának
-  let rafId      = null;
-  let currentRow = null;
-  let mouseX     = 0;
-  let rowLeft    = 0;
-  let rowWidth   = 0;
+  let rafId = null;
+  const speed = 1.8;           // 1px per frame
 
-  function step() {
-    if (currentRow) {
-      const center = rowLeft + rowWidth / 2;
-      const delta  = mouseX - center;
-      const zone   = rowWidth * deadZone; // 10% középső zóna
-      let dir = 0;
-
-      if (delta > zone)       dir = +1;   // jobb oldalon → scroll balra
-      else if (delta < -zone) dir = -1;   // bal oldalon → scroll jobbra
-
-      if (dir !== 0) {
-        currentRow.scrollLeft += dir * speed;
-      }
-      rafId = requestAnimationFrame(step);
-    } else {
-      rafId = null;
-    }
-  }
-
-  document.addEventListener('pointermove', e => {
+  document.addEventListener('mousemove', e => {
+    // megnézzük, hogy a kurzor egy .thumb-row-on belül van-e
     const row = e.target.closest('.thumb-row');
-    if (row) {
-      currentRow = row;
-      const rect = row.getBoundingClientRect();
-      rowLeft    = rect.left;
-      rowWidth   = rect.width;
-      mouseX     = e.clientX;
+    if (!row) return;
 
-      if (!rafId) rafId = requestAnimationFrame(step);
-    } else {
-      currentRow = null;
-    }
+    
+
+    // és kérünk egy új frame-et
+    rafId = requestAnimationFrame(() => {
+      const { left, width } = row.getBoundingClientRect();
+      const x = e.clientX - left;
+      row.scrollBy({ left: x > width/2 ? speed : -speed });
+    });
   });
 })();
 
@@ -195,3 +152,30 @@ modalInner.addEventListener('click', e => {
 imgModal.addEventListener('click', e => {
   if (e.target === imgModal) toggleClose();
 });
+
+// custom dropdown események
+selected.addEventListener('click', () => {
+  dropdown.classList.toggle('open');
+});
+optionsContainer.addEventListener('click', e => {
+  if (e.target.tagName === 'LI') {
+    const val = e.target.dataset.value;
+    // native select érték
+    filterEl.value = val;
+    filterEl.onchange();
+    // ui update
+    selected.textContent = e.target.textContent;
+    dropdown.classList.remove('open');
+    // aktív li
+    optionsContainer.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+    e.target.classList.add('active');
+  }
+});
+
+// kattintás máshova: dropdown bezárása
+document.addEventListener('click', e => {
+  if (!dropdown.contains(e.target)) dropdown.classList.remove('open');
+});
+
+
+
