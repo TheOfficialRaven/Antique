@@ -9,3 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+
+  document.querySelectorAll('.site-header nav a').forEach(link => {
+    // compare full URLs (or you can compare just link.pathname to location.pathname)
+    if (link.href === window.location.href) {
+      link.classList.add('active');
+    }
+  });

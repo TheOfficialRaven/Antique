@@ -36,6 +36,20 @@ document.addEventListener('DOMContentLoaded', () => {
     limitToLast(6)
   );
 
+  const categoryLinksContainer = document.getElementById('categoryLinks');
+  const catsRef = dbRef(db, 'categories');
+  onValue(catsRef, snap => {
+    categoryLinksContainer.innerHTML = '';
+    snap.forEach(child => {
+      const cat = child.key;
+      const link = document.createElement('a');
+      link.textContent   = cat;
+      link.href          = `regisegek.html?category=${encodeURIComponent(cat)}`;
+      link.className     = 'category-link';
+      categoryLinksContainer.appendChild(link);
+    });
+  });
+
   onValue(antiquesQuery, snap => {
     row.innerHTML = '';  // üresre töröljük minden frissítésnél
 

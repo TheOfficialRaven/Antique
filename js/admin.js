@@ -157,56 +157,50 @@ async function loadAdmin() {
       });
 
       // Thumb-row Scrolling
-(() => {
-  const speed    = 5;    // px/frame
-  const deadZone = 0.1;    // a sor szélességének 10%-a középső zónának
-  let rafId      = null;
-  let currentRow = null;
-  let mouseX     = 0;
-  let rowLeft    = 0;
-  let rowWidth   = 0;
+      (() => {
+        const speed    = 5;     // px/frame
+        const deadZone = 0.1;   // 10% középső zóna
+        let rafId      = null;
+        let currentRow = null;
+        let mouseX     = 0;
+        let rowLeft    = 0;
+        let rowWidth   = 0;
 
-  function step() {
-    if (currentRow) {
-      const center = rowLeft + rowWidth / 2;
-      const delta  = mouseX - center;
-      const zone   = rowWidth * deadZone; // 10% középső zóna
-      let dir = 0;
+        function step() {
+          if (!currentRow) return void (rafId = null);
+          const center = rowLeft + rowWidth / 2;
+          const delta  = mouseX - center;
+          const zone   = rowWidth * deadZone;
+          let dir = 0;
+          if (delta > zone)       dir = +1;
+          else if (delta < -zone) dir = -1;
+          if (dir !== 0) currentRow.scrollLeft += dir * speed;
+          rafId = requestAnimationFrame(step);
+        }
 
-      if (delta > zone)       dir = +1;   // jobb oldalon → scroll balra
-      else if (delta < -zone) dir = -1;   // bal oldalon → scroll jobbra
+        document.addEventListener('pointermove', e => {
+          const row = e.target.closest('.thumb-row');
+          if (row) {
+            currentRow = row;
+            const rect = row.getBoundingClientRect();
+            rowLeft    = rect.left;
+            rowWidth   = rect.width;
+            mouseX     = e.clientX;
+            if (!rafId) rafId = requestAnimationFrame(step);
+          } else {
+            currentRow = null;
+          }
+        });
+      })();
 
-      if (dir !== 0) {
-        currentRow.scrollLeft += dir * speed;
-      }
-      rafId = requestAnimationFrame(step);
-    } else {
-      rafId = null;
-    }
-  }
-
-  document.addEventListener('pointermove', e => {
-    const row = e.target.closest('.thumb-row');
-    if (row) {
-      currentRow = row;
-      const rect = row.getBoundingClientRect();
-      rowLeft    = rect.left;
-      rowWidth   = rect.width;
-      mouseX     = e.clientX;
-
-      if (!rafId) rafId = requestAnimationFrame(step);
-    } else {
-      currentRow = null;
-    }
-  });
-})();
-
-      const scrollRow = card.querySelector('.thumb-row');
-      if (scrollRow.children.length > 1) {
-        Sortable.create(scrollRow, {
+      // 6) SortableJS – minden kártyán egyszer, scrollRow helyett a row változót használva
+      const thumbRowEl = card.querySelector('.thumb-row');
+      if (thumbRowEl.children.length > 1) {
+        Sortable.create(thumbRowEl, {
           animation: 150,
           onEnd: async () => {
-            const newOrder = Array.from(scrollRow.children).map(img => img.dataset.url);
+            const newOrder = Array.from(thumbRowEl.children)
+              .map(imgEl => imgEl.dataset.url);
             await update(dbRef(db, `antiques/${id}`), { imageUrls: newOrder });
           }
         });

@@ -32,10 +32,19 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.3rem;
   transition: color var(--transition);
 }
-a:hover { color: var(--accent); }
+a:hover { 
+  color: var(--accent); 
+  border-bottom: solid 1px var(--accent);
+  padding-bottom: 0.25rem;
+}
+
+a.active {
+  border-bottom: solid 1px var(--text-main);
+  padding-bottom: 0.25rem;
+}
 
 /* ── TYPOGRAPHY ── */
 .site-header .logo,
@@ -186,6 +195,46 @@ nav:not(.nav-overlay) button {
 .hero-2-content p,
 .hero-3-content p {
   font-size: 1.2rem;
+}
+
+/* -- Kategóriák Főoldal -- */
+.category-links {
+  background: rgba(162,137,103,0.05);
+  padding: 1.5rem 0;
+  border-bottom: 2px solid var(--accent);
+}
+.category-links .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.category-links .section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: var(--text-main);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.category-links .flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+.category-link {
+  flex: 0 1 auto;
+  padding: 0.6rem 1.2rem;
+  background: #faf8f5;
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  font-family: 'Lora', serif;
+  color: var(--text-main);
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+}
+.category-link:hover {
+  background: var(--accent);
+  color: #fff;
 }
 
 /* ── CUSTOM-DROPDOWN ── */
