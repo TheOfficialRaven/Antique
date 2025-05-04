@@ -51,18 +51,25 @@ filterEl.onchange = () => {
 function renderItems(items) {
   showcase.innerHTML = '';
   items.forEach(({ title, desc, price, imageUrls = [] }) => {
-    const main = imageUrls[0]||'';
-    const thumbs = imageUrls.map(u => `<img src="${u}" class="thumb">`).join('');
-    const card = document.createElement('article');
-    card.className = 'item-card';
-    card.innerHTML = `
-      <div class="main-image"><img src="${main}"></div>
-      <div class="thumb-row">${thumbs}</div>
-      <div class="card-body">
-        <h3>${title}</h3>
-        <p>${desc}</p>
-        <p class="price">${price} Ft</p>
-      </div>`;
+        const galleryData = JSON.stringify(imageUrls);
+    const main = imageUrls[0] || '';
+    const thumbs = imageUrls
+      .map(u => `<img src="${u}" class="thumb" data-gallery='${galleryData}'>`)
+      .join('');
+      const card = document.createElement('article');
+          card.className = 'item-card';
+          card.innerHTML = `
+            <div class="main-image">
+              <img src="${main}" data-gallery='${galleryData}' alt="${title}">
+            </div>
+            <div class="thumb-row">
+              ${thumbs}
+            </div>
+            <div class="card-body">
+              <h3>${title}</h3>
+              <p>${desc}</p>
+              <p class="price">${price} Ft</p>
+            </div>`;
     showcase.appendChild(card);
   });
 }
