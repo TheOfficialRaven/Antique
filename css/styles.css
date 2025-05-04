@@ -187,7 +187,7 @@ nav:not(.nav-overlay) button {
   text-align: center;
   color: #fff;
 }
-.hero { height: 60vh; }
+
 .hero-2, .hero-3 { height: 30vh; }
 .hero-2 {
   background-image: url('/pics/Hero-3.jpg');
@@ -536,7 +536,7 @@ nav:not(.nav-overlay) button {
 }
 
 .c-item {
-  height: 50vh;
+  height: 75vh;
   position: relative;
 }
 
