@@ -220,9 +220,6 @@ async function loadAdmin() {
     });
 
     // Szépített törlés modal logika… (felhasználói confirm helyett custom modal)
-    const confirmModal = document.getElementById('confirmModal');
-    const yesBtn = document.getElementById('confirmYes');
-    const noBtn = document.getElementById('confirmNo');
     list.querySelectorAll('.delete-btn').forEach(btn => {
       btn.addEventListener('click', e => {
         e.preventDefault();
