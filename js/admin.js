@@ -8,6 +8,7 @@ import {
   getDatabase,
   ref as dbRef,
   onValue,
+  get,
   push,
   update,
   remove,
@@ -116,7 +117,7 @@ async function loadAdmin() {
 
   // Antik tárgyak betöltése (több kép támogatással)
   const itemsRef = dbRef(db, "antiques");
-  onValue(itemsRef, snap => {
+  onValue(itemsRef, async snap => {
     list.innerHTML = "";
     const data = snap.val() || {};
 
@@ -238,7 +239,28 @@ async function loadAdmin() {
         noBtn.onclick = () => confirmModal.classList.remove('show');
       });
     });
+
+    const used = new Set(
+      Object.values(snap.val() || {})
+        .map(item => item.category)
+        .filter(Boolean)
+    );
+
+    // 2) Egyszeri lekérés a categories ágról
+    const catSnap = await get(categoriesRef);
+
+    // 3) Végig a kategóriákon, és törlés, ha nincs használatban
+    catSnap.forEach(child => {
+      const cat = child.key;
+      if (!used.has(cat)) {
+        remove(dbRef(db, `categories/${cat}`))
+          .catch(err =>
+            console.error(`Hiba a "${cat}" kategória törlésekor:`, err)
+          );
+      }
+    });
   });
+  
 
   // Modal megjelenítése/elrejtése
   addNewBtn.onclick = () => modal.classList.add("show");
