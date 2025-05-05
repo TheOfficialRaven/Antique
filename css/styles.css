@@ -61,6 +61,16 @@ a.active {
   padding-bottom: 0.25rem;
 }
 
+.overlay {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(85, 42, 6, 0.342);
+  pointer-events: none;
+}
+
 h1, h2, h3, h4, h5, h6,
 .section-title,
 .site-header .logo,
@@ -267,47 +277,61 @@ nav:not(.nav-overlay) button {
   font-size: 1.2rem;
 }
 
-/* -- Kategóriák Főoldal -- */
-.category-links {
-  background: rgba(162,137,103,0.05);
-  padding: 1.5rem 0;
-}
-.category-links .container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-.category-links .section-title {
-  font-size: 1.5rem;
-  color: var(--text-main);
-  text-align: center;
-  margin-bottom: 1rem;
-}
-.category-links .flex-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.category-link {
-  width: 200px;
-  font-size: 0.9rem;
-  text-align: center;
-  flex: 0 1 auto;
-  padding: 0.6rem 1.2rem;
+/* ===== Kategóriák szekció ===== */
+.categories {
+  padding: 4rem 2rem;
   background: var(--bg-page);
-  border: 2px solid var(--accent);
-  border-radius: 6px;
-  color: var(--text-main);
-  text-decoration: none;
-  transition: background var(--transition), color var(--transition);
 }
-.category-link:hover {
-  background: var(--accent);
-  color: #fff;
+.categories h2 {
+  font-family: var(--ff-heading);
+  font-size: var(--fs-xl);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.category-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform var(--transition);
+}
+.category-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.category-card img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.category-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.85);
+  font-family: var(--ff-heading);
+  font-size: var(--fs-sm);
+  color: var(--text-main);
+  text-align: center;
+  padding: 0.5rem;
+}
+
+/* Mobile: két oszlopra törés */
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
 }
 
 /* ── CUSTOM-DROPDOWN ── */
@@ -634,6 +658,11 @@ nav:not(.nav-overlay) button {
   position: absolute;
   margin-top: 20px;
 }
+.center-link-align {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
 .recent-products .center-link:hover {
   color: var(--bg-page);
   transform: translateY(-5px);
@@ -790,6 +819,7 @@ nav:not(.nav-overlay) button {
 .checkbox-group input {
   margin-right: 0.5rem;
   width: auto;
+  color: var(--accent);
 }
 .checkbox-group a {
   color: var(--accent);
