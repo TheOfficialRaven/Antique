@@ -48,33 +48,74 @@
     <div class="overlay"></div>
   </section>
 
-<!-- Kapcsolat űrlap -->
-<section id="contact-form" class="contact-section">
-  <h2 class="section-title">Kapcsolatfelvétel</h2>
-  <form class="contact-form">
-    <div class="form-group">
-      <label for="cf-name">Név</label>
-      <input type="text" id="cf-name" name="name" required>
+<!-- Kontakt Szekció -->
+<section class="contact-section">
+  <div class="container contact-container">
+    <!-- Form oszlop -->
+    <div class="contact-form-wrapper col-50">
+      <h2>Írj nekünk!</h2>
+      <p>Mutasd be a problémát, amit megoldasz, emeld ki a csatornánk, biztonságodat vagy egy elnyűtt funkciót.</p>
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="fullName">Teljes név</label>
+          <input id="fullName" type="text" placeholder="Teljes név">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="Email cím">
+        </div>
+        <div class="form-group">
+          <label for="subject">Tárgy</label>
+          <input id="subject" type="text" placeholder="Üzenet tárgya">
+        </div>
+        <div class="form-group">
+          <label for="message">Üzenet</label>
+          <textarea id="message" rows="5" placeholder="Írd ide az üzenetedet"></textarea>
+        </div>
+        <div class="form-group checkbox-group">
+          <input id="consent" type="checkbox">
+          <label for="consent">Elolvastam és elfogadom az <a href="#">adatkezelési tájékoztatót</a>.</label>
+        </div>
+        <button type="submit" class="btn-style">KÜLDÉS</button>
+      </form>
     </div>
-    <div class="form-group">
-      <label for="cf-email">Email</label>
-      <input type="email" id="cf-email" name="email" required>
+
+    <!-- Kép oszlop -->
+    <div class="contact-image-wrapper col-50">
+      <img src="pics/About.jpg" alt="Kapcsolati kép">
     </div>
-    <div class="form-group">
-      <label for="cf-message">Üzenet</label>
-      <textarea id="cf-message" name="message" rows="5" required></textarea>
-    </div>
-    <button type="submit" class="btn">Küldés</button>
-  </form>
+  </div>
 </section>
 
-  <!-- Kapcsolat / Footer -->
-  <footer id="contact" class="site-footer">
-    <h2>Kapcsolat</h2>
-    <p>Email: <a href="mailto:info@antik-kincsek.hu">info@antik-kincsek.hu</a></p>
-    <p>Telefon: +36 30 123 4567</p>
-    <p>&copy; 2025 Antik Kincsek</p>
-  </footer>
+ <!-- Footer  -->
+ <footer class="site-footer custom-footer">
+  <div class="container footer-container">
+    <div class="footer-col col-33 footer-brand">
+      <h2>Régiségek Jocitól</h2>
+      <p>
+        Rövid leírás a vállalkozásról, ami kifejti, hogy mivel foglalkoznak, milyen 
+        prémium minőségű régiségeket kínálnak.
+      </p>
+    </div>
+    <div class="footer-col col-33 footer-contact">
+      <h3>Elérhetőség</h3>
+      <ul>
+        <li><span class="icon">📍</span>1092 Budapest, Ráday u. 30.</li>
+        <li><span class="icon">✉️</span><a href="mailto:hello@domained.hu">hello@domained.hu</a></li>
+        <li><span class="icon">📞</span><a href="tel:+36123456789">+36 70 123 4567</a></li>
+      </ul>
+    </div>
+    <div class="footer-col col-33 footer-links">
+      <h3>Oldalak</h3>
+      <ul>
+        <li><a href="index.html">Főoldal</a></li>
+        <li><a href="rolunk.html">Rólunk</a></li>
+        <li><a href="regisegek.html">Tárgyak</a></li>
+        <li><a href="kapcsolat.html">Kapcsolat</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
 
   <!-- JS: ugyanaz az admin.js, ami kezeli auth, feltöltés, kirenderelést -->
   <script type="module" src="js/nav.js"></script>

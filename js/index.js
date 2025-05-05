@@ -74,3 +74,46 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   });
 });
+
+//////////////////////// GYIK
+
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    item.classList.toggle('open');
+  });
+});
+
+////////////////////////// Vélemények Corousel
+
+(function() {
+  const track = document.querySelector('.carousel-track');
+  const dots = Array.from(document.querySelectorAll('.dot'));
+  let current = 0;
+  const slideCount = dots.length;
+
+  function goToSlide(n) {
+    track.style.transform = `translateX(-${n * 33.3333}%)`;
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[n].classList.add('active');
+    current = n;
+  }
+
+  dots.forEach(dot => dot.addEventListener('click', () => {
+    goToSlide(parseInt(dot.dataset.slide, 10));
+    resetInterval();
+  }));
+
+  let interval = setInterval(() => {
+    const next = (current + 1) % slideCount;
+    goToSlide(next);
+  }, 5000);
+
+  function resetInterval() {
+    clearInterval(interval);
+    interval = setInterval(() => {
+      const next = (current + 1) % slideCount;
+      goToSlide(next);
+    }, 5000);
+  }
+})();

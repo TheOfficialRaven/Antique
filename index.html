@@ -101,31 +101,186 @@
       </div>
     </section>
 
- <!-- Rólunk -->
- <section id="about" class="about">
-  <h2 class="section-title">Rólunk</h2>
-  <container class="flex-box">
-    <div class="col-50 img-50">
-      <div class="overlay">
-      </div>
-        <img class="about-img" src="pics/antique-hero.jpg">
-      </div>
-    <div class="col-50">
-      <h3>Ismerj meg</h3>
-      <p>Az Antik Kincsek csapata több mint 20 éve gyűjti és kínálja eladásra a valódi, gondosan restaurált régiségeket.</p>
-      <button>Rólam</button>
+   <!-- Rólunk / About Intro -->
+<section id="about-intro" class="about-intro">
+  <div class="container about-intro-container">
+    <div class="about-intro-image col-50">
+      <img src="pics/antique-hero.jpg" alt="Rólunk">
     </div>
-</container>
+    <div class="about-intro-text col-50">
+      <h2>Ismerj meg</h2>
+      <p>
+        Az Antik Kincsek csapata több mint 20 éve gyűjti és kínálja eladásra
+        a valódi, gondosan restaurált régiségeket. Fedezd fel kínálatunkat,
+        és találd meg a következő különleges darabot otthonodba!
+      </p>
+      <div class="btn-align">
+        <a href="rolunk.html" class="btn-style">Rólunk</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+  <div class="container">
+    <p class="subtitle">Alcím, ami segíti a címsorodat</p>
+    <h2>Igazi értékelések, igazi visszajelzések</h2>
+
+    <div class="carousel-wrapper">
+      <div class="carousel-track">
+        <!-- Slide 1 -->
+        <div class="carousel-slide">
+          <div class="testimonial-card">
+            <p class="testimonial-text">„A vásárlás vagy visszajelzés az egyik vásárlói élmény, amiben biztos lehetek a termék minőségében.”</p>
+            <p class="testimonial-author">Teszt Elek<br><span class="position">CEO</span></p>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">„Ha pozitív élmény vár, akkor visszatérek és a legjobb barátaimnak is ajánlom.”</p>
+            <p class="testimonial-author">Teszt Éva<br><span class="position">CFO</span></p>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-slide">
+          <div class="testimonial-card">
+            <p class="testimonial-text">„Gyors kiszállítás és tökéletes csomagolás. Minden rendben ment!”</p>
+            <p class="testimonial-author">Nagy Márton<br><span class="position">Manager</span></p>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">„Az ügyfélszolgálat segítőkész volt és kedves. Csak ajánlani tudom!”</p>
+            <p class="testimonial-author">Kovács Anna<br><span class="position">Designer</span></p>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-slide">
+          <div class="testimonial-card">
+            <p class="testimonial-text">„A termékek minősége felülmúlta az elvárásaimat.”</p>
+            <p class="testimonial-author">Szabó Péter<br><span class="position">Fotós</span></p>
+          </div>
+          <div class="testimonial-card">
+            <p class="testimonial-text">„Minden részletre odafigyeltek, így mindig visszatérő vásárló vagyok.”</p>
+            <p class="testimonial-author">Tóth Eszter<br><span class="position">Blogger</span></p>
+          </div>
+        </div>
+      </div>
+      <!-- Dots Navigation -->
+      <div class="carousel-dots">
+        <button class="dot active" data-slide="0"></button>
+        <button class="dot" data-slide="1"></button>
+        <button class="dot" data-slide="2"></button>
+      </div>
+    </div>
+  </div>
 </section>
 
 
-  <!-- Kapcsolat / Footer -->
-  <footer id="contact" class="site-footer">
-    <h2>Kapcsolat</h2>
-    <p>Email: <a href="mailto:info@antik-kincsek.hu">info@antik-kincsek.hu</a></p>
-    <p>Telefon: +36 30 123 4567</p>
-    <p>&copy; 2025 Antik Kincsek</p>
-  </footer>
+<!-- Kontakt Szekció -->
+<section class="contact-section">
+  <div class="container contact-container">
+    <!-- Form oszlop -->
+    <div class="contact-form-wrapper col-50">
+      <h2>Írj nekünk!</h2>
+      <p>Mutasd be a problémát, amit megoldasz, emeld ki a csatornánk, biztonságodat vagy egy elnyűtt funkciót.</p>
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="fullName">Teljes név</label>
+          <input id="fullName" type="text" placeholder="Teljes név">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="Email cím">
+        </div>
+        <div class="form-group">
+          <label for="subject">Tárgy</label>
+          <input id="subject" type="text" placeholder="Üzenet tárgya">
+        </div>
+        <div class="form-group">
+          <label for="message">Üzenet</label>
+          <textarea id="message" rows="5" placeholder="Írd ide az üzenetedet"></textarea>
+        </div>
+        <div class="form-group checkbox-group">
+          <input id="consent" type="checkbox">
+          <label for="consent">Elolvastam és elfogadom az <a href="#">adatkezelési tájékoztatót</a>.</label>
+        </div>
+        <button type="submit" class="btn-style">KÜLDÉS</button>
+      </form>
+    </div>
+
+        <!-- Kép oszlop -->
+        <div class="contact-image-wrapper col-50">
+          <img src="pics/About.jpg" alt="Kapcsolati kép">
+        </div>
+      </div>
+    </section>
+
+    <!-- GYIK Szekció -->
+<section id="faq" class="faq-section">
+  <div class="container">
+    <h2 class="section-title">Gyakran ismételt kérdések</h2>
+    <div class="faq-columns">
+      <!-- Bal oszlop -->
+      <div class="faq-col col-50">
+        <div class="faq-item">
+          <button class="faq-question">Hogyan tudok vásárolni? <span class="arrow">▾</span></button>
+          <div class="faq-answer">
+            A weboldalon keresztül online, vagy személyesen üzletünkben. A kiszállítás helyszíni termékeket egyeztetve meg tudod rendelni.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Vállaltok kiszállítást is? <span class="arrow">▾</span></button>
+          <div class="faq-answer">
+            Igen, országosan vállaljuk a házhoz szállítást, részletekért keress minket e-mailben vagy telefonon.
+          </div>
+        </div>
+      </div>
+      <!-- Jobb oszlop -->
+      <div class="faq-col col-50">
+        <div class="faq-item">
+          <button class="faq-question">Honnan származnak a tárgyak? <span class="arrow">▾</span></button>
+          <div class="faq-answer">
+            Minden darabot megbízható forrásból, hagyatékból, gyűjtőktől vagy felvásárlásból szerzünk be, gondosan ellenőrizve azok állapotát és eredetiségét.
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Vállaltok becslést vagy felvásárlást is? <span class="arrow">▾</span></button>
+          <div class="faq-answer">
+            Igen, szakértőink díjmentes értékbecslést készítenek, és igény esetén fel is vásároljuk antik tárgyaidat.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <!-- Footer  -->
+    <footer class="site-footer custom-footer">
+      <div class="container footer-container">
+        <div class="footer-col col-33 footer-brand">
+          <h2>Régiségek Jocitól</h2>
+          <p>
+            Rövid leírás a vállalkozásról, ami kifejti, hogy mivel foglalkoznak, milyen 
+            prémium minőségű régiségeket kínálnak.
+          </p>
+        </div>
+        <div class="footer-col col-33 footer-contact">
+          <h3>Elérhetőség</h3>
+          <ul>
+            <li><span class="icon">📍</span>1092 Budapest, Ráday u. 30.</li>
+            <li><span class="icon">✉️</span><a href="mailto:hello@domained.hu">hello@domained.hu</a></li>
+            <li><span class="icon">📞</span><a href="tel:+36123456789">+36 70 123 4567</a></li>
+          </ul>
+        </div>
+        <div class="footer-col col-33 footer-links">
+          <h3>Oldalak</h3>
+          <ul>
+            <li><a href="index.html">Főoldal</a></li>
+            <li><a href="rolunk.html">Rólunk</a></li>
+            <li><a href="regisegek.html">Tárgyak</a></li>
+            <li><a href="kapcsolat.html">Kapcsolat</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
 
   <!-- JS: ugyanaz az admin.js, ami kezeli auth, feltöltés, kirenderelést -->
   <script type="module" src="js/index.js"></script>
