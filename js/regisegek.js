@@ -113,7 +113,7 @@ filterEl.onchange = () => {
 // --- Render függvény változatlanul ---
 function renderItems(items) {
   showcase.innerHTML = "";
-  items.forEach(({ title, desc, price, imageUrls = [] }) => {
+  items.forEach(({ title, desc, price, imageUrls = [] }, index) => {
     const galleryData = JSON.stringify(imageUrls);
     const main = imageUrls[0] || "";
     const thumbs = imageUrls
@@ -121,6 +121,7 @@ function renderItems(items) {
       .join("");
     const card = document.createElement("article");
     card.className = "item-card";
+    card.style.animationDelay = `${index * 100}ms`; // kis késleltetés
     card.innerHTML = `
       <div class="main-image">
         <img src="${main}" data-gallery='${galleryData}' alt="${title}">

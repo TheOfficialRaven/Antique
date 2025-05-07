@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
 
+
+
 /* ===================================== */
 /*       FŐ STÍLUSOK (styles.css)        */
 /* ===================================== */
@@ -43,20 +45,24 @@ body {
   line-height: 1.6;
 
 }
-a {
+
+.logo {
+  color: var(--text-main);
+}
+nav a {
   color: inherit;
   text-decoration: none;
   font-size: 1.1rem;
   transition: color var(--transition);
   font-weight: bold;
 }
-a:hover { 
+nav a:hover { 
   color: var(--accent); 
   border-bottom: solid 1px var(--accent);
   padding-bottom: 0.25rem;
 }
 
-a.active {
+nav a.active {
   border-bottom: solid 1px var(--text-main);
   padding-bottom: 0.25rem;
 }
@@ -85,6 +91,7 @@ h2 { font-size: var(--fs-xl); }
 h3 { font-size: var(--fs-lg); }
 h4 { font-size: var(--fs-md); }
 
+
 /* ── SZAKASZOK ÉS ELRENDEZÉS ── */
 section {
   padding: 4rem 2rem;
@@ -105,28 +112,62 @@ section .container {
 /* ── BUTTONS ── */
 .btn-style {
   width: 200px;
-  display: block;
+  display: inline-block;
   font-size: 0.9rem;
+  font-family: var(--ff-body);
   text-align: center;
-  flex: 0 1 auto;
-  padding: 0.6rem 1.2rem;
-  background: var(--accent);
-  border: 2px solid var(--accent);
+  padding: 0.8rem 1.2rem;
+  background-color: var(--accent);
+  border: none;
   border-radius: 6px;
   color: var(--text-main);
   text-decoration: none;
-  transition: background var(--transition), color var(--transition);
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+  line-height: 1;
+  box-shadow: none;
 }
+
+.btn-style::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--accent-dark);
+  transform: translateX(-100%);
+  transition: transform var(--transition);
+  z-index: 0;
+}
+
+.btn-style:hover::before {
+  transform: translateX(0);
+}
+
 .btn-style:hover {
   color: #fff;
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  padding: 0.6rem 1.2rem;
+  text-decoration: none;
+  padding: 0.8rem 1.2rem;
+  border-bottom: none;
+  padding-bottom: none;
+}
+
+.btn-style span {
+  position: relative;
+  z-index: 1;
 }
 
 .btn-align {
   display: flex;
   position: absolute;
+}
+
+.modal-content h3,
+.contact-form .btn,
+.testimonial-author,
+.category-label {
+  font-family: var(--ff-heading);
 }
 
 /* ── HEADER ── */
@@ -244,6 +285,22 @@ nav:not(.nav-overlay) button {
 }
 
 /* ── HERO SZEKCIÓK ── */
+
+.carousel-caption {
+  bottom: 20%;
+}
+
+.carousel-caption h2 {
+  font-size: 2.5rem;
+}
+
+.carousel-caption p {
+  font-size: 1.5rem;
+}
+
+.carousel-caption .btn-style {
+  margin-top: 6rem;
+}
 .hero, .hero-2, .hero-3 {
   position: relative;
   display: flex;
@@ -275,6 +332,33 @@ nav:not(.nav-overlay) button {
 .hero-2-content p,
 .hero-3-content p {
   font-size: 1.2rem;
+}
+
+.hero-2-content, .hero-3-content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  animation: fadeInUp 1s ease-in-out both;
+}
+
+.hero-2-content p, .hero-3-content p  {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #f5f5f5;
+}
+
+/* Animáció */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===== Kategóriák szekció ===== */
@@ -342,7 +426,7 @@ nav:not(.nav-overlay) button {
 .custom-dropdown {
   position: relative;
   width: 100%;
-  max-width: 250px;
+  max-width: 300px;
   user-select: none;
 }
 .custom-dropdown .selected {
@@ -492,6 +576,24 @@ nav:not(.nav-overlay) button {
 .item-card:hover {
   transform: scale(1.02);
   transition: 0.3s ease-in-out;
+}
+
+/*** Animáció **/
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.item-card {
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
 }
 
 /* Képre kattintva Nagyítás */
@@ -667,11 +769,7 @@ nav:not(.nav-overlay) button {
   width: 100%;
   justify-content: center;
 }
-.recent-products .center-link:hover {
-  color: var(--bg-page);
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
+
 
 /* ----------- Vélemények ---------------*/
 .testimonials-section {
@@ -1105,6 +1203,7 @@ nav:not(.nav-overlay) button {
   align-items: center;
   font-weight: bold;
 }
+
 
 #logoutBtn {
   font-weight: bold;
