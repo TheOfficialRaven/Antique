@@ -90,7 +90,7 @@ section:nth-of-type(even) {
   background: var(--page-alt);
 }
 section .container {
-  max-width: 1200px;
+  max-width: 1110px;
   margin: 0 auto;
 }
 
@@ -101,7 +101,7 @@ section .container {
 .btn-style {
   width: 200px;
   display: inline-block;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-family: var(--ff-body);
   text-align: center;
   padding: 0.8rem 1.2rem;
@@ -335,20 +335,21 @@ section .container {
 
 .carousel-fixed-caption {
   position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
+  top: 40%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  margin: 0 auto;
   width: 100%;
-  padding: 1rem 2rem;
   max-width: 1200px;
+  padding: 1rem 2rem;
+  z-index: 3;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  box-sizing: border-box;
+  animation: fadeInUp 1s ease-out both;
 }
 
 .carousel-fixed-caption h2 {
@@ -391,11 +392,11 @@ section .container {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translate(-50%, -40%);
+    transform: translateY(10%);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%);
+    transform: translateY(0);
   }
 }
 
@@ -520,7 +521,7 @@ section .container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.5rem;
-  max-width: 1000px;
+  max-width: 1120px;
   margin: 0 auto 2rem auto;
 }
 
@@ -530,9 +531,24 @@ section .container {
   border-radius: 12px;
   background-color: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform, box-shadow;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.3s ease;
+  will-change: transform, opacity;
 }
+
+.category-card.visible {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.category-card:nth-child(1) { animation-delay: 0.1s; }
+.category-card:nth-child(2) { animation-delay: 0.2s; }
+.category-card:nth-child(3) { animation-delay: 0.3s; }
+.category-card:nth-child(4) { animation-delay: 0.4s; }
+.category-card:nth-child(5) { animation-delay: 0.5s; }
+.category-card:nth-child(6) { animation-delay: 0.6s; }
+.category-card:nth-child(7) { animation-delay: 0.7s; }
+.category-card:nth-child(8) { animation-delay: 0.8s; }
 
 .category-card:hover {
   transform: translateY(-4px) scale(1.015);

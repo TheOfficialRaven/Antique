@@ -142,3 +142,23 @@ function observeRecentThumbnails() {
 document.addEventListener('DOMContentLoaded', () => {
   observeRecentThumbnails();
 });
+
+function observeCategoryCards() {
+  const cards = document.querySelectorAll('.category-card');
+  if (!cards.length) return;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // csak egyszer animáljuk
+      }
+    });
+  }, { threshold: 0.2 });
+
+  cards.forEach(card => observer.observe(card));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  observeCategoryCards();
+});
