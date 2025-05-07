@@ -278,6 +278,10 @@ nav:not(.nav-overlay) button {
 }
 
 /* ===== Kategóriák szekció ===== */
+
+.category-content {
+  width: 300px;
+}
 .categories {
   padding: 4rem 2rem;
   background: var(--bg-page);

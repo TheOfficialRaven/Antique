@@ -17,7 +17,9 @@ const firebaseConfig = {
   measurementId: "G-1JDT9QWSBR"
 };
 initializeApp(firebaseConfig);
-const db = getDatabase();
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const itemsRef = ref(db, "antiques");
 
 // DOM elemek
 const showcase         = document.getElementById("showcase");
@@ -25,10 +27,12 @@ const filterEl         = document.getElementById("categoryFilter");
 const dropdown         = document.getElementById("categoryDropdown");
 const selected         = dropdown.querySelector(".selected");
 const optionsContainer = dropdown.querySelector(".options");
+const mainCategoryFilter = document.getElementById("mainCategoryFilter");
+
 
 // URL-ből jövő kezdeti szűrő
 const urlParams     = new URLSearchParams(window.location.search);
-const initialFilter = urlParams.get("category") || "all";
+
 
 let allItems = [];
 
@@ -37,52 +41,73 @@ onValue(ref(db, "antiques"), snap => {
   const data = snap.val() || {};
   allItems = Object.entries(data).map(([id, it]) => ({ id, ...it }));
 
-  // 1) Kategóriák kigyűjtése
-  const categories = Array.from(
-    new Set(allItems.map(i => i.category).filter(c => c))
+  const selectedMain = mainCategoryFilter.value || urlParams.get("category") || "";
+  mainCategoryFilter.value = selectedMain;
+mainSelected.textContent = selectedMain || "Összes";
+mainOptions.querySelectorAll("li").forEach(li =>
+  li.classList.toggle("active", li.dataset.value === selectedMain)
+);
+
+
+  // Másodlagos kategóriák kigyűjtése az adott fő kategóriához
+  const subcategories = Array.from(
+    new Set(
+      allItems
+        .filter(i => !selectedMain || i.mainCategory === selectedMain)
+        .map(i => i.category)
+        .filter(Boolean)
+    )
   );
 
-  // 2) Natív <select> feltöltése
+  // Szűrők újratöltése
   filterEl.innerHTML =
     '<option value="all">Összes</option>' +
-    categories.map(c => `<option value="${c}">${c}</option>`).join("");
+    subcategories.map(c => `<option value="${c}">${c}</option>`).join("");
 
-  // 3) Custom dropdown feltöltése
   optionsContainer.innerHTML =
     '<li data-value="all">Összes</li>' +
-    categories.map(c => `<li data-value="${c}">${c}</li>`).join("");
+    subcategories.map(c => `<li data-value="${c}">${c}</li>`).join("");
 
-  // 4) Kezdeti filter beállítása (URL alapján)
-  if (initialFilter !== "all" && categories.includes(initialFilter)) {
-    filterEl.value       = initialFilter;
-    selected.textContent = initialFilter;
-    optionsContainer
-      .querySelectorAll("li")
-      .forEach(li => li.classList.toggle("active", li.dataset.value === initialFilter));
-  } else {
-    filterEl.value       = "all";
-    selected.textContent = "Összes";
-    optionsContainer
-      .querySelectorAll("li")
-      .forEach(li => li.classList.toggle("active", li.dataset.value === "all"));
-  }
+  // Beállítjuk a dropdownokat a korábban megadott értékek alapján
+  const currentSub = filterEl.value;
+  const validSub = subcategories.includes(currentSub) ? currentSub : "all";
+  filterEl.value = validSub;
+  selected.textContent = validSub === "all" ? "Összes" : validSub;
 
-  // 5) Első render az initialFilter szerint
-  const toRender = initialFilter === "all"
-    ? allItems
-    : allItems.filter(i => i.category === initialFilter);
+  optionsContainer
+    .querySelectorAll("li")
+    .forEach(li =>
+      li.classList.toggle("active", li.dataset.value === validSub)
+    );
+
+  const toRender = allItems.filter(item => {
+    const matchMain = !selectedMain || item.mainCategory === selectedMain;
+    const matchSub = validSub === "all" || item.category === validSub;
+    return matchMain && matchSub;
+  });
+
   renderItems(toRender);
+});
+mainCategoryFilter.addEventListener("change", () => {
+  const newMain = mainCategoryFilter.value;
+  const url = newMain ? `?category=${encodeURIComponent(newMain)}` : "";
+  window.history.replaceState(null, "", window.location.pathname + url);
+  location.reload(); // újratöltés a friss URL-paraméterrel
 });
 
 // natív select változás
 filterEl.onchange = () => {
-  const sel = filterEl.value;
+  const selectedSub = filterEl.value;
+  const selectedMain = mainCategoryFilter.value;
   selected.textContent = filterEl.options[filterEl.selectedIndex].text;
-  renderItems(
-    sel === "all" 
-      ? allItems 
-      : allItems.filter(item => item.category === sel)
-  );
+
+  const filtered = allItems.filter(item => {
+    const matchMain = !selectedMain || item.mainCategory === selectedMain;
+    const matchSub = selectedSub === "all" || item.category === selectedSub;
+    return matchMain && matchSub;
+  });
+
+  renderItems(filtered);
 };
 
 // --- Render függvény változatlanul ---
@@ -227,4 +252,38 @@ optionsContainer.addEventListener("click", e => {
     e.target.classList.add("active");
   }
 });
+
+// --- Custom dropdown a fő kategóriához (ugyanolyan logikával) ---
+const mainDropdown = document.getElementById("mainCategoryDropdown");
+const mainSelected = mainDropdown.querySelector(".selected");
+const mainOptions = mainDropdown.querySelector(".options");
+const mainFilter = document.getElementById("mainCategoryFilter");
+
+mainSelected.addEventListener("click", () => {
+  mainDropdown.classList.toggle("open");
+});
+
+mainOptions.addEventListener("click", e => {
+  if (e.target.tagName === "LI") {
+    const value = e.target.dataset.value;
+    mainFilter.value = value;
+    mainSelected.textContent = e.target.textContent;
+    mainDropdown.classList.remove("open");
+
+    // Aktív kijelölés stílus
+    mainOptions.querySelectorAll("li").forEach(li => li.classList.remove("active"));
+    e.target.classList.add("active");
+
+    // URL frissítés + oldal újratöltés
+    const url = value ? `?category=${encodeURIComponent(value)}` : "";
+    window.history.replaceState(null, "", window.location.pathname + url);
+    location.reload();
+  }
+});
+
+// Kívülre kattintásra zárjuk a dropdown-t
+document.addEventListener("click", e => {
+  if (!mainDropdown.contains(e.target)) mainDropdown.classList.remove("open");
+});
+
 

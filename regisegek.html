@@ -50,6 +50,29 @@
 
  <!-- Filter bar -->
 <div class="filter-bar">
+  <div class="category-content">
+  <label for="mainCategoryFilter">Fő kategória</label>
+    <!-- Rejtett input, ahol a kiválasztott fő kategória értéke tárolódik -->
+<input type="hidden" id="mainCategoryFilter" value="">
+
+<!-- Custom dropdown, ugyanazzal a stílussal -->
+<div class="custom-dropdown" id="mainCategoryDropdown">
+  <div class="selected">Összes</div>
+  <ul class="options">
+    <li data-value="">Összes</li>
+    <li data-value="Lakberendezési régiségek">Lakberendezési régiségek</li>
+    <li data-value="Régi háztartási eszközök">Régi háztartási eszközök</li>
+    <li data-value="Dísztárgyak és lakásdekorációk">Dísztárgyak és lakásdekorációk</li>
+    <li data-value="Népi és falusi emlékek">Népi és falusi emlékek</li>
+    <li data-value="Katonai és történelmi darabok">Katonai és történelmi darabok</li>
+    <li data-value="Régi technikai eszközök">Régi technikai eszközök</li>
+    <li data-value="Nyomtatott emlékek és papíripáságok">Nyomtatott emlékek és papíripáságok</li>
+    <li data-value="Személyes tárgyak a múltból">Személyes tárgyak a múltból</li>
+  </ul>
+</div>
+
+  </div>
+  <div class="category-content">
   <label for="categoryFilter">Szűrés kategória szerint:</label>
   <!-- a natív select, amit JS generál majd, de el van rejtve -->
   <select id="categoryFilter" class="category-filter">
@@ -60,6 +83,7 @@
     <div class="selected">Összes</div>
     <ul class="options"></ul>
   </div>
+</div>
 </div>
 
   <!-- RÉGISÉGEK LISTÁJA -->

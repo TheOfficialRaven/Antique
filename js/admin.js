@@ -63,6 +63,7 @@ async function loadAdmin() {
   const adminDD     = document.getElementById("adminCategoryDropdown");
   const adminSel    = adminDD.querySelector('.selected');
   const adminOpts   = adminDD.querySelector('.options');
+  const mainCategory = document.getElementById("mainCategory").value;
 
   // Kategóriák kezelése
   const categoriesRef = dbRef(db, "categories");
@@ -270,6 +271,7 @@ async function loadAdmin() {
     const desc = form.desc.value.trim();
     const price = Number(form.price.value);
     const category = catSelect.value;
+    const mainCategory = document.getElementById("mainCategory").value;
     const files = Array.from(imageIn.files);
     if (!title || !desc || !price || !category) return alert("Tölts ki minden mezőt!");
     if (!files.length) return alert("Legalább egy képet válassz!");
@@ -284,7 +286,7 @@ async function loadAdmin() {
     const imageUrls = results.map(r => r.url);
     const storagePaths = results.map(r => r.path);
     const newRef = push(dbRef(db, "antiques"));
-    await update(newRef, { title, desc, price, category, imageUrls, storagePaths });
+    await update(newRef, { title, desc, price, category,mainCategory, imageUrls, storagePaths });
     form.reset();
     modal.classList.remove("show");
   };
