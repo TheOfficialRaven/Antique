@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const a = document.createElement('a');
         a.href      = `/regisegek.html?id=${encodeURIComponent(id)}`;
-        a.className = 'thumb-recent';
+        a.className = 'thumb-recent animate-on-scroll';
 
         const img = document.createElement('img');
         img.src     = url;
@@ -103,3 +103,24 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     }, 5000);
   }
 })();
+
+function observeRecentThumbnails() {
+  const recentSection = document.querySelector('.thumb-row-recent');
+  if (!recentSection) return;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const thumbnails = recentSection.querySelectorAll('.thumb-recent');
+        thumbnails.forEach(el => el.classList.add('visible'));
+        observer.disconnect(); // csak egyszer animáljuk
+      }
+    });
+  }, { threshold: 0.2 });
+
+  observer.observe(recentSection);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  observeRecentThumbnails();
+});
