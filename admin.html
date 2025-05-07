@@ -52,21 +52,26 @@
 
         <div class="form-group">
           <label for="mainCategory">Fő kategória</label>
-          <select class="form-control" id="mainCategory" required>
-            <option value="">Válassz fő kategóriát</option>
-            <option value="Lakberendezési régiségek">Lakberendezési régiségek</option>
-            <option value="Régi háztartási eszközök">Régi háztartási eszközök</option>
-            <option value="Dísztárgyak és lakásdekorációk">Dísztárgyak és lakásdekorációk</option>
-            <option value="Népi és falusi emlékek">Népi és falusi emlékek</option>
-            <option value="Katonai és történelmi darabok">Katonai és történelmi darabok</option>
-            <option value="Régi technikai eszközök">Régi technikai eszközök</option>
-            <option value="Nyomtatott emlékek és papíripáságok">Nyomtatott emlékek és papíripáságok</option>
-            <option value="Személyes tárgyak a múltból">Személyes tárgyak a múltból</option>
-          </select>
+          <input type="hidden" id="mainCategory" />
+          <div class="custom-dropdown" id="mainCategoryDropdown">
+            <div class="selected">-- Válassz fő kategóriát --</div>
+            <ul class="options">
+              <li data-value="">-- Válassz fő kategóriát --</li>
+              <li data-value="Lakberendezési régiségek">Lakberendezési régiségek</li>
+              <li data-value="Régi háztartási eszközök">Régi háztartási eszközök</li>
+              <li data-value="Dísztárgyak és lakásdekorációk">Dísztárgyak és lakásdekorációk</li>
+              <li data-value="Népi és falusi emlékek">Népi és falusi emlékek</li>
+              <li data-value="Katonai és történelmi darabok">Katonai és történelmi darabok</li>
+              <li data-value="Régi technikai eszközök">Régi technikai eszközök</li>
+              <li data-value="Nyomtatott emlékek és papíripáságok">Nyomtatott emlékek és papíripáságok</li>
+              <li data-value="Személyes tárgyak a múltból">Személyes tárgyak a múltból</li>
+            </ul>
+          </div>
         </div>
 
       <!-- a meglévő <select id="categorySelect"> eltűnik -->
         <div class="category-group">
+          <label for="categorySelect">Másodlagos kategória</label>
           <select id="categorySelect" class="d-none">
             <option value="">-- Válassz kategóriát --</option>
           </select>

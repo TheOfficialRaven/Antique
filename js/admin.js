@@ -63,7 +63,30 @@ async function loadAdmin() {
   const adminDD     = document.getElementById("adminCategoryDropdown");
   const adminSel    = adminDD.querySelector('.selected');
   const adminOpts   = adminDD.querySelector('.options');
-  const mainCategory = document.getElementById("mainCategory").value;
+  const mainCatHiddenInput = document.getElementById("mainCategory");
+const mainCatDropdown = document.getElementById("mainCategoryDropdown");
+const mainCatSelected = mainCatDropdown.querySelector(".selected");
+const mainCatOptions = mainCatDropdown.querySelectorAll("li");
+
+mainCatSelected.addEventListener("click", () => {
+  mainCatDropdown.classList.toggle("open");
+});
+
+mainCatOptions.forEach(li => {
+  li.addEventListener("click", () => {
+    const value = li.dataset.value;
+    mainCatHiddenInput.value = value;
+    mainCatSelected.textContent = li.textContent;
+    mainCatDropdown.classList.remove("open");
+
+    mainCatOptions.forEach(opt => opt.classList.remove("active"));
+    li.classList.add("active");
+  });
+});
+
+document.addEventListener("click", e => {
+  if (!mainCatDropdown.contains(e.target)) mainCatDropdown.classList.remove("open");
+});
 
   // Kategóriák kezelése
   const categoriesRef = dbRef(db, "categories");
