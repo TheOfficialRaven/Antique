@@ -36,28 +36,46 @@ document.addEventListener('DOMContentLoaded', () => {
     limitToLast(6)
   );
 
-  onValue(antiquesQuery, snap => {
-    row.innerHTML = '';  // üresre töröljük minden frissítésnél
+  function animateThumbsWhenReady() {
+    const thumbs = document.querySelectorAll('.thumb-recent');
+    if (!thumbs.length) return;
+  
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // csak egyszer animáljuk
+        }
+      });
+    }, { threshold: 0.2 });
+  
+    thumbs.forEach(thumb => observer.observe(thumb));
+  }
 
+  onValue(antiquesQuery, snap => {
+    row.innerHTML = ''; // törlés
+  
     const data = snap.val() || {};
-    // Az Object.entries itt key rendezett (régi→új), ezért fordítsuk meg, hogy új legyen elöl
     Object.entries(data)
       .reverse()
       .forEach(([id, item]) => {
         const url = Array.isArray(item.imageUrls) && item.imageUrls[0];
         if (!url) return;
-
+  
         const a = document.createElement('a');
-        a.href      = `/regisegek.html?id=${encodeURIComponent(id)}`;
-        a.className = 'thumb-recent animate-on-scroll';
-
+        a.href = `/regisegek.html?id=${encodeURIComponent(id)}`;
+        a.className = 'thumb-recent';
+  
         const img = document.createElement('img');
-        img.src     = url;
-        img.alt     = item.title || '';
-
+        img.src = url;
+        img.alt = item.title || '';
+  
         a.appendChild(img);
         row.appendChild(a);
       });
+  
+    // 🔥 Az elemek már a DOM-ban vannak, most figyeljük meg őket:
+    animateThumbsWhenReady();
   });
 });
 
