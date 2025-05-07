@@ -11,18 +11,23 @@ const firebaseConfig = {
   appId: "1:287979700668:web:7cda667f12b7e8a061abb9",
   measurementId: "G-1JDT9QWSBR"
 };
+
 initializeApp(firebaseConfig);
 const auth = getAuth();
-document.getElementById('password').type = 'text';
 
-const loginBtn = document.getElementById("loginBtn"),
-      errMsg   = document.getElementById("loginError");
+const form = document.getElementById("loginForm");
+const errMsg = document.getElementById("loginError");
 
-loginBtn.onclick = () => {
-  const email = document.getElementById("email").value,
-        pw    = document.getElementById("password").value;
+form.addEventListener("submit", (e) => {
+  e.preventDefault(); // ne töltse újra az oldalt
+
+  const email = document.getElementById("email").value;
+  const pw = document.getElementById("password").value;
+
   signInWithEmailAndPassword(auth, email, pw)
     .then(() => location.href = "admin.html")
-    .catch(e => errMsg.textContent = e.message);
-
-};
+    .catch(e => {
+      errMsg.textContent = e.message;
+      errMsg.style.display = 'block';
+    });
+});

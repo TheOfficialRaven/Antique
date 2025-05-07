@@ -37,57 +37,42 @@
     </nav>
   </header>
 
-  <!-- Hero -->
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active c-item">
-          <img src="pics/hero-bg-3.jpg" class="d-block w-100 hero-img" alt="...">
-          <div class="overlay"></div>
-          <div class="carousel-caption">
-            <h2>Fedezd fel a múlt kincseit</h2>
-            <p>Válogatott régiségek, egyedi történetekkel</p>
-            <div class="center-link-align">
-              <a href="#products" class="btn-style center-link"><span>Nézd meg a termékeket</span></a>
-            </div>
-          </div>
-        </div> 
-        <div class="carousel-item c-item">
-          <img src="pics/hero-bg-1.jpg" class="d-block w-100 hero-img" alt="...">
-          <div class="overlay"></div>
-          <div class="carousel-caption">
-            <h2>Fedezd fel a múlt kincseit</h2>
-            <p>Válogatott régiségek, egyedi történetekkel</p>
-            <div class="center-link-align">
-              <a href="#products" class="btn-style center-link"><span>Nézd meg a termékeket</span></a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item c-item">
-          <img src="pics/Hero-3.jpg" class="d-block w-100 hero-img" alt="...">
-          <div class="overlay"></div>
-          <div class="carousel-caption">
-            <h2>Fedezd fel a múlt kincseit</h2>
-            <p>Válogatott régiségek, egyedi történetekkel</p>
-            <div class="center-link-align">
-              <a href="#products" class="btn-style center-link"><span>Nézd meg a termékeket</span></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+   <!-- HERO: Carousel háttérképek -->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active c-item">
+      <img src="pics/hero-bg-3.jpg" class="d-block w-100 hero-img" alt="...">
+      <div class="overlay"></div>
     </div>
+    <div class="carousel-item c-item">
+      <img src="pics/hero-bg-1.jpg" class="d-block w-100 hero-img" alt="...">
+      <div class="overlay"></div>
+    </div>
+    <div class="carousel-item c-item">
+      <img src="pics/Hero-3.jpg" class="d-block w-100 hero-img" alt="...">
+      <div class="overlay"></div>
+    </div>
+  </div>
+
+  <!-- Szöveg külön, a carousel fölött -->
+  <div class="carousel-caption global-caption">
+    <h2>Fedezd fel a múlt kincseit</h2>
+    <p>Válogatott régiségek, egyedi történetekkel</p>
+    <div class="center-link-align">
+      <a href="#products" class="btn-style center-link"><span>Nézd meg a termékeket</span></a>
+    </div>
+  </div>
+
+  <!-- Navigáció -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Előző</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Következő</span>
+  </button>
+</div>
 
         <!-- Legutóbb feltöltött régiségek -->
         <section id="recent-products" class="recent-products">
@@ -105,48 +90,65 @@
 <section id="categories" class="categories">
   <div class="container">
     <h2>Kategóriák</h2>
+    <p class="subtitle">Böngéssz az antik tárgyak típusai szerint</p>
     <div class="categories-grid">
-      <!-- 1–4. Régi háztartási eszközök -->
+
       <a href="regisegek.html?category=Lakberendezési%20régiségek" class="category-card">
-        <div class="overlay"></div>
-        <img src="pics/antique-shop-bg.jpg" alt="Lakberendezési régiségek">
-        <span class="category-label">Lakberendezési régiségek</span>
+        <div class="image-wrapper">
+          <img src="pics/antique-shop-bg.jpg" alt="Lakberendezési régiségek">
+          <span class="category-label">Lakberendezési régiségek</span>
+        </div>
       </a>
+
       <a href="regisegek.html?category=Régi%20háztartási%20eszközök" class="category-card">
-        <div class="overlay"></div>
-        <img src="pics/egyszerű_dal.jpg" alt="Régi háztartási eszközök">
-        <span class="category-label">Régi háztartási eszközök</span>
+        <div class="image-wrapper">
+          <img src="pics/egyszerű_dal.jpg" alt="Régi háztartási eszközök">
+          <span class="category-label">Régi háztartási eszközök</span>
+        </div>
       </a>
+
       <a href="regisegek.html?category=Dísztárgyak%20és%20lakásdekorációk" class="category-card">
-        <div class="overlay"></div>
-        <img src="pics/hero-bg-2.jpg" alt="Dísztárgyak és lakásdekorációk">
-        <span class="category-label">Dísztárgyak és lakásdekorációk</span>
+        <div class="image-wrapper">
+          <img src="pics/hero-bg-2.jpg" alt="Dísztárgyak és lakásdekorációk">
+          <span class="category-label">Dísztárgyak és lakásdekorációk</span>
+        </div>
       </a>
+
       <a href="regisegek.html?category=Népi%20és%20falusi%20emlékek" class="category-card">
-        <div class="overlay"></div>
-        <img src="pics/antique-hero.jpg" alt="Népi és falusi emlékek">
-        <span class="category-label">Népi és falusi emlékek</span>
+        <div class="image-wrapper">
+          <img src="pics/antique-hero.jpg" alt="Népi és falusi emlékek">
+          <span class="category-label">Népi és falusi emlékek</span>
+        </div>
       </a>
+
       <a href="regisegek.html?category=Katonai%20és%20történelmi%20darabok" class="category-card">
-        <div class="overlay"></div>
-        <img src="pics/army-documents.jpg" alt="Katonai és történelmi darabok">
-        <span class="category-label">Katonai és történelmi darabok</span>
+        <div class="image-wrapper">
+          <img src="pics/army-documents.jpg" alt="Katonai és történelmi darabok">
+          <span class="category-label">Katonai és történelmi darabok</span>
+        </div>
       </a>
+
       <a href="regisegek.html?category=Régi%20technikai%20eszközök" class="category-card">
-        <div class="overlay"></div>
-        <img src="pics/Hero-2.jpg" alt="Régi technikai eszközök">
-        <span class="category-label">Régi technikai eszközök</span>
+        <div class="image-wrapper">
+          <img src="pics/Hero-2.jpg" alt="Régi technikai eszközök">
+          <span class="category-label">Régi technikai eszközök</span>
+        </div>
       </a>
+
       <a href="regisegek.html?category=Nyomtatott%20emlékek%20és%20papíripáságok" class="category-card">
-        <div class="overlay"></div>
-        <img src="pics/antique-hero.jpg" alt="Nyomtatott emlékek és papíripáságok">
-        <span class="category-label">Nyomtatott emlékek és papíripáságok</span>
+        <div class="image-wrapper">
+          <img src="pics/antique-hero.jpg" alt="Nyomtatott emlékek és papíripáságok">
+          <span class="category-label">Nyomtatott emlékek és papíripáságok</span>
+        </div>
       </a>
+
       <a href="regisegek.html?category=Személyes%20tárgyak%20a%20múltból" class="category-card">
-        <div class="overlay"></div>
-        <img src="pics/antique-shop-bg.jpg" alt="Személyes tárgyak a múltból">
-        <span class="category-label">Személyes tárgyak a múltból</span>
+        <div class="image-wrapper">
+          <img src="pics/antique-shop-bg.jpg" alt="Személyes tárgyak a múltból">
+          <span class="category-label">Személyes tárgyak a múltból</span>
+        </div>
       </a>
+
     </div>
   </div>
 </section>
@@ -341,5 +343,6 @@
   <!-- JS: ugyanaz az admin.js, ami kezeli auth, feltöltés, kirenderelést -->
   <script type="module" src="js/index.js"></script>
   <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/pagetransition.js"></script>
 </body>
 </html>

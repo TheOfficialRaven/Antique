@@ -2,9 +2,9 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin – Régiségek Jocitól</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin &mdash; Régiségek Jocitól</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -12,24 +12,26 @@
 
   <!-- Header -->
   <header class="site-header">
-    <h1 class="logo">Régiségek  <span>Jocitól</span></h1>
-    <nav>
+    <div class="header-left">
+      <h1 class="logo"><a href="index.html">Régiségek <span>Jocitól</span></a></h1>
+    </div>
+    <nav class="desktop-nav">
       <a href="index.html" class="btn-style"><span>Vissza a főoldalra</span></a>
       <button id="logoutBtn" class="btn-style"><span>Kijelentkezés</span></button>
     </nav>
   </header>
-<!-- Új tárgy hozzáadása gomb -->
- <div class="addNew-center">
-  <button id="addNew" class="btn-style admin-btn"><span>+ Új tétel Hozzáadása</span></button>
-</div>
 
-  <!-- Admin Showcase -->
+  <!-- Add New Button -->
+  <div class="addNew-center">
+    <button id="addNew" class="btn-style admin-btn"><span>+ Új tétel Hozzáadása</span></button>
+  </div>
+
+  <!-- Admin Showcase Section -->
   <section id="admin-showcase" class="grid">
-    <!-- ide a JS betölti a <article class="item-card admin"> elemeket -->
+    <!-- JavaScript will dynamically inject .item-card.admin elements here -->
   </section>
-  
 
-  <!-- Új tétel Modal -->
+  <!-- Add Item Modal -->
   <div id="addItemModal" class="modal">
     <div class="modal-content">
       <button id="modal-close-btn" class="modal-close">&times;</button>
@@ -45,8 +47,7 @@
         <input id="price" name="price" type="number" required>
 
         <label for="imageInput">Képek (több is kiválasztható)</label>
-        <input id="imageInput" name="imageInput" type="file" accept="image/*"
-                multiple required>
+        <input id="imageInput" name="imageInput" type="file" accept="image/*" multiple required>
 
         <label for="categorySelect">Kategória</label>
 
@@ -69,7 +70,6 @@
           </div>
         </div>
 
-      <!-- a meglévő <select id="categorySelect"> eltűnik -->
         <div class="category-group">
           <label for="categorySelect">Másodlagos kategória</label>
           <select id="categorySelect" class="d-none">
@@ -89,16 +89,18 @@
   </div>
 
   <!-- Confirm deletion modal -->
-<div id="confirmModal" class="confirm-modal">
-  <div class="confirm-modal-content">
-    <p class="confirm-text">Biztos törölni szeretnéd ezt a tételt?</p>
-    <div class="confirm-actions">
-      <button id="confirmYes" class="btn confirm">Igen, törlöm</button>
-      <button id="confirmNo"  class="btn cancel">Mégse</button>
+  <div id="confirmModal" class="confirm-modal">
+    <div class="confirm-modal-content">
+      <p class="confirm-text">Biztos törölni szeretnéd ezt a tételt?</p>
+      <div class="confirm-actions">
+        <button id="confirmYes" class="btn confirm">Igen, törlöm</button>
+        <button id="confirmNo"  class="btn cancel">Mégse</button>
+      </div>
     </div>
   </div>
-</div>
+
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
   <script type="module" src="js/admin.js"></script>
+  <script type="module" src="js/pagetransition.js"></script>
 </body>
 </html>

@@ -48,7 +48,12 @@ body {
   background: var(--bg-page);
   color: var(--text-main);
   line-height: 1.6;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
 
+body.fade-out {
+  opacity: 0;
 }
 
 .overlay {
@@ -85,7 +90,7 @@ section:nth-of-type(even) {
   background: var(--page-alt);
 }
 section .container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -302,15 +307,47 @@ section .container {
 
 /* ── HERO SZEKCIÓK ── */
 
-.carousel-caption {
-  bottom: 15%;
-  left: 10%;
-  right: 10%;
-  text-align: center;
-  z-index: 2;
-  animation: fadeInUp 1s ease-out both;
+/* Hero szakasz magasság */
+#carouselExampleCaptions {
+  position: relative;
+  height: 75vh;
+  overflow: hidden;
 }
 
+/* Képek mérete */
+.carousel-item,
+.hero-img {
+  height: 75vh;
+  object-fit: cover;
+}
+
+/* Átlátszó sötét overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+/* A szöveg minden slide fölött állandó */
+.carousel-caption.global-caption {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Szövegformázás */
 .carousel-caption h2 {
   font-size: 3rem;
   font-family: var(--ff-heading);
@@ -324,22 +361,17 @@ section .container {
   font-family: var(--ff-body);
   color: #f0f0f0;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-  margin-bottom: 2rem;
+  margin-bottom: 8rem;
 }
 
 .carousel-caption .btn-style {
-  margin-top: 0;
   padding: 0.9rem 1.5rem;
   font-size: 1rem;
+  margin-top: 0;
 }
 
 /* Mobil optimalizálás */
 @media (max-width: 768px) {
-  .carousel-caption {
-    bottom: 5%;
-    padding: 1rem;
-  }
-
   .carousel-caption h2 {
     font-size: 1.8rem;
     line-height: 1.3;
@@ -353,6 +385,18 @@ section .container {
   .carousel-caption .btn-style {
     font-size: 0.9rem;
     padding: 0.6rem 1rem;
+  }
+}
+
+/* Fade-in animáció */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -450,23 +494,35 @@ section .container {
 .category-content {
   width: 300px;
 }
+
 .categories {
-  padding: 4rem 2rem;
-  background: var(--bg-page);
+  background-color: var(--bg-page);
+  padding: 4rem 1.5rem;
+  border-top: 1px solid #e6e2d8;
 }
+
 .categories h2 {
   font-family: var(--ff-heading);
   font-size: 2rem;
   font-weight: 500;
   text-align: center;
-  margin-bottom: 2rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
 }
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 2.2rem;
+}
+
 .categories-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1.5rem;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 0 auto 2rem auto;
 }
 
 .category-card {
@@ -484,7 +540,13 @@ section .container {
   box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
 }
 
-.category-card img {
+.image-wrapper {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.image-wrapper img {
   display: block;
   width: 100%;
   height: 180px;
@@ -493,7 +555,7 @@ section .container {
   will-change: transform;
 }
 
-.category-card:hover img {
+.category-card:hover .image-wrapper img {
   transform: scale(1.03);
 }
 
@@ -501,8 +563,9 @@ section .container {
   position: absolute;
   bottom: 0;
   left: 0;
+  min-height: 4rem;
   width: 100%;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   font-family: var(--ff-heading);
   font-size: var(--fs-sm);
   color: var(--text-main);
@@ -510,14 +573,34 @@ section .container {
   padding: 0.5rem;
   font-weight: 600;
   letter-spacing: 0.4px;
+  box-sizing: border-box;
 }
 
-/* Mobile: két oszlopra törés */
+/* 📱 Mobil: 2 oszlop */
 @media (max-width: 768px) {
+  .categories {
+    padding: 3rem 1rem;
+  }
+
+  .categories h2 {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
   .categories-grid {
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .image-wrapper img {
+    height: 150px;
   }
 }
+
 
 /* ── CUSTOM-DROPDOWN ── */
 .custom-dropdown {
@@ -605,13 +688,11 @@ section .container {
   align-items: center;
   gap: 1rem;
   padding: 1rem 2rem;
-  background: rgba(162,137,103,0.1);
-  border: 2px solid var(--accent);
   border-radius: 8px;
-  max-width: 600px;
   margin: 2rem auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 600px;
 }
+
 .filter-bar label {
   font-size: 1.1rem;
   color: var(--text-main);
@@ -824,7 +905,7 @@ section .container {
   border-top: 1px solid #e6e2d8;
 }
 .recent-products .container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   text-align: center;
 }
@@ -1030,8 +1111,8 @@ section .container {
   margin-bottom: 0.5rem;
 }
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   background: var(--accent-dark);
   border: none;
   border-radius: 50%;
@@ -1069,7 +1150,7 @@ section .container {
   display: flex;
   align-items: stretch; /* fontos! */
   gap: 4rem;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   flex-wrap: wrap;
 }
@@ -1117,6 +1198,7 @@ section .container {
   border: 1px solid #ddd;
   border-radius: 6px;
   font-family: inherit;
+  resize: none;
   font-size: 1rem;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -1197,7 +1279,7 @@ section .container {
 .faq-columns {
   display: flex;
   gap: 2rem;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -1274,30 +1356,6 @@ section .container {
   opacity: 1;
   padding-bottom: 1rem;
 }
-/* ── Utility: pontos 33%-os oszlopokhoz ── */
-.col-33 {
-  max-width: 33%;
-}
-
-/* ── Mobil optimalizálás ── */
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .footer-col {
-    flex: 1 1 100%;
-    max-width: 100%;
-    margin-bottom: 2rem;
-  }
-
-  .footer-contact li,
-  .footer-links li {
-    justify-content: center;
-  }
-}
 
 /* ── ABOUT INTRO SZEKCIÓ ── */
 .about-intro {
@@ -1309,7 +1367,7 @@ section .container {
   display: flex;
   align-items: center;
   gap: 6rem;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
   flex-wrap: wrap;
 }
@@ -1481,10 +1539,11 @@ section .container {
 }
 
 .footer-bottom {
-  background: #1f1b16;
+  background: var(--footer-bg);
   color: var(--footer-text);
   padding: 1rem 2rem;
   font-size: 0.85rem;
+  border-top: 1px solid var(--accent);
 }
 
 .footer-bottom-inner {
@@ -1525,190 +1584,211 @@ section .container {
 /* ===================================== */
 
 
-/* addNew Gomb */
+/* Gombok */
 #addNew {
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-  text-align: center;
+  margin: 2rem auto 1rem auto;
   justify-content: center;
   align-items: center;
   font-weight: bold;
 }
 
-
 #logoutBtn {
   font-weight: bold;
+  margin-left: 1rem;
 }
 
 .addNew-center {
   width: 100%;
 }
 
-/* Antique style for admin item cards */
+/* Admin item card */
 .item-card.admin {
   overflow: hidden;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-/* Antique-modern filter bar & custom dropdown */
 .item-card.admin input,
 .item-card.admin textarea {
   background-color: #fafaf7;
   border: 1px solid var(--accent);
   border-radius: 4px;
   padding: 0.5rem;
-  margin-bottom: 0.5rem;
+  resize: none;
+  font-size: 0.95rem;
 }
+
 .item-card.admin .save-btn,
 .item-card.admin .delete-btn {
   padding: 0.4rem 0.8rem;
-  margin-right: 0.5rem;
   background: transparent;
   border: 2px solid var(--accent);
   border-radius: 4px;
   color: var(--text-main);
-  transition: background .3s, color .3s;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
 }
+
 .item-card.admin .save-btn:hover {
   background: var(--accent);
   color: #fff;
 }
+
 .item-card.admin .delete-btn:hover {
   background: var(--accent-dark);
   color: #fff;
 }
 
-/* Reset admin card hover */
+/* Ne animáljuk hoverre adminban */
 .item-card.admin:hover {
   transform: none;
   transition: none;
 }
 
-/* Admin Modals */
+/* === MODAL === */
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   display: none;
   align-items: center;
   justify-content: center;
   z-index: 1000;
 }
+
 .modal.show {
   display: flex;
 }
+
 .modal-content {
-  position: relative;
   background: var(--bg-page);
   border: 2px solid var(--accent);
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   padding: 2rem;
-  max-width: 500px;
   width: 90%;
+  max-width: 520px;
   display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
+
 .modal-close {
   position: absolute;
-  top: .5rem;
-  right: .5rem;
-  background: transparent;
-  border: none;
+  top: 0.5rem;
+  right: 0.5rem;
   font-size: 1.5rem;
+  background: none;
+  border: none;
   cursor: pointer;
 }
+
 .modal-content h3 {
   font-size: 1.6rem;
   text-align: center;
+  margin-bottom: 0.5rem;
   border-bottom: 1px solid var(--accent);
   padding-bottom: 0.5rem;
-  margin: 0;
 }
-.modal-content form {
-  display: grid;
-  gap: 1rem;
-}
+
 .modal-content label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--text-main);
 }
+
 .modal-content input,
 .modal-content textarea {
   width: 100%;
   padding: 0.6rem;
-  border: 1px solid #ddd;
+  background: #faf8f5;
+  border: 1px solid #ccc;
   border-radius: 6px;
-  background-color: #faf8f5;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  resize: none;
 }
-.modal-content input:focus,
-.modal-content textarea:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(162,137,103,0.2);
-  outline: none;
-}
+
 .modal-content button[type="submit"] {
   padding: 0.75rem;
-  font-size: 1rem;
-  font-weight: 600;
-  background-color: var(--text-main);
-  color: var(--footer-text);
+  background: var(--text-main);
+  color: #fff;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   text-transform: uppercase;
+  font-weight: 600;
+  transition: background 0.3s ease;
 }
+
 .modal-content button[type="submit"]:hover {
-  background-color: var(--accent-dark);
+  background: var(--accent-dark);
 }
 
-.wide-dropdown {
-  max-width: 300px;
-}
-
-/* Confirm MODAL */
+/* Confirm Modal */
 .confirm-modal {
   position: fixed;
   inset: 0;
   display: none;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 1000;
 }
-.confirm-modal.show { display: flex; }
+
+.confirm-modal.show {
+  display: flex;
+}
+
 .confirm-modal-content {
   background: var(--bg-page);
   border: 2px solid var(--accent);
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   padding: 2rem;
-  max-width: 320px;
-  width: 100%;
   text-align: center;
+  max-width: 320px;
+  width: 90%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
-.confirm-text { 
+
+.confirm-text {
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
 }
-.confirm-actions { display: flex; gap: 1rem; }
-.confirm-actions .btn { flex: 1; padding: 0.6rem; }
+
+.confirm-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.confirm-actions .btn {
+  flex: 1;
+  padding: 0.6rem;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
 .btn.confirm {
   background: var(--accent);
   color: #fff;
-  border-color: var(--accent-dark);
+  border: none;
 }
-.btn.cancel {
-  background: transparent;
-  border-color: var(--text-main);
-}
-.btn.confirm:hover { background: var(--accent-dark); }
-.btn.cancel:hover { background: rgba(62,44,28,0.1); }
 
+.btn.cancel {
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+}
+
+.btn.confirm:hover {
+  background: var(--accent-dark);
+}
+
+.btn.cancel:hover {
+  background: rgba(62, 44, 28, 0.05);
+}
 
 /* ===================================== */
 /*  ADMIN LOGIN STÍLUSOK (adminlogin.css) */
@@ -1724,11 +1804,14 @@ section .container {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
+
 .login-form h2 {
   font-size: 1.75rem;
   color: var(--accent-dark);
   margin-bottom: 1.5rem;
+  font-family: var(--ff-heading);
 }
+
 .login-form input {
   width: 100%;
   padding: 0.75rem;
@@ -1737,12 +1820,15 @@ section .container {
   border-radius: 4px;
   font-size: 1rem;
   background: #fff;
+  font-family: var(--ff-body);
 }
+
 .login-form input:focus {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(162, 137, 103, 0.2);
 }
+
 .login-form button {
   width: 100%;
   padding: 0.75rem;
@@ -1753,12 +1839,31 @@ section .container {
   font-size: 1rem;
   cursor: pointer;
   transition: background var(--transition);
+  font-family: var(--ff-heading);
 }
+
 .login-form button:hover {
   background-color: var(--accent-dark);
 }
+
 .login-form .error {
   color: #c0392b;
   font-size: 0.9rem;
   margin-top: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .login-form {
+    margin: 3rem 1rem;
+    padding: 1.5rem;
+  }
+
+  .login-form h2 {
+    font-size: 1.5rem;
+  }
+
+  .login-form input,
+  .login-form button {
+    font-size: 0.95rem;
+  }
 }
