@@ -36,6 +36,11 @@
   margin: 0;
   padding: 0;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--ff-body);
   font-size:   var(--fs-md);
@@ -120,7 +125,7 @@ section .container {
   background-color: var(--accent);
   border: none;
   border-radius: 6px;
-  color: var(--text-main);
+  color: #fff;
   text-decoration: none;
   transition: all var(--transition);
   position: relative;
@@ -948,38 +953,51 @@ nav:not(.nav-overlay) button {
   background: var(--bg-page);
   padding: 4rem 2rem;
 }
+
 .contact-container {
   display: flex;
-  align-items: flex-start;
-  gap: 6rem;
+  align-items: stretch; /* fontos! */
+  gap: 4rem;
   max-width: 1400px;
   margin: 0 auto;
   flex-wrap: wrap;
 }
-.contact-form-wrapper {
-  flex: 1 1 400px;
+
+.contact-form-wrapper,
+.contact-image-wrapper {
+  flex: 1 1 50%;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
 }
+
 .contact-form-wrapper h2 {
-  font-family: 'Cinzel', serif;
+  font-family: var(--ff-heading);
   font-size: 2rem;
   color: var(--accent-dark);
   margin-bottom: 0.5rem;
 }
+
 .contact-form-wrapper p {
-  font-family: 'Lora', serif;
+  font-family: var(--ff-body);
   font-size: 1rem;
   color: var(--text-main);
+  margin-bottom: 2rem;
+}
+
+.contact-form .form-group {
   margin-bottom: 1.5rem;
 }
-.contact-form .form-group {
-  margin-bottom: 1rem;
-}
+
 .contact-form label {
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
   color: var(--text-main);
-  margin-bottom: 0.25rem;
 }
+
 .contact-form input,
 .contact-form textarea {
   width: 100%;
@@ -989,66 +1007,61 @@ nav:not(.nav-overlay) button {
   border-radius: 6px;
   font-family: inherit;
   font-size: 1rem;
-  transition: border-color var(--transition), box-shadow var(--transition);
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
+
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(162,137,103,0.2);
   outline: none;
 }
-.checkbox-group {
-  display: flex;
-  align-items: center;
-  font-size: 0.9rem;
-}
-.checkbox-group input {
-  margin-right: 0.5rem;
-  width: auto;
-  color: var(--accent);
-}
-.checkbox-group a {
-  color: var(--accent);
-  text-decoration: underline;
-}
+
 .contact-form .btn {
-  display: block;
-  width: 100%;
-  padding: 0.75rem;
-  background: var(--accent);
-  color: #fff;
-  font-family: 'Cinzel', serif;
+  display: inline-block;
+  padding: 0.75rem 2rem;
   font-size: 1rem;
+  background-color: var(--accent);
+  color: #fff;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background var(--transition);
+  transition: background 0.3s ease;
+  font-family: var(--ff-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
+
 .contact-form .btn:hover {
-  background: var(--accent-dark);
+  background-color: var(--accent-dark);
 }
+
 .contact-image-wrapper {
-  flex: 1 1 200px;
+  flex: 1 1 300px;
 }
+
 .contact-image-wrapper img {
-  max-height: 75vh;
-  border-radius: 12px;
+  height: 100%;
   object-fit: cover;
+  border-radius: 12px;
+  width: 100%;
   display: block;
 }
 
-/* ── RESPONSIVE ── */
+/* Mobilra */
 @media (max-width: 768px) {
   .contact-container {
     flex-direction: column;
     text-align: center;
   }
+
   .contact-form-wrapper,
   .contact-image-wrapper {
     flex: 1 1 100%;
   }
-  .checkbox-group {
-    justify-content: center;
+
+  .contact-form .btn {
+    width: 100%;
   }
 }
 
@@ -1058,6 +1071,7 @@ nav:not(.nav-overlay) button {
   padding: 4rem 2rem;
   background: var(--bg-page);
 }
+
 .faq-section .section-title {
   font-family: 'Cinzel', serif;
   font-size: 2rem;
@@ -1065,19 +1079,27 @@ nav:not(.nav-overlay) button {
   color: var(--accent-dark);
   margin-bottom: 2rem;
 }
+
 .faq-columns {
   display: flex;
-  gap: 6rem;
+  gap: 2rem;
   max-width: 1400px;
   margin: 0 auto;
 }
+
 .faq-col {
-  flex: 0 0 50%;
-  max-width: 50%;
+  flex: 1;
+  min-width: 0;
 }
+
 @media (max-width: 768px) {
+  .faq-columns {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
   .faq-col {
-    flex: 0 0 100%;
+    flex: 1 1 100%;
     max-width: 100%;
   }
 }
@@ -1087,128 +1109,76 @@ nav:not(.nav-overlay) button {
   border-bottom: 1px solid #ddd;
   margin-bottom: 1rem;
 }
+
 .faq-question {
   width: 100%;
   background: none;
   border: none;
   font-family: 'Lora', serif;
-  font-size: 1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
   color: var(--text-main);
   text-align: left;
-  padding: 0.75rem 0;
+  padding: 1rem;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: color var(--transition);
-}
-.faq-question:hover {
-  color: var(--accent);
-}
-.faq-answer {
-  display: none;
-  font-family: 'Lora', serif;
-  font-size: 0.9rem;
-  color: var(--text-main);
-  line-height: 1.6;
-  padding-bottom: 0.75rem;
-  margin-left: 1rem;
+  border-radius: 6px;
+  background-color: rgba(162, 137, 103, 0.08);
+  transition: background 0.3s, color 0.3s;
 }
 
-/* Aktív (kinyitott) elem */
-.faq-item.open .faq-answer {
-  display: block;
+.faq-question:hover {
+  background-color: rgba(162, 137, 103, 0.15);
+  color: var(--accent-dark);
 }
+
+.faq-question .arrow {
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+}
+
 .faq-item.open .faq-question .arrow {
   transform: rotate(90deg);
 }
 
-/* Az arrow jelet is emeljük egy kicsit */
-.faq-question .arrow {
-  font-size: 1.2rem;
-  transition: transform var(--transition);
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  padding: 0 1rem;
+  font-family: 'Lora', serif;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  line-height: 1.6;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
 }
 
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  opacity: 1;
+  padding-bottom: 1rem;
+}
 /* ── Utility: pontos 33%-os oszlopokhoz ── */
 .col-33 {
   max-width: 33%;
 }
 
-/* ── Frissített footer-konténer ── */
-.footer-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  max-width: 1400px;    /* korábban 1200px */
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
-
-.footer-container a:hover {
-  padding-bottom: 0;
-  border-bottom: 0;
-}
-
-.custom-footer {
-  background: var(--footer-bg);
-  color: var(--footer-text);
-  padding: 3rem 2rem;
-}
-.footer-col {
-  min-width: 220px;
-}
-.footer-col h2,
-.footer-col h3 {
-  font-family: 'Cinzel', serif;
-  margin-bottom: 1rem;
-  color: var(--footer-text);
-}
-.footer-brand p {
-  font-family: 'Lora', serif;
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-.footer-contact ul,
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.footer-contact li,
-.footer-links li {
-  margin-bottom: 0.75rem;
-  display: flex;
-  align-items: center;
-  font-size: 0.95rem;
-}
-.footer-contact .icon {
-  display: inline-block;
-  width: 1.2rem;
-  margin-right: 0.5rem;
-  text-align: center;
-}
-.footer-contact a,
-.footer-links a {
-  color: var(--footer-text);
-  text-decoration: none;
-  transition: color var(--transition);
-}
-.footer-contact a:hover,
-.footer-links a:hover {
-  color: var(--accent);
-}
-
-/* Mobilra is 100% széles oszlopok */
+/* ── Mobil optimalizálás ── */
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
-  .col-33 {
-    flex: 0 0 100%;
+
+  .footer-col {
+    flex: 1 1 100%;
     max-width: 100%;
+    margin-bottom: 2rem;
   }
+
   .footer-contact li,
   .footer-links li {
     justify-content: center;
@@ -1220,6 +1190,7 @@ nav:not(.nav-overlay) button {
   padding: 4rem 2rem;
   background: var(--bg-page);
 }
+
 .about-intro-container {
   display: flex;
   align-items: center;
@@ -1228,46 +1199,210 @@ nav:not(.nav-overlay) button {
   margin: 0 auto;
   flex-wrap: wrap;
 }
+
 .about-intro-image {
-  flex: 1 1 320px;
+  flex: 1 1 400px;
 }
+
 .about-intro-image img {
   width: 100%;
-  border-radius: 12px;
+  height: 100%;
   object-fit: cover;
+  border-radius: 12px;
   display: block;
 }
+
 .about-intro-text {
   flex: 1 1 360px;
 }
+
 .about-intro-text h2 {
   font-size: 2rem;
   color: var(--accent-dark);
   margin-bottom: 1rem;
+  font-family: var(--ff-heading);
 }
+
 .about-intro-text p {
   font-size: 1rem;
+  line-height: 1.7;
   color: var(--text-main);
-  line-height: 1.6;
   margin-bottom: 1.5rem;
+  font-family: var(--ff-body);
 }
 
-.about-intro-text .btn:hover {
-  background: var(--accent-dark);
+.about-intro-text .btn-style {
+  margin-top: 1rem;
 }
 
-.col-50 {
-  width: 50%;
+.about-intro-text .btn-style:hover {
+  background-color: var(--accent-dark);
 }
 
-/* ── RESPONSIVE ── */
+/* Mobilnézet finomítás */
 @media (max-width: 768px) {
   .about-intro-container {
     flex-direction: column;
     text-align: center;
   }
-  .about-intro-text .btn {
+
+  .about-intro-text .btn-style {
     margin: 0 auto;
+  }
+
+  .about-intro-image {
+    order: -1; /* A kép jelenik meg előbb mobilon */
+  }
+
+  .about-intro-image img {
+    max-height: 300px;
+  }
+}
+
+/* ── Lábléc stílus (Footer) ── */
+.custom-footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 3rem 2rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-col.footer-brand {
+  flex: 1 1 50%;
+  min-width: 280px;
+}
+
+.footer-col.footer-contact,
+.footer-col.footer-links {
+  flex: 1 1 22%;
+  min-width: 200px;
+}
+
+.footer-col {
+  flex: 1 1 30%;
+  min-width: 260px;
+}
+
+.footer-col h2,
+.footer-col h3 {
+  font-family: var(--ff-heading);
+  font-size: 1.3rem;
+  color: var(--footer-text);
+  margin-bottom: 1rem;
+}
+
+.footer-brand p {
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-contact ul,
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-contact li,
+.footer-links li {
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.footer-contact .icon {
+  display: inline-block;
+  width: 1.2rem;
+  margin-right: 0.5rem;
+  text-align: center;
+  color: var(--accent);
+}
+
+.footer-contact a,
+.footer-links a {
+  color: var(--footer-text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-contact a:hover,
+.footer-links a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+
+/* ===== Mobilnézet javítása (a képeden látott hiba elkerülése) ===== */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-col {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .footer-contact li,
+  .footer-links li {
+    justify-content: center;
+  }
+
+  .footer-contact .icon {
+    margin-right: 0.3rem;
+  }
+}
+
+.footer-bottom {
+  background: #1f1b16;
+  color: var(--footer-text);
+  padding: 1rem 2rem;
+  font-size: 0.85rem;
+}
+
+.footer-bottom-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-bottom .copyright {
+  margin: 0;
+}
+
+.footer-bottom .back-to-top {
+  color: var(--footer-text);
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom .back-to-top:hover {
+  color: var(--accent);
+}
+
+/* Mobil */
+@media (max-width: 768px) {
+  .footer-bottom-inner {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
   }
 }
 

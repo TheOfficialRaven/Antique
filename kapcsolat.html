@@ -50,62 +50,56 @@
 
 <!-- Kontakt Szekció -->
 <section class="contact-section">
-  <div class="container contact-container">
-    <!-- Form oszlop -->
-    <div class="contact-form-wrapper col-50">
-      <h2>Írj nekünk!</h2>
-      <p>Mutasd be a problémát, amit megoldasz, emeld ki a csatornánk, biztonságodat vagy egy elnyűtt funkciót.</p>
+  <div class="contact-container">
+    <div class="contact-form-wrapper">
+      <h2>Lépj kapcsolatba velünk</h2>
+      <p>Ha kérdésed van, vagy eladnád tárgyaidat, írj nekünk bátran!</p>
       <form class="contact-form">
         <div class="form-group">
-          <label for="fullName">Teljes név</label>
-          <input id="fullName" type="text" placeholder="Teljes név">
+          <label for="name">Név</label>
+          <input type="text" id="name" name="name" required>
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input id="email" type="email" placeholder="Email cím">
-        </div>
-        <div class="form-group">
-          <label for="subject">Tárgy</label>
-          <input id="subject" type="text" placeholder="Üzenet tárgya">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" required>
         </div>
         <div class="form-group">
           <label for="message">Üzenet</label>
-          <textarea id="message" rows="5" placeholder="Írd ide az üzenetedet"></textarea>
+          <textarea id="message" name="message" rows="5" required></textarea>
         </div>
-        <div class="form-group checkbox-group">
-          <input id="consent" type="checkbox">
-          <label for="consent">Elolvastam és elfogadom az <a href="#">adatkezelési tájékoztatót</a>.</label>
-        </div>
-        <button type="submit" class="btn-style"><span>KÜLDÉS</span></button>
+        <button type="submit" class="btn-style"><span>Küldés</span></button>
       </form>
     </div>
-
-    <!-- Kép oszlop -->
-    <div class="contact-image-wrapper col-50">
-      <img src="pics/About.jpg" alt="Kapcsolati kép">
+    <div class="contact-image-wrapper">
+      <img src="/pics/About.jpg" alt="Kapcsolat">
     </div>
   </div>
 </section>
 
- <!-- Footer  -->
- <footer class="site-footer custom-footer">
+<!---------- Footer --------------->
+<footer class="site-footer custom-footer">
   <div class="container footer-container">
-    <div class="footer-col col-33 footer-brand">
+    
+    <!-- Bal oszlop: Márka / bemutatkozás -->
+    <div class="footer-col footer-brand">
       <h2>Régiségek Jocitól</h2>
       <p>
-        Rövid leírás a vállalkozásról, ami kifejti, hogy mivel foglalkoznak, milyen 
-        prémium minőségű régiségeket kínálnak.
+        Rövid leírás a vállalkozásról, amely bemutatja, hogy milyen prémium minőségű régiségeket kínálunk, gondosan válogatott forrásból.
       </p>
     </div>
-    <div class="footer-col col-33 footer-contact">
+
+    <!-- Középső oszlop: Kapcsolat -->
+    <div class="footer-col footer-contact">
       <h3>Elérhetőség</h3>
       <ul>
         <li><span class="icon">📍</span>1092 Budapest, Ráday u. 30.</li>
         <li><span class="icon">✉️</span><a href="mailto:hello@domained.hu">hello@domained.hu</a></li>
-        <li><span class="icon">📞</span><a href="tel:+36123456789">+36 70 123 4567</a></li>
+        <li><span class="icon">📞</span><a href="tel:+36701234567">+36 70 123 4567</a></li>
       </ul>
     </div>
-    <div class="footer-col col-33 footer-links">
+
+    <!-- Jobb oszlop: Linkek -->
+    <div class="footer-col footer-links">
       <h3>Oldalak</h3>
       <ul>
         <li><a href="index.html">Főoldal</a></li>
@@ -114,8 +108,15 @@
         <li><a href="kapcsolat.html">Kapcsolat</a></li>
       </ul>
     </div>
+
   </div>
 </footer>
+<div class="footer-bottom">
+  <div class="container footer-bottom-inner">
+    <p class="copyright">© 2025 Régiségek Jocitól – Minden jog fenntartva</p>
+    <a href="#top" class="back-to-top">Vissza az oldal tetejére ↑</a>
+  </div>
+</div>
 
   <!-- JS: ugyanaz az admin.js, ami kezeli auth, feltöltés, kirenderelést -->
   <script type="module" src="js/nav.js"></script>
