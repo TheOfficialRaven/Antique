@@ -176,6 +176,7 @@ section .container {
   font-size: 1.8rem;
   font-weight: bold;
   color: var(--text-main);
+  cursor: pointer;
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
@@ -871,6 +872,11 @@ section .container {
   z-index: 1;
 }
 
+.rolunk-modal::before,
+.rolunk-modal::after {
+display: none;
+}
+
 .img-modal-inner::before {
   left: 0.5rem;
   mask-image: url("data:image/svg+xml;utf8,<svg fill='white' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><polygon points='15.41,7.41 14,6 8,12 14,18 15.41,16.59 10.83,12'/></svg>");
@@ -1152,6 +1158,102 @@ section .container {
 }
 
 /* ── CONTACT-SECTION STÍLUSOK ── */
+
+.contact-info-section {
+  padding: 4rem 2rem;
+  background-color: var(--bg-page);
+}
+.contact-info-section .container {
+  max-width: 1200px;
+}
+
+.contact-info-flex {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.contact-info-image {
+  flex: 0 0 250px;
+}
+
+.contact-info-image img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.contact-info-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-info-section a {
+  color: var(--text-main);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info-section a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.contact-info-text h2 {
+  font-size: 2rem;
+  color: var(--accent-dark);
+  margin-bottom: 1rem;
+}
+
+.contact-info-text p {
+  font-size: 1rem;
+  color: var(--text-main);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.contact-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-details li {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.contact-details li i {
+  font-size: 1.2rem;
+  margin-right: 0.75rem;
+  color: var(--accent);
+}
+
+/* Mobilbarát */
+@media (max-width: 768px) {
+  .contact-info-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contact-info-image {
+    flex: 0 0 auto;
+    width: 60%;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-info-text {
+    width: 100%;
+  }
+}
+
 .contact-section {
   background: var(--bg-page);
   padding: 4rem 2rem;
@@ -1444,6 +1546,69 @@ section .container {
   }
 }
 
+/******* Galéria **************/
+.gallery-section {
+  padding: 4rem 2rem;
+  background: var(--bg-page);
+  text-align: center;
+}
+.gallery-section h2 {
+  font-family: var(--ff-heading);
+  font-size: 2rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+.gallery-section .subtitle {
+  color: var(--accent);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Grid elrendezés */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+/* Galéria elem */
+.gallery-item {
+  width: 180px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Mobil optimalizálás */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+
+  .gallery-item {
+    width: 100%;
+    height: 140px;
+  }
+}
+
 /* ── Lábléc stílus (Footer) ── */
 .custom-footer {
   background: var(--footer-bg);
@@ -1499,17 +1664,19 @@ section .container {
 
 .footer-contact li,
 .footer-links li {
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   font-size: 0.95rem;
 }
+
 
 .footer-contact .icon {
   display: inline-block;
   width: 1.2rem;
   margin-right: 0.5rem;
   text-align: center;
+  font-size: 1.1rem;
   color: var(--accent);
 }
 
@@ -1616,6 +1783,38 @@ section .container {
   width: 100%;
 }
 
+.category-add-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.category-add-row input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+#addCategoryBtn {
+  background-color: var(--accent);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#addCategoryBtn:hover {
+  background-color: var(--accent-dark);
+  transform: scale(1.05);
+}
+
 /* Admin item card */
 .item-card.admin {
   overflow: hidden;
@@ -1688,7 +1887,7 @@ section .container {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   padding: 2rem;
   width: 90%;
-  max-width: 520px;
+  max-width: 600px;
   display: grid;
   gap: 1.25rem;
 }

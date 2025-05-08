@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Régiségek Jocitól</title>
   <!-- Linkek -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
@@ -63,6 +68,28 @@
     </div>
   </section>
 
+  <section class="gallery-section">
+    <div class="container">
+      <h2>Galéria – Pillanatok a régiségek világából</h2>
+      <p class="subtitle">Tekints be a régiségek árusításának hangulatába és a vállalkozás kulisszái mögé!</p>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="pics/hero-bg-3.jpg" alt="Galéria kép 1">
+        </div>
+        <div class="gallery-item">
+          <img src="pics/antique-shop-bg.jpg" alt="Galéria kép 2">
+        </div>
+        <div class="gallery-item">
+          <img src="pics/hero-bg-1.jpg" alt="Galéria kép 3">
+        </div>
+        <div class="gallery-item">
+          <img src="pics/hero-bg-2.jpg" alt="Galéria kép 4">
+        </div>
+        <!-- További képek ugyanebben a formában -->
+      </div>
+    </div>
+  </section>
+
 
 <!---------- Footer --------------->
 <footer class="site-footer custom-footer">
@@ -80,9 +107,9 @@
     <div class="footer-col footer-contact">
       <h3>Elérhetőség</h3>
       <ul>
-        <li><span class="icon">📍</span>1092 Budapest, Ráday u. 30.</li>
-        <li><span class="icon">✉️</span><a href="mailto:hello@domained.hu">hello@domained.hu</a></li>
-        <li><span class="icon">📞</span><a href="tel:+36701234567">+36 70 123 4567</a></li>
+        <li><span class="icon"><i class="fa-solid fa-map-pin"></i></span>1092 Budapest, Ráday u. 30.</li>
+        <li><span class="icon"><i class="fas fa-envelope icon"></i></span><a href="mailto:hello@domained.hu">hello@domained.hu</a></li>
+        <li><span class="icon"><i class="fa-solid fa-phone icon"></i></span><a href="tel:+36701234567">+36 70 123 4567</a></li>
       </ul>
     </div>
 
@@ -106,9 +133,19 @@
   </div>
 </div>
 
+ <!-- Kép néző modal -->
+ <div id="imageModal" class="img-modal">
+  <div class="img-modal-inner rolunk-modal">
+    <span class="img-modal-close">&times;</span>
+    <img class="img-modal-content" id="modalImage">
+  </div>
+</div>
+
   <!-- JS: ugyanaz az admin.js, ami kezeli auth, feltöltés, kirenderelést -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
   <script type="module" src="js/nav.js"></script>
   <script type="module" src="js/pagetransition.js"></script>
+  <script type="module" src="js/lightbox.js"></script>
 </body>
 </html>
 

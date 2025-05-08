@@ -39,7 +39,9 @@ let allItems = [];
 // --- Egyetlen adatbetöltés + filter + render ---
 onValue(ref(db, "antiques"), snap => {
   const data = snap.val() || {};
-  allItems = Object.entries(data).map(([id, it]) => ({ id, ...it }));
+  allItems = Object.entries(data)
+  .map(([id, it]) => ({ id, ...it }))
+  .sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
 
   const selectedMain = mainCategoryFilter.value || urlParams.get("category") || "";
   mainCategoryFilter.value = selectedMain;
@@ -153,90 +155,70 @@ document.addEventListener("mouseover", e => {
   }
 });
 
-// Thumb-row automatikus scrollolás
+// Thumb-row automatikus scrollolás és érintés támogatás
 (() => {
-  const speed    = 5;
+  const speed = 5;
   const deadZone = 0.1;
-  let rafId      = null;
+  let rafId = null;
   let currentRow = null;
-  let mouseX     = 0;
-  let rowLeft    = 0;
-  let rowWidth   = 0;
+  let mouseX = 0;
+  let rowLeft = 0;
+  let rowWidth = 0;
+  let isTouching = false;
+  let touchStartX = 0;
+  let startScrollLeft = 0;
 
   function step() {
-    if (currentRow) {
-      const center = rowLeft + rowWidth / 2;
-      const delta  = mouseX - center;
-      const zone   = rowWidth * deadZone;
-      let dir = 0;
-      if (delta > zone)       dir = +1;
-      else if (delta < -zone) dir = -1;
-      if (dir !== 0) {
-        currentRow.scrollLeft += dir * speed;
-      }
-      rafId = requestAnimationFrame(step);
-    } else {
-      rafId = null;
-    }
+    if (!currentRow || isTouching) return void (rafId = null);
+    const center = rowLeft + rowWidth / 2;
+    const delta = mouseX - center;
+    const zone = rowWidth * deadZone;
+    let dir = 0;
+    if (delta > zone) dir = +1;
+    else if (delta < -zone) dir = -1;
+    if (dir !== 0) currentRow.scrollLeft += dir * speed;
+    rafId = requestAnimationFrame(step);
   }
 
   document.addEventListener("pointermove", e => {
+    if (e.pointerType === "mouse") {
+      const row = e.target.closest(".thumb-row");
+      if (row) {
+        currentRow = row;
+        const rect = row.getBoundingClientRect();
+        rowLeft = rect.left;
+        rowWidth = rect.width;
+        mouseX = e.clientX;
+        if (!rafId) rafId = requestAnimationFrame(step);
+      } else {
+        currentRow = null;
+      }
+    }
+  });
+
+  // Érintéses események kezelése
+  document.addEventListener("touchstart", e => {
     const row = e.target.closest(".thumb-row");
     if (row) {
+      isTouching = true;
       currentRow = row;
-      const rect = row.getBoundingClientRect();
-      rowLeft    = rect.left;
-      rowWidth   = rect.width;
-      mouseX     = e.clientX;
-      if (!rafId) rafId = requestAnimationFrame(step);
-    } else {
-      currentRow = null;
+      touchStartX = e.touches[0].clientX;
+      startScrollLeft = row.scrollLeft;
     }
+  });
+
+  document.addEventListener("touchmove", e => {
+    if (!isTouching || !currentRow) return;
+    const deltaX = e.touches[0].clientX - touchStartX;
+    currentRow.scrollLeft = startScrollLeft - deltaX;
+  });
+
+  document.addEventListener("touchend", () => {
+    isTouching = false;
+    currentRow = null;
   });
 })();
 
-// --- Lightbox galéria ---
-const imgModal    = document.getElementById("imageModal");
-const modalInner  = document.querySelector(".img-modal-inner");
-const modalImg    = document.getElementById("modalImage");
-const modalCloser = document.querySelector(".img-modal-close");
-let currentGallery = [];
-let currentIndex   = 0;
-
-// modal bezárása
-const toggleClose = () => imgModal.classList.remove("show");
-modalCloser.onclick = toggleClose;
-
-// kép vagy thumbnail kattintás
-document.addEventListener("click", e => {
-  const tgt = e.target;
-  if (tgt.tagName === "IMG" && tgt.closest(".item-card")) {
-    currentGallery = JSON.parse(tgt.dataset.gallery || "[]");
-    currentIndex   = currentGallery.indexOf(tgt.src);
-    if (currentIndex < 0) currentIndex = 0;
-    modalImg.src = currentGallery[currentIndex];
-    imgModal.classList.add("show");
-  }
-});
-
-// modalInner kattintás: lapozás
-modalInner.addEventListener("click", e => {
-  if (e.target === modalCloser) return;
-  if (currentGallery.length < 2) return;
-  const rect   = modalInner.getBoundingClientRect();
-  const clickX = e.clientX - rect.left;
-  if (clickX < rect.width / 2) {
-    currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-  } else {
-    currentIndex = (currentIndex + 1) % currentGallery.length;
-  }
-  modalImg.src = currentGallery[currentIndex];
-});
-
-// háttérre kattintás: bezárás
-imgModal.addEventListener("click", e => {
-  if (e.target === imgModal) toggleClose();
-});
 
 // custom dropdown események
 selected.addEventListener("click", () => {

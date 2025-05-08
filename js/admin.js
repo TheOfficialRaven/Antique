@@ -144,8 +144,12 @@ document.addEventListener("click", e => {
   onValue(itemsRef, async snap => {
     list.innerHTML = "";
     const data = snap.val() || {};
+  
+    const sortedEntries = Object.entries(data).sort(
+      (a, b) => (b[1].timestamp || 0) - (a[1].timestamp || 0)
+    );
 
-    Object.entries(data).forEach(([id, it]) => {
+    sortedEntries.forEach(([id, it]) => {
       const thumbsHTML = Array.isArray(it.imageUrls)
         ? it.imageUrls.map(url => `<img src="${url}" class="thumb" data-url="${url}">`).join("")
         : "";
@@ -294,6 +298,7 @@ document.addEventListener("click", e => {
     const desc = form.desc.value.trim();
     const price = Number(form.price.value);
     const category = catSelect.value;
+    const timestamp = Date.now();
     const mainCategory = document.getElementById("mainCategory").value;
     const files = Array.from(imageIn.files);
     if (!title || !desc || !price || !category) return alert("Tölts ki minden mezőt!");
@@ -309,7 +314,7 @@ document.addEventListener("click", e => {
     const imageUrls = results.map(r => r.url);
     const storagePaths = results.map(r => r.path);
     const newRef = push(dbRef(db, "antiques"));
-    await update(newRef, { title, desc, price, category,mainCategory, imageUrls, storagePaths });
+    await update(newRef, { title, desc, price, category,mainCategory, imageUrls, storagePaths, timestamp });
     form.reset();
     modal.classList.remove("show");
   };
