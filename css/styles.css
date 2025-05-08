@@ -578,7 +578,8 @@ section .container {
   position: absolute;
   bottom: 0;
   left: 0;
-  min-height: 4rem;
+  line-height: 1.4;
+  min-height: 4.2rem;
   width: 100%;
   background: rgba(255, 255, 255, 0.9);
   font-family: var(--ff-heading);
@@ -713,8 +714,17 @@ section .container {
   color: var(--text-main);
 }
 @media (max-width: 480px) {
-  .filter-bar { flex-direction: column; gap: 0.5rem; padding: 0.8rem 1rem; }
-  .filter-bar label { font-size: 1rem; }
+  .filter-bar { 
+    flex-direction: column; 
+    gap: 0.5rem; 
+    padding: 0.8rem 1rem; 
+    max-width: 300px;
+  }
+
+  .filter-bar label { 
+    font-size: 1rem; 
+  
+  }
 }
 
 /* ── GRID & ITEM CARD ── */
@@ -733,7 +743,6 @@ section .container {
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
   position: relative; /* szükséges a transformhoz */
-  z-index: 1; /* hovernél ne csússzon más elemek alá */
 }
 .item-card img {
   width: 100%;
@@ -1418,6 +1427,7 @@ section .container {
   .about-intro-container {
     flex-direction: column;
     text-align: center;
+    gap: 2rem;
   }
 
   .about-intro-text .btn-style {
@@ -1426,6 +1436,7 @@ section .container {
 
   .about-intro-image {
     order: -1; /* A kép jelenik meg előbb mobilon */
+    flex: none
   }
 
   .about-intro-image img {
@@ -1522,12 +1533,13 @@ section .container {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 1rem;
   }
 
   .footer-col {
     flex: 1 1 100%;
     max-width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
   }
 
   .footer-contact li,
