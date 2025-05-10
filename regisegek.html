@@ -95,13 +95,24 @@
     <!-- ide jönnek a Firebase-ből betöltött kártyák -->
   </section>
 
-  <!-- Kép néző modal -->
-  <div id="imageModal" class="img-modal">
-    <div class="img-modal-inner">
-      <span class="img-modal-close">&times;</span>
-      <img class="img-modal-content" id="modalImage">
+
+<!-- Infó modal -->
+<div id="infoModal">
+  <div class="info-modal-content">
+    <div class="info-modal-image">
+      <button class="modal-prev" aria-label="Előző kép">&#10094;</button>
+      <img id="infoModalImage" src="" alt="Termék képe">
+      <button class="modal-next" aria-label="Következő kép">&#10095;</button>
+      <div class="modal-dots"></div>
     </div>
+    <div class="info-modal-details">
+      <h3 id="infoModalTitle">Cím</h3>
+      <p id="infoModalDesc">Leírás</p>
+      <p class="price" id="infoModalPrice">Ár</p>
+    </div>
+    <span class="info-modal-close" aria-label="Bezárás">&times;</span>
   </div>
+</div>
 
 <!---------- Footer --------------->
 <footer class="site-footer custom-footer">
@@ -149,7 +160,6 @@
 
   <!-- JS: ugyanaz az admin.js, ami kezeli auth, feltöltés, kirenderelést -->
   <script type="module" src="js/regisegek.js"></script>
-  <script type="module" src="js/lightbox.js"></script>
   <script type="module" src="js/nav.js"></script>
   <script type="module" src="js/pagetransition.js"></script>
 </body>

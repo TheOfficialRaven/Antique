@@ -115,7 +115,7 @@ filterEl.onchange = () => {
 // --- Render függvény változatlanul ---
 function renderItems(items) {
   showcase.innerHTML = "";
-  items.forEach(({ title, desc, price, imageUrls = [] }, index) => {
+  items.forEach(({ title, desc, price, imageUrls = [], id }, index) => {
     const galleryData = JSON.stringify(imageUrls);
     const main = imageUrls[0] || "";
     const thumbs = imageUrls
@@ -123,7 +123,8 @@ function renderItems(items) {
       .join("");
     const card = document.createElement("article");
     card.className = "item-card";
-    card.style.animationDelay = `${index * 100}ms`; // kis késleltetés
+    card.id = `item-${id}`;
+    card.style.animationDelay = `${index * 100}ms`;
     card.innerHTML = `
       <div class="main-image">
         <img src="${main}" data-gallery='${galleryData}' alt="${title}">
@@ -138,6 +139,20 @@ function renderItems(items) {
       </div>`;
     showcase.appendChild(card);
   });
+
+  // 🔥 Ellenőrizze, hogy az URL-ben szerepel-e az `id` és `openModal=true`
+  const params = new URLSearchParams(window.location.search);
+  const itemId = params.get("id");
+  const openModal = params.get("openModal") === "true";
+  if (itemId && openModal) {
+    const el = document.getElementById(`item-${itemId}`);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      setTimeout(() => {
+        el.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      }, 300); // rövidebb delay is elég itt
+    }
+  }
 }
 
 // kattintás máshova: dropdown bezárása
@@ -267,6 +282,131 @@ mainOptions.addEventListener("click", e => {
 // Kívülre kattintásra zárjuk a dropdown-t
 document.addEventListener("click", e => {
   if (!mainDropdown.contains(e.target)) mainDropdown.classList.remove("open");
+});
+
+
+
+// Modalhoz tartozó elemek
+const infoModal   = document.getElementById("infoModal");
+const infoImage   = document.getElementById("infoModalImage");
+const infoTitle   = document.getElementById("infoModalTitle");
+const infoDesc    = document.getElementById("infoModalDesc");
+const infoPrice   = document.getElementById("infoModalPrice");
+const infoCloser  = document.querySelector(".info-modal-close");
+const prevBtn     = document.querySelector(".modal-prev");
+const nextBtn     = document.querySelector(".modal-next");
+const dotsWrapper = document.querySelector(".modal-dots");
+
+let currentGallery = [];
+let currentIndex   = 0;
+
+infoCloser.onclick = () => infoModal.classList.remove("show");
+
+// Modal háttérre kattintás – bezárás
+infoModal.addEventListener("click", e => {
+  if (e.target === infoModal) infoModal.classList.remove("show");
+});
+
+// Kattintás esemény figyelése
+document.addEventListener("click", e => {
+  const card = e.target.closest(".item-card");
+  if (!card) return;
+  const id = card.id.replace("item-", "");
+  const item = allItems.find(i => i.id === id);
+  if (!item) return;
+
+  currentGallery = item.imageUrls || [];
+  currentIndex   = 0;
+
+  updateModalContent();
+
+  infoTitle.textContent = item.title || "Névtelen tárgy";
+  infoDesc.textContent  = item.desc  || "";
+  infoPrice.textContent = `${item.price} Ft` || "";
+
+  renderDots();
+  infoModal.classList.add("show");
+});
+
+// Frissíti a fő képet a currentIndex alapján
+function updateModalContent() {
+  infoImage.src = currentGallery[currentIndex] || "";
+  updateActiveDot();
+}
+
+// Következő kép
+nextBtn.onclick = () => {
+  if (currentGallery.length < 2) return;
+  currentIndex = (currentIndex + 1) % currentGallery.length;
+  updateModalContent();
+};
+
+// Előző kép
+prevBtn.onclick = () => {
+  if (currentGallery.length < 2) return;
+  currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+  updateModalContent();
+};
+
+// Swipe támogatás (érintéses eszközökre)
+let touchStartX = null;
+infoImage.addEventListener("touchstart", e => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+infoImage.addEventListener("touchend", e => {
+  if (touchStartX === null) return;
+  const touchEndX = e.changedTouches[0].screenX;
+  const diffX = touchStartX - touchEndX;
+  if (Math.abs(diffX) > 50) {
+    if (diffX > 0) nextBtn.click();
+    else prevBtn.click();
+  }
+  touchStartX = null;
+});
+
+// Dots renderelése
+function renderDots() {
+  dotsWrapper.innerHTML = "";
+  currentGallery.forEach((_, i) => {
+    const dot = document.createElement("span");
+    dot.className = "modal-dot" + (i === currentIndex ? " active" : "");
+    dot.dataset.index = i;
+    dot.onclick = () => {
+      currentIndex = parseInt(dot.dataset.index);
+      updateModalContent();
+    };
+    dotsWrapper.appendChild(dot);
+  });
+}
+
+// Dots frissítése
+function updateActiveDot() {
+  dotsWrapper.querySelectorAll(".modal-dot").forEach((dot, i) => {
+    dot.classList.toggle("active", i === currentIndex);
+  });
+}
+
+// Görgetés és modal megnyitás, ha URL-ben ?id=...&openModal=true szerepel
+window.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const itemId = params.get("id");
+  const openModal = params.get("openModal") === "true";
+
+  if (itemId) {
+    const el = document.getElementById(`item-${itemId}`);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      // Ha modal is nyíljon:
+      if (openModal) {
+        // kis idő kell, hogy betöltődjön a DOM
+        setTimeout(() => {
+          const clickEvt = new MouseEvent("click", { bubbles: true });
+          el.dispatchEvent(clickEvt);
+        }, 5000); // 0.5 másodperc elég
+      }
+    }
+  }
 });
 
 

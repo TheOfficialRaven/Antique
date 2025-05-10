@@ -52,31 +52,37 @@ document.addEventListener('DOMContentLoaded', () => {
     thumbs.forEach(thumb => observer.observe(thumb));
   }
 
-  onValue(antiquesQuery, snap => {
-    row.innerHTML = ''; // törlés
-  
-    const data = snap.val() || {};
-    Object.entries(data)
-      .reverse()
-      .forEach(([id, item]) => {
-        const url = Array.isArray(item.imageUrls) && item.imageUrls[0];
-        if (!url) return;
-  
-        const a = document.createElement('a');
-        a.href = `/regisegek.html?id=${encodeURIComponent(id)}`;
-        a.className = 'thumb-recent';
-  
-        const img = document.createElement('img');
-        img.src = url;
-        img.alt = item.title || '';
-  
-        a.appendChild(img);
-        row.appendChild(a);
-      });
-  
-    // 🔥 Az elemek már a DOM-ban vannak, most figyeljük meg őket:
-    animateThumbsWhenReady();
+ onValue(antiquesQuery, snap => {
+  row.innerHTML = ''; // törlés
+
+  const data = snap.val() || {};
+Object.entries(data)
+  .reverse()
+  .forEach(([id, item]) => {
+    const url = Array.isArray(item.imageUrls) && item.imageUrls[0];
+    if (!url) return;
+
+    const a = document.createElement('a');
+    a.href = `regisegek.html?id=${encodeURIComponent(id)}&openModal=true`;
+    a.className = 'thumb-recent';
+
+    const img = document.createElement('img');
+    img.src = url;
+    img.alt = item.title || '';
+    a.appendChild(img);
+
+    // ➕ Kattintásra page transition után navigálás
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      document.body.style.opacity = "0";
+      setTimeout(() => {
+        window.location.href = a.href;
+      }, 400);
+    });
+
+    row.appendChild(a);
   });
+});
 });
 
 //////////////////////// GYIK

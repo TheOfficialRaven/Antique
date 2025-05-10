@@ -1678,6 +1678,170 @@ display: none;
   }
 }
 
+
+/* --- Info Modal (frissített, reszponzív) -- */
+#infoModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+#infoModal.show {
+  display: flex;
+}
+
+.info-modal-content {
+  background: var(--page-alt, #fff);
+  color: var(--text-main, #222);
+  width: 100%;
+  max-width: 1200px;
+  height: 500px;
+  border: 2px solid var(--accent);
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  animation: fadeInUp 0.5s ease;
+}
+
+.info-modal-image {
+  flex: 1;
+  background-color: #f8f8f8;
+  position: relative;
+}
+
+.info-modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.info-modal-details {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info-modal-details h3 {
+  font-family: var(--ff-heading);
+  font-size: 1.8rem;
+  color: var(--accent, #6b4e16);
+  margin-bottom: 3rem;
+}
+
+.info-modal-details p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.info-modal-details .price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.info-modal-close {
+  position: absolute;
+  top: 0.1rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: var(--text-main);
+  cursor: pointer;
+  z-index: 1001;
+  transition: transform 0.3s ease;
+}
+
+.info-modal-close:hover {
+  transform: scale(1.2);
+}
+
+/* Nyilak pozicionálása */
+.modal-prev,
+.modal-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 10;
+  color: #333;
+  transition: background 0.3s ease;
+}
+
+.modal-prev:hover,
+.modal-next:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.modal-prev {
+  left: 10px;
+}
+
+.modal-next {
+  right: 10px;
+}
+
+/* Pöttyök */
+.modal-dots {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  z-index: 9;
+}
+
+.modal-dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.modal-dot.active,
+.modal-dot:hover {
+  background: var(--accent, #6b4e16);
+}
+
+/* Mobil reszponzivitás */
+@media (max-width: 768px) {
+  .info-modal-content {
+    flex-direction: column;
+    height: auto;
+    max-height: 90vh;
+  }
+
+  .info-modal-details {
+    padding: 1.5rem;
+  }
+
+  .info-modal-image {
+    height: 300px;
+  }
+
+  .info-modal-close {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
 /* ── Lábléc stílus (Footer) ── */
 .custom-footer {
   background: var(--footer-bg);
