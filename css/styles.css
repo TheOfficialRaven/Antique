@@ -369,7 +369,7 @@ section .container {
 
 .carousel-fixed-caption {
   position: absolute;
-  top: 40%;
+  top: 30%;
   left: 0;
   right: 0;
   transform: translateY(-50%);
