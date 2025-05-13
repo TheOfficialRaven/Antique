@@ -138,7 +138,9 @@ section .container {
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--accent-dark);
+  overflow: hidden;
+  border-radius: inherit;
+  background-color: var(--text-main);
   transform: translateX(-100%);
   transition: transform var(--transition);
   z-index: 0;
@@ -164,13 +166,16 @@ section .container {
   color: #fff;
   text-decoration: none;
   padding: 0.8rem 1.2rem;
+  background-color: transparent;
   border-bottom: none;
   padding-bottom: none;
+  
 }
 
 .btn-style-2:hover {
   color: #fff;
   text-decoration: none;
+  background-color: transparent;
   padding: 0.8rem 1.2rem;
   padding-bottom: none;
 }
@@ -247,7 +252,6 @@ section .container {
 .desktop-nav a:hover,
 .desktop-nav a.active {
   color: var(--accent);
-  padding-bottom: 0.2rem;
 }
 
 /* Hamburger ikon (mobilon) */
@@ -1712,7 +1716,7 @@ display: none;
 }
 
 .info-modal-image {
-  flex: 1;
+  flex: 2;
   background-color: #f8f8f8;
   position: relative;
 }
