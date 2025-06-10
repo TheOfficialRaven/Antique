@@ -411,6 +411,29 @@ section .container {
   font-size: 1rem;
 }
 
+/* Carousel control buttons for mobile */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+  z-index: 10;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 30px;
+  height: 30px;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+}
+
+/* Enable touch gestures for carousel - let Bootstrap handle this */
+
 /* Mobil */
 @media (max-width: 768px) {
   .carousel-fixed-caption h2 {
@@ -424,7 +447,85 @@ section .container {
   .carousel-fixed-caption .btn-style {
     font-size: 0.9rem;
     padding: 0.6rem 1rem;
+    width: 170px;
   }
+
+  .carousel-fixed-caption .btn-style-2 {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+    width: 170px;
+  }
+
+  /* Mobile carousel controls - larger touch targets */
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 15%;
+    opacity: 1;
+  }
+
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+
+
+  /* Ensure carousel item height works on mobile */
+  #carouselExampleCaptions {
+    height: 70vh;
+    min-height: 500px;
+  }
+
+  .carousel-item {
+    height: 70vh;
+    min-height: 500px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  #carouselExampleCaptions {
+    height: 60vh;
+    min-height: 450px;
+  }
+
+  .carousel-item {
+    height: 60vh;
+    min-height: 450px;
+  }
+
+  .carousel-fixed-caption {
+    top: 25%;
+    padding: 1rem;
+  }
+
+  .carousel-fixed-caption h2 {
+    font-size: 1.5rem;
+  }
+
+  .carousel-fixed-caption p {
+    font-size: 0.9rem;
+    margin-bottom: 5rem;
+  }
+
+  .carousel-fixed-caption .btn-style {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+    width: 180px;
+  }
+
+  .carousel-fixed-caption .btn-style-2 {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+    width: 180px;
+  }
+
+  .center-link-align {
+    gap: 15px;
+  }
+
+
 }
 
 @keyframes fadeInUp {
@@ -439,11 +540,11 @@ section .container {
 }
 
 .hero-2 {
-  background-image: url('/pics/Hero-3.jpg');
+  background-image: url('../pics/Hero-3.jpg');
 }
 
 .hero-3 {
-  background-image: url('/pics/Hero-2.jpg');
+  background-image: url('../pics/Hero-2.jpg');
 }
 
 .hero-2, .hero-3 {
@@ -515,17 +616,7 @@ section .container {
   }
 }
 
-/* Animáció */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* Animáció - fadeInUp is already defined above */
 
 /* ===== Kategóriák szekció ===== */
 
@@ -1072,6 +1163,9 @@ display: none;
 
   .center-link-align {
     margin-top: 1rem;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
   }
 }
 
