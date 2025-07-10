@@ -23,10 +23,10 @@
 
   <!-- Desktop nav -->
   <nav class="desktop-nav">
-    <a href="index.html">Kezdőlap</a>
-    <a href="regisegek.html">Régiségek</a>
-    <a href="rolunk.html">Rólunk</a>
-    <a href="kapcsolat.html">Kapcsolat</a>
+    <a href="index.html" data-i18n="nav.home">Kezdőlap</a>
+    <a href="regisegek.html" data-i18n="nav.antiques">Régiségek</a>
+    <a href="rolunk.html" data-i18n="nav.about">Rólunk</a>
+    <a href="kapcsolat.html" data-i18n="nav.contact">Kapcsolat</a>
   </nav>
 
   <!-- Hamburger for mobile -->
@@ -38,18 +38,18 @@
 
   <!-- Mobile overlay nav -->
   <nav class="nav-overlay">
-    <a href="index.html">Kezdőlap</a>
-    <a href="regisegek.html">Régiségek</a>
-    <a href="rolunk.html">Rólunk</a>
-    <a href="kapcsolat.html">Kapcsolat</a>
+    <a href="index.html" data-i18n="nav.home">Kezdőlap</a>
+    <a href="regisegek.html" data-i18n="nav.antiques">Régiségek</a>
+    <a href="rolunk.html" data-i18n="nav.about">Rólunk</a>
+    <a href="kapcsolat.html" data-i18n="nav.contact">Kapcsolat</a>
   </nav>
 </header>
 
   <!-- Hero -->
   <section id="hero" class="hero-2">
     <div class="hero-2-content">
-      <h2>Fedezd fel az idők varázsát</h2>
-      <p>Kézzel válogatott antik tárgyak egyenesen Önhöz</p>
+      <h2 data-i18n="hero.title_alt">Fedezd fel az idők varázsát</h2>
+      <p data-i18n="hero.subtitle_alt">Kézzel válogatott antik tárgyak egyenesen Önhöz</p>
     </div>
     <div class="overlay"></div>
   </section>
@@ -59,8 +59,8 @@
   <div class="container contact-info-flex">
     <!-- Bal oldal: Szöveg -->
     <div class="contact-intro">
-      <h2>Lépj velünk kapcsolatba</h2>
-      <p>
+      <h2 data-i18n="contact.reach_us">Lépj velünk kapcsolatba</h2>
+      <p data-i18n="contact.description">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, 
         sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
       </p>
@@ -71,7 +71,7 @@
       <ul class="contact-details">
         <li><i class="fa-solid fa-phone icon"></i><a href="tel:+36701234567">+36 70 123 4567</a></li>
         <li><i class="fa-solid fa-envelope icon"></i><a href="mailto:hello@regisegek.hu">hello@regisegek.hu</a></li>
-        <li><i class="fa-solid fa-clock icon"></i>Hétköznap esténként és hétvégén</li>
+        <li><i class="fa-solid fa-clock icon"></i><span data-i18n="contact.schedule">Hétköznap esténként és hétvégén</span></li>
       </ul>
     </div>
   </div>
@@ -81,22 +81,22 @@
 <section class="contact-section">
   <div class="contact-container">
     <div class="contact-form-wrapper">
-      <h2>Írj nekünk</h2>
-      <p>Ha kérdésed van, vagy eladnád tárgyaidat, írj nekünk bátran!</p>
+      <h2 data-i18n="sections.write_to_us">Írj nekünk</h2>
+      <p data-i18n="sections.contact_subtitle">Ha kérdésed van, vagy eladnád tárgyaidat, írj nekünk bátran!</p>
       <form class="contact-form">
         <div class="form-group">
-          <label for="name">Név</label>
+          <label for="name" data-i18n="contact.name">Név</label>
           <input type="text" id="name" name="name" required>
         </div>
         <div class="form-group">
-          <label for="email">E-mail</label>
+          <label for="email" data-i18n="contact.email">E-mail</label>
           <input type="email" id="email" name="email" required>
         </div>
         <div class="form-group">
-          <label for="message">Üzenet</label>
+          <label for="message" data-i18n="contact.message">Üzenet</label>
           <textarea id="message" name="message" rows="5" required></textarea>
         </div>
-        <button type="submit" class="btn-style"><span>Küldés</span></button>
+        <button type="submit" class="btn-style"><span data-i18n="contact.send">Küldés</span></button>
       </form>
     </div>
     <div class="contact-image-wrapper">
@@ -108,24 +108,24 @@
     <!-- GYIK Szekció -->
     <section id="faq" class="faq-section" aria-labelledby="faq-heading">
       <div class="container">
-        <h2 id="faq-heading" class="section-title">Gyakori kérdések a vásárlásról és értékesítésről</h2>
+        <h2 id="faq-heading" class="section-title" data-i18n="sections.faq">Gyakori kérdések a vásárlásról és értékesítésről</h2>
         <div class="faq-columns">
           <!-- Bal oszlop -->
           <div class="faq-col">
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                Lorem ipsum dolor sit?<span class="arrow">›</span>
+                <span data-i18n="lorem.text">Lorem ipsum dolor sit?</span><span class="arrow">›</span>
               </button>
               <div class="faq-answer">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore 
+                <span data-i18n="lorem.text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</span>
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                Lorem ipsum dolor sit amet, consetetur? <span class="arrow">›</span>
+                <span data-i18n="lorem.text">Lorem ipsum dolor sit amet, consetetur?</span> <span class="arrow">›</span>
               </button>
               <div class="faq-answer">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore 
+                <span data-i18n="lorem.text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</span>
               </div>
             </div>
           </div>
@@ -133,18 +133,18 @@
           <div class="faq-col">
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                Lorem ipsum dolor sit? <span class="arrow">›</span>
+                <span data-i18n="lorem.text">Lorem ipsum dolor sit?</span> <span class="arrow">›</span>
               </button>
               <div class="faq-answer">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore 
+                <span data-i18n="lorem.text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</span>
               </div>
             </div>
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
-                Lorem ipsum dolor sit amet, consetetur sadipscing? <span class="arrow">›</span>
+                <span data-i18n="lorem.text">Lorem ipsum dolor sit amet, consetetur sadipscing?</span> <span class="arrow">›</span>
               </button>
               <div class="faq-answer">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore 
+                <span data-i18n="lorem.text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore</span>
               </div>
             </div>
           </div>
@@ -159,7 +159,7 @@
     <!-- Bal oszlop: Márka / bemutatkozás -->
     <div class="footer-col footer-brand">
               <h2>Atique Shop</h2>
-      <p>
+      <p data-i18n="footer.brand_description">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
           sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
           sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
@@ -168,7 +168,7 @@
 
     <!-- Középső oszlop: Kapcsolat -->
     <div class="footer-col footer-contact">
-      <h3>Elérhetőség</h3>
+      <h3 data-i18n="footer.contact_info">Elérhetőség</h3>
       <ul>
         <li><span class="icon"><i class="fa-solid fa-map-pin"></i></span>1092 Budapest, Ráday u. 30.</li>
         <li><span class="icon"><i class="fas fa-envelope icon"></i></span><a href="mailto:hello@domained.hu">hello@domained.hu</a></li>
@@ -178,12 +178,12 @@
 
     <!-- Jobb oszlop: Linkek -->
     <div class="footer-col footer-links">
-      <h3>Oldalak</h3>
+      <h3 data-i18n="footer.pages">Oldalak</h3>
       <ul>
-        <li><a href="index.html">Főoldal</a></li>
-        <li><a href="rolunk.html">Rólunk</a></li>
-        <li><a href="regisegek.html">Tárgyak</a></li>
-        <li><a href="kapcsolat.html">Kapcsolat</a></li>
+        <li><a href="index.html" data-i18n="footer.pages_home">Főoldal</a></li>
+        <li><a href="rolunk.html" data-i18n="footer.pages_about">Rólunk</a></li>
+        <li><a href="regisegek.html" data-i18n="footer.pages_antiques">Tárgyak</a></li>
+        <li><a href="kapcsolat.html" data-i18n="footer.pages_contact">Kapcsolat</a></li>
       </ul>
     </div>
 
@@ -191,12 +191,13 @@
 </footer>
 <div class="footer-bottom">
   <div class="container footer-bottom-inner">
-          <p class="copyright">© 2025 Atique Shop – Minden jog fenntartva</p>
-    <a href="#top" class="back-to-top">Vissza az oldal tetejére ↑</a>
+          <p class="copyright" data-i18n="footer.copyright">© 2025 Atique Shop – Minden jog fenntartva</p>
+    <a href="#top" class="back-to-top" data-i18n="footer.back_to_top">Vissza az oldal tetejére ↑</a>
   </div>
 </div>
 
   <!-- JS: ugyanaz az admin.js, ami kezeli auth, feltöltés, kirenderelést -->
+  <script type="module" src="js/language.js"></script>
   <script type="module" src="js/nav.js"></script>
   <script type="module" src="js/kapcsolat.js"></script>
   <script type="module" src="js/pagetransition.js"></script>

@@ -1,0 +1,120 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "antiques": "Antiquitäten", 
+    "about": "Über Uns",
+    "contact": "Kontakt",
+    "back_to_homepage": "Zurück zur Startseite",
+    "logout": "Abmelden"
+  },
+  "hero": {
+    "title": "Entdecken Sie die Schätze der Vergangenheit",
+    "subtitle": "Ausgewählte Antiquitäten mit einzigartigen Geschichten",
+    "title_alt": "Entdecken Sie die Magie der Zeit",
+    "subtitle_alt": "Handverlesene antike Gegenstände direkt zu Ihnen",
+    "btn_antiques": "Antiquitäten",
+    "btn_contact": "Schreiben Sie uns"
+  },
+  "sections": {
+    "recent_products": "Kürzlich hochgeladene Antiquitäten",
+    "recent_products_subtitle": "Entdecken Sie die neuesten einzigartigen Ergänzungen",
+    "all_products": "Alle Produkte",
+    "categories": "Kategorien",
+    "categories_subtitle": "Stöbern Sie in antiken Gegenständen nach Typ",
+    "testimonials": "Was sagen unsere Kunden?",
+    "testimonials_subtitle": "Sie haben bereits ihre Lieblings-Antiquitäten gefunden",
+    "get_to_know": "Lernen Sie kennen",
+    "contact_us": "Kontaktieren Sie uns",
+    "contact_subtitle": "Wenn Sie Fragen haben oder Ihre Gegenstände verkaufen möchten, schreiben Sie uns gerne!",
+    "write_to_us": "Schreiben Sie uns",
+    "faq": "Häufig gestellte Fragen zum Kauf und Verkauf",
+    "gallery": "Galerie – Momente aus der Welt der Antiquitäten",
+    "gallery_subtitle": "Werfen Sie einen Blick hinter die Kulissen des Antiquitätenhandels und unseres Geschäfts!"
+  },
+  "categories": {
+    "all": "Alle",
+    "furniture": "Möbel-Antiquitäten",
+    "furniture_desc": "Wohnungseinrichtung und dekorative Antiquitäten",
+    "household": "Alte Haushaltsgegenstände",
+    "household_desc": "Sammlung alter Haushaltsgegenstände",
+    "decorative": "Dekorative Gegenstände und Wohndekorationen",
+    "decorative_desc": "Antike Dekorationsgegenstände und Dekorationen aus der Vergangenheit",
+    "folk": "Volkserinnerungen und Dörfliches",
+    "folk_desc": "Volkserinnerungen und Gegenstände des Dorflebens",
+    "military": "Militärische und historische Stücke",
+    "military_desc": "Militärische Reliquien und historische Schätze",
+    "technical": "Alte technische Geräte",
+    "technical_desc": "Welt der technischen Geräte des letzten Jahrhunderts",
+    "printed": "Gedruckte Erinnerungen und Papiergegenstände",
+    "printed_desc": "Gedruckte Erinnerungen und zeitgenössische Dokumente",
+    "personal": "Persönliche Gegenstände aus der Vergangenheit",
+    "personal_desc": "Persönliche Gegenstände und Erinnerungen aus der fernen Vergangenheit"
+  },
+  "filter": {
+    "main_category": "Hauptkategorie",
+    "additional_categories": "Zusätzliche Kategorien"
+  },
+  "contact": {
+    "reach_us": "Kontaktieren Sie uns",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "schedule": "Werktags abends und am Wochenende",
+    "name": "Name",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "send": "Senden"
+  },
+  "footer": {
+    "brand_description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+    "contact_info": "Kontaktinformationen",
+    "pages": "Seiten",
+    "pages_home": "Startseite",
+    "pages_about": "Über Uns",
+    "pages_antiques": "Gegenstände",
+    "pages_contact": "Kontakt",
+    "copyright": "© 2025 Atique Shop – Alle Rechte vorbehalten",
+    "back_to_top": "Zurück nach oben ↑"
+  },
+  "admin": {
+    "admin_login": "Admin-Anmeldung",
+    "email": "E-Mail-Adresse",
+    "password": "Passwort",
+    "login": "Anmelden",
+    "add_new_item": "+ Neuen Artikel hinzufügen",
+    "new_antique": "Neuer antiker Gegenstand",
+    "title": "Titel",
+    "description": "Beschreibung",
+    "price": "Preis (Ft)",
+    "images": "Bilder (mehrere können ausgewählt werden)",
+    "category": "Kategorie",
+    "main_category": "Hauptkategorie",
+    "select_main_category": "-- Hauptkategorie auswählen --",
+    "secondary_category": "Sekundäre Kategorie",
+    "select_category": "-- Kategorie auswählen --",
+    "new_category": "Neue Kategorie",
+    "add": "Hinzufügen",
+    "save": "Speichern",
+    "delete_confirm": "Sind Sie sicher, dass Sie diesen Artikel löschen möchten?",
+    "yes_delete": "Ja, löschen",
+    "cancel": "Abbrechen",
+    "email_placeholder": "E-Mail",
+    "password_placeholder": "Passwort"
+  },
+  "modal": {
+    "previous_image": "Vorheriges Bild",
+    "next_image": "Nächstes Bild",
+    "close": "Schließen",
+    "product_image": "Produktbild",
+    "title": "Titel",
+    "description": "Beschreibung",
+    "price": "Preis"
+  },
+  "lorem": {
+    "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore",
+    "author": "Lorem ipsum"
+  },
+  "about": {
+    "about_us": "Über Uns",
+    "description1": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,",
+    "description2": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+  }
+} 

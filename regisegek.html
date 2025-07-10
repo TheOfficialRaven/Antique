@@ -23,10 +23,10 @@
 
   <!-- Desktop nav -->
   <nav class="desktop-nav">
-    <a href="index.html">Kezdőlap</a>
-    <a href="regisegek.html">Régiségek</a>
-    <a href="rolunk.html">Rólunk</a>
-    <a href="kapcsolat.html">Kapcsolat</a>
+    <a href="index.html" data-i18n="nav.home">Kezdőlap</a>
+    <a href="regisegek.html" data-i18n="nav.antiques">Régiségek</a>
+    <a href="rolunk.html" data-i18n="nav.about">Rólunk</a>
+    <a href="kapcsolat.html" data-i18n="nav.contact">Kapcsolat</a>
   </nav>
 
   <!-- Hamburger for mobile -->
@@ -38,18 +38,18 @@
 
   <!-- Mobile overlay nav -->
   <nav class="nav-overlay">
-    <a href="index.html">Kezdőlap</a>
-    <a href="regisegek.html">Régiségek</a>
-    <a href="rolunk.html">Rólunk</a>
-    <a href="kapcsolat.html">Kapcsolat</a>
+    <a href="index.html" data-i18n="nav.home">Kezdőlap</a>
+    <a href="regisegek.html" data-i18n="nav.antiques">Régiségek</a>
+    <a href="rolunk.html" data-i18n="nav.about">Rólunk</a>
+    <a href="kapcsolat.html" data-i18n="nav.contact">Kapcsolat</a>
   </nav>
 </header>
 
   <!-- Hero -->
   <section id="hero" class="hero-2">
     <div class="hero-2-content">
-      <h2>Fedezd fel az idők varázsát</h2>
-      <p>Kézzel válogatott antik tárgyak egyenesen Önhöz</p>
+      <h2 data-i18n="hero.title_alt">Fedezd fel az idők varázsát</h2>
+      <p data-i18n="hero.subtitle_alt">Kézzel válogatott antik tárgyak egyenesen Önhöz</p>
     </div>
     <div class="overlay"></div>
   </section>
@@ -57,36 +57,36 @@
  <!-- Filter bar -->
 <div class="filter-bar">
   <div class="category-content">
-  <label for="mainCategoryFilter">Fő kategória</label>
+  <label for="mainCategoryFilter" data-i18n="filter.main_category">Fő kategória</label>
     <!-- Rejtett input, ahol a kiválasztott fő kategória értéke tárolódik -->
 <input type="hidden" id="mainCategoryFilter" value="">
 
 <!-- Custom dropdown, ugyanazzal a stílussal -->
 <div class="custom-dropdown" id="mainCategoryDropdown">
-  <div class="selected">Összes</div>
+  <div class="selected" data-i18n="categories.all">Összes</div>
   <ul class="options">
-    <li data-value="">Összes</li>
-    <li data-value="Lakberendezési régiségek">Lakberendezési régiségek</li>
-    <li data-value="Régi háztartási eszközök">Régi háztartási eszközök</li>
-    <li data-value="Dísztárgyak és lakásdekorációk">Dísztárgyak és lakásdekorációk</li>
-    <li data-value="Népi és falusi emlékek">Népi és falusi emlékek</li>
-    <li data-value="Katonai és történelmi darabok">Katonai és történelmi darabok</li>
-    <li data-value="Régi technikai eszközök">Régi technikai eszközök</li>
-    <li data-value="Nyomtatott emlékek és papíripáságok">Nyomtatott emlékek és papíripáságok</li>
-    <li data-value="Személyes tárgyak a múltból">Személyes tárgyak a múltból</li>
+    <li data-value="" data-i18n="categories.all">Összes</li>
+    <li data-value="Lakberendezési régiségek" data-i18n="categories.furniture">Lakberendezési régiségek</li>
+    <li data-value="Régi háztartási eszközök" data-i18n="categories.household">Régi háztartási eszközök</li>
+    <li data-value="Dísztárgyak és lakásdekorációk" data-i18n="categories.decorative">Dísztárgyak és lakásdekorációk</li>
+    <li data-value="Népi és falusi emlékek" data-i18n="categories.folk">Népi és falusi emlékek</li>
+    <li data-value="Katonai és történelmi darabok" data-i18n="categories.military">Katonai és történelmi darabok</li>
+    <li data-value="Régi technikai eszközök" data-i18n="categories.technical">Régi technikai eszközök</li>
+    <li data-value="Nyomtatott emlékek és papíripáságok" data-i18n="categories.printed">Nyomtatott emlékek és papíripáságok</li>
+    <li data-value="Személyes tárgyak a múltból" data-i18n="categories.personal">Személyes tárgyak a múltból</li>
   </ul>
 </div>
 
   </div>
   <div class="category-content">
-  <label for="categoryFilter">További kategóriák</label>
+  <label for="categoryFilter" data-i18n="filter.additional_categories">További kategóriák</label>
   <!-- a natív select, amit JS generál majd, de el van rejtve -->
   <select id="categoryFilter" class="category-filter">
-    <option value="all">Összes</option>
+    <option value="all" data-i18n="categories.all">Összes</option>
   </select>
   <!-- ide épül be a custom dropdown -->
   <div class="custom-dropdown" id="categoryDropdown">
-    <div class="selected">Összes</div>
+    <div class="selected" data-i18n="categories.all">Összes</div>
     <ul class="options"></ul>
   </div>
 </div>
@@ -102,17 +102,17 @@
 <div id="infoModal">
   <div class="info-modal-content">
     <div class="info-modal-image">
-      <button class="modal-prev" aria-label="Előző kép">&#10094;</button>
-      <img id="infoModalImage" src="" alt="Termék képe">
-      <button class="modal-next" aria-label="Következő kép">&#10095;</button>
+      <button class="modal-prev" aria-label="Előző kép" data-i18n="modal.previous_image">&#10094;</button>
+      <img id="infoModalImage" src="" alt="Termék képe" data-i18n="modal.product_image">
+      <button class="modal-next" aria-label="Következő kép" data-i18n="modal.next_image">&#10095;</button>
       <div class="modal-dots"></div>
     </div>
     <div class="info-modal-details">
-      <h3 id="infoModalTitle">Cím</h3>
-      <p id="infoModalDesc">Leírás</p>
-      <p class="price" id="infoModalPrice">Ár</p>
+      <h3 id="infoModalTitle" data-i18n="modal.title">Cím</h3>
+      <p id="infoModalDesc" data-i18n="modal.description">Leírás</p>
+      <p class="price" id="infoModalPrice" data-i18n="modal.price">Ár</p>
     </div>
-    <span class="info-modal-close" aria-label="Bezárás">&times;</span>
+    <span class="info-modal-close" aria-label="Bezárás" data-i18n="modal.close">&times;</span>
   </div>
 </div>
 
@@ -123,7 +123,7 @@
     <!-- Bal oszlop: Márka / bemutatkozás -->
     <div class="footer-col footer-brand">
       <h2>Atique Shop</h2>
-      <p>
+      <p data-i18n="footer.brand_description">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
           sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
           sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
@@ -132,7 +132,7 @@
 
     <!-- Középső oszlop: Kapcsolat -->
     <div class="footer-col footer-contact">
-      <h3>Elérhetőség</h3>
+      <h3 data-i18n="footer.contact_info">Elérhetőség</h3>
       <ul>
         <li><span class="icon"><i class="fa-solid fa-map-pin"></i></span>1092 Budapest, Ráday u. 30.</li>
         <li><span class="icon"><i class="fas fa-envelope icon"></i></span><a href="mailto:hello@domained.hu">hello@domained.hu</a></li>
@@ -142,12 +142,12 @@
 
     <!-- Jobb oszlop: Linkek -->
     <div class="footer-col footer-links">
-      <h3>Oldalak</h3>
+      <h3 data-i18n="footer.pages">Oldalak</h3>
       <ul>
-        <li><a href="index.html">Főoldal</a></li>
-        <li><a href="rolunk.html">Rólunk</a></li>
-        <li><a href="regisegek.html">Tárgyak</a></li>
-        <li><a href="kapcsolat.html">Kapcsolat</a></li>
+        <li><a href="index.html" data-i18n="footer.pages_home">Főoldal</a></li>
+        <li><a href="rolunk.html" data-i18n="footer.pages_about">Rólunk</a></li>
+        <li><a href="regisegek.html" data-i18n="footer.pages_antiques">Tárgyak</a></li>
+        <li><a href="kapcsolat.html" data-i18n="footer.pages_contact">Kapcsolat</a></li>
       </ul>
     </div>
 
@@ -155,12 +155,13 @@
 </footer>
 <div class="footer-bottom">
   <div class="container footer-bottom-inner">
-    <p class="copyright">© 2025 Atique Shop – Minden jog fenntartva</p>
-    <a href="#top" class="back-to-top">Vissza az oldal tetejére ↑</a>
+    <p class="copyright" data-i18n="footer.copyright">© 2025 Atique Shop – Minden jog fenntartva</p>
+    <a href="#top" class="back-to-top" data-i18n="footer.back_to_top">Vissza az oldal tetejére ↑</a>
   </div>
 </div>
 
   <!-- JS: ugyanaz az admin.js, ami kezeli auth, feltöltés, kirenderelést -->
+  <script type="module" src="js/language.js"></script>
   <script type="module" src="js/regisegek.js"></script>
   <script type="module" src="js/nav.js"></script>
   <script type="module" src="js/pagetransition.js"></script>

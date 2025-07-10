@@ -16,14 +16,14 @@
       <h1 class="logo"><a href="index.html">Atique <span>Shop</span></a></h1>
     </div>
     <nav class="desktop-nav">
-      <a href="index.html" class="btn-style"><span>Vissza a főoldalra</span></a>
-      <button id="logoutBtn" class="btn-style"><span>Kijelentkezés</span></button>
+      <a href="index.html" class="btn-style"><span data-i18n="nav.back_to_homepage">Vissza a főoldalra</span></a>
+      <button id="logoutBtn" class="btn-style"><span data-i18n="nav.logout">Kijelentkezés</span></button>
     </nav>
   </header>
 
   <!-- Add New Button -->
   <div class="addNew-center">
-    <button id="addNew" class="btn-style admin-btn"><span>+ Új tétel Hozzáadása</span></button>
+    <button id="addNew" class="btn-style admin-btn"><span data-i18n="admin.add_new_item">+ Új tétel Hozzáadása</span></button>
   </div>
 
   <!-- Admin Showcase Section -->
@@ -35,57 +35,57 @@
   <div id="addItemModal" class="modal">
     <div class="modal-content">
       <button id="modal-close-btn" class="modal-close">&times;</button>
-      <h3>Új antik tétel</h3>
+      <h3 data-i18n="admin.new_antique">Új antik tétel</h3>
       <form id="addItemForm" class="addItemForm">
-        <label for="title">Cím</label>
+        <label for="title" data-i18n="admin.title">Cím</label>
         <input id="title" name="title" type="text" required>
 
-        <label for="desc">Leírás</label>
+        <label for="desc" data-i18n="admin.description">Leírás</label>
         <textarea id="desc" name="desc" rows="4" required></textarea>
 
-        <label for="price">Ár (Ft)</label>
+        <label for="price" data-i18n="admin.price">Ár (Ft)</label>
         <input id="price" name="price" type="number" required>
 
-        <label for="imageInput">Képek (több is kiválasztható)</label>
+        <label for="imageInput" data-i18n="admin.images">Képek (több is kiválasztható)</label>
         <input id="imageInput" name="imageInput" type="file" accept="image/*" multiple required>
 
-        <label for="categorySelect">Kategória</label>
+        <label for="categorySelect" data-i18n="admin.category">Kategória</label>
 
         <div class="form-group">
-          <label for="mainCategory">Fő kategória</label>
+          <label for="mainCategory" data-i18n="admin.main_category">Fő kategória</label>
           <input type="hidden" id="mainCategory" />
           <div class="custom-dropdown" id="mainCategoryDropdown">
-            <div class="selected">-- Válassz fő kategóriát --</div>
+            <div class="selected" data-i18n="admin.select_main_category">-- Válassz fő kategóriát --</div>
             <ul class="options">
-              <li data-value="">-- Válassz fő kategóriát --</li>
-              <li data-value="Lakberendezési régiségek">Lakberendezési és dekoratív régiségek</li>
-              <li data-value="Régi háztartási eszközök">Régi háztartási eszközök gyűjteménye</li>
-              <li data-value="Dísztárgyak és lakásdekorációk">Antik dísztárgyak és dekorációk a múltból</li>
-              <li data-value="Népi és falusi emlékek">Népi emlékek és falusi élet tárgyai</li>
-              <li data-value="Katonai és történelmi darabok">Katonai relikviák és történelmi kincsek</li>
-              <li data-value="Régi technikai eszközök">Múlt századi technikai eszközök világa</li>
-              <li data-value="Nyomtatott emlékek és papíripáságok">Nyomtatott emlékek és korabeli dokumentumok</li>
-              <li data-value="Személyes tárgyak a múltból">Személyes tárgyak és emlékek a régmúltból</li>
+              <li data-value="" data-i18n="admin.select_main_category">-- Válassz fő kategóriát --</li>
+              <li data-value="Lakberendezési régiségek" data-i18n="categories.furniture_desc">Lakberendezési és dekoratív régiségek</li>
+              <li data-value="Régi háztartási eszközök" data-i18n="categories.household_desc">Régi háztartási eszközök gyűjteménye</li>
+              <li data-value="Dísztárgyak és lakásdekorációk" data-i18n="categories.decorative_desc">Antik dísztárgyak és dekorációk a múltból</li>
+              <li data-value="Népi és falusi emlékek" data-i18n="categories.folk_desc">Népi emlékek és falusi élet tárgyai</li>
+              <li data-value="Katonai és történelmi darabok" data-i18n="categories.military_desc">Katonai relikviák és történelmi kincsek</li>
+              <li data-value="Régi technikai eszközök" data-i18n="categories.technical_desc">Múlt századi technikai eszközök világa</li>
+              <li data-value="Nyomtatott emlékek és papíripáságok" data-i18n="categories.printed_desc">Nyomtatott emlékek és korabeli dokumentumok</li>
+              <li data-value="Személyes tárgyak a múltból" data-i18n="categories.personal_desc">Személyes tárgyak és emlékek a régmúltból</li>
             </ul>
           </div>
         </div>
 
         <div class="category-group">
-          <label for="categorySelect">Másodlagos kategória</label>
+          <label for="categorySelect" data-i18n="admin.secondary_category">Másodlagos kategória</label>
           <select id="categorySelect" class="d-none">
-            <option value="">-- Válassz kategóriát --</option>
+            <option value="" data-i18n="admin.select_category">-- Válassz kategóriát --</option>
           </select>
           <div class="custom-dropdown wide-dropdown" id="adminCategoryDropdown">
-            <div class="selected">-- Válassz kategóriát --</div>
+            <div class="selected" data-i18n="admin.select_category">-- Válassz kategóriát --</div>
             <ul class="options"></ul>
           </div>
           <div class="category-add-row">
-            <input id="newCategoryInput" type="text" placeholder="Új kategória">
-            <button type="button" id="addCategoryBtn">Hozzáadás</button>
+            <input id="newCategoryInput" type="text" placeholder="Új kategória" data-i18n="admin.new_category">
+            <button type="button" id="addCategoryBtn" data-i18n="admin.add">Hozzáadás</button>
           </div>
         </div>
 
-        <button type="submit" class="btn">Mentés</button>
+        <button type="submit" class="btn" data-i18n="admin.save">Mentés</button>
       </form>
     </div>
   </div>
@@ -93,14 +93,15 @@
   <!-- Confirm deletion modal -->
   <div id="confirmModal" class="confirm-modal">
     <div class="confirm-modal-content">
-      <p class="confirm-text">Biztos törölni szeretnéd ezt a tételt?</p>
+      <p class="confirm-text" data-i18n="admin.delete_confirm">Biztos törölni szeretnéd ezt a tételt?</p>
       <div class="confirm-actions">
-        <button id="confirmYes" class="btn confirm">Igen, törlöm</button>
-        <button id="confirmNo"  class="btn cancel">Mégse</button>
+        <button id="confirmYes" class="btn confirm" data-i18n="admin.yes_delete">Igen, törlöm</button>
+        <button id="confirmNo"  class="btn cancel" data-i18n="admin.cancel">Mégse</button>
       </div>
     </div>
   </div>
 
+  <script type="module" src="js/language.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
   <script type="module" src="js/admin.js"></script>
   <script type="module" src="js/pagetransition.js"></script>

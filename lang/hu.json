@@ -1,0 +1,120 @@
+{
+  "nav": {
+    "home": "Kezdőlap",
+    "antiques": "Régiségek", 
+    "about": "Rólunk",
+    "contact": "Kapcsolat",
+    "back_to_homepage": "Vissza a főoldalra",
+    "logout": "Kijelentkezés"
+  },
+  "hero": {
+    "title": "Fedezd fel a múlt kincseit",
+    "subtitle": "Válogatott régiségek, egyedi történetekkel",
+    "title_alt": "Fedezd fel az idők varázsát",
+    "subtitle_alt": "Kézzel válogatott antik tárgyak egyenesen Önhöz",
+    "btn_antiques": "Régiségek",
+    "btn_contact": "Írj Nekünk"
+  },
+  "sections": {
+    "recent_products": "Legutóbb feltöltött régiségek",
+    "recent_products_subtitle": "Fedezd fel a frissen feltöltött különlegességeket",
+    "all_products": "Összes termék",
+    "categories": "Kategóriák",
+    "categories_subtitle": "Böngéssz az antik tárgyak típusai szerint",
+    "testimonials": "Mit mondanak a vásárlóink?",
+    "testimonials_subtitle": "Ők már megtalálták a kedvenc régiségüket",
+    "get_to_know": "Ismerj meg",
+    "contact_us": "Lépj kapcsolatba velünk",
+    "contact_subtitle": "Ha kérdésed van, vagy eladnád tárgyaidat, írj nekünk bátran!",
+    "write_to_us": "Írj nekünk",
+    "faq": "Gyakori kérdések a vásárlásról és értékesítésről",
+    "gallery": "Galéria – Pillanatok a régiségek világából",
+    "gallery_subtitle": "Tekints be a régiségek árusításának hangulatába és a vállalkozás kulisszái mögé!"
+  },
+  "categories": {
+    "all": "Összes",
+    "furniture": "Lakberendezési régiségek",
+    "furniture_desc": "Lakberendezési és dekoratív régiségek",
+    "household": "Régi háztartási eszközök",
+    "household_desc": "Régi háztartási eszközök gyűjteménye",
+    "decorative": "Dísztárgyak és lakásdekorációk",
+    "decorative_desc": "Antik dísztárgyak és dekorációk a múltból",
+    "folk": "Népi és falusi emlékek",
+    "folk_desc": "Népi emlékek és falusi élet tárgyai",
+    "military": "Katonai és történelmi darabok",
+    "military_desc": "Katonai relikviák és történelmi kincsek",
+    "technical": "Régi technikai eszközök",
+    "technical_desc": "Múlt századi technikai eszközök világa",
+    "printed": "Nyomtatott emlékek és papíripáságok",
+    "printed_desc": "Nyomtatott emlékek és korabeli dokumentumok",
+    "personal": "Személyes tárgyak a múltból",
+    "personal_desc": "Személyes tárgyak és emlékek a régmúltból"
+  },
+  "filter": {
+    "main_category": "Fő kategória",
+    "additional_categories": "További kategóriák"
+  },
+  "contact": {
+    "reach_us": "Lépj velünk kapcsolatba",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "schedule": "Hétköznap esténként és hétvégén",
+    "name": "Név",
+    "email": "E-mail",
+    "message": "Üzenet",
+    "send": "Küldés"
+  },
+  "footer": {
+    "brand_description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+    "contact_info": "Elérhetőség",
+    "pages": "Oldalak",
+    "pages_home": "Főoldal",
+    "pages_about": "Rólunk",
+    "pages_antiques": "Tárgyak",
+    "pages_contact": "Kapcsolat",
+    "copyright": "© 2025 Atique Shop – Minden jog fenntartva",
+    "back_to_top": "Vissza az oldal tetejére ↑"
+  },
+  "admin": {
+    "admin_login": "Admin Belépés",
+    "email": "Email cím",
+    "password": "Jelszó",
+    "login": "Belépés",
+    "add_new_item": "+ Új tétel Hozzáadása",
+    "new_antique": "Új antik tétel",
+    "title": "Cím",
+    "description": "Leírás",
+    "price": "Ár (Ft)",
+    "images": "Képek (több is kiválasztható)",
+    "category": "Kategória",
+    "main_category": "Fő kategória",
+    "select_main_category": "-- Válassz fő kategóriát --",
+    "secondary_category": "Másodlagos kategória",
+    "select_category": "-- Válassz kategóriát --",
+    "new_category": "Új kategória",
+    "add": "Hozzáadás",
+    "save": "Mentés",
+    "delete_confirm": "Biztos törölni szeretnéd ezt a tételt?",
+    "yes_delete": "Igen, törlöm",
+    "cancel": "Mégse",
+    "email_placeholder": "Email",
+    "password_placeholder": "Jelszó"
+  },
+  "modal": {
+    "previous_image": "Előző kép",
+    "next_image": "Következő kép",
+    "close": "Bezárás",
+    "product_image": "Termék képe",
+    "title": "Cím",
+    "description": "Leírás",
+    "price": "Ár"
+  },
+  "lorem": {
+    "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore",
+    "author": "Lorem ipsum"
+  },
+  "about": {
+    "about_us": "Rólunk",
+    "description1": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,",
+    "description2": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+  }
+} 

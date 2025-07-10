@@ -24,10 +24,10 @@
 
   <!-- Desktop nav -->
   <nav class="desktop-nav">
-    <a href="index.html">Kezdőlap</a>
-    <a href="regisegek.html">Régiségek</a>
-    <a href="rolunk.html">Rólunk</a>
-    <a href="kapcsolat.html">Kapcsolat</a>
+    <a href="index.html" data-i18n="nav.home">Kezdőlap</a>
+    <a href="regisegek.html" data-i18n="nav.antiques">Régiségek</a>
+    <a href="rolunk.html" data-i18n="nav.about">Rólunk</a>
+    <a href="kapcsolat.html" data-i18n="nav.contact">Kapcsolat</a>
   </nav>
 
   <!-- Hamburger for mobile -->
@@ -39,18 +39,18 @@
 
   <!-- Mobile overlay nav -->
   <nav class="nav-overlay">
-    <a href="index.html">Kezdőlap</a>
-    <a href="regisegek.html">Régiségek</a>
-    <a href="rolunk.html">Rólunk</a>
-    <a href="kapcsolat.html">Kapcsolat</a>
+    <a href="index.html" data-i18n="nav.home">Kezdőlap</a>
+    <a href="regisegek.html" data-i18n="nav.antiques">Régiségek</a>
+    <a href="rolunk.html" data-i18n="nav.about">Rólunk</a>
+    <a href="kapcsolat.html" data-i18n="nav.contact">Kapcsolat</a>
   </nav>
 </header>
 
 <!-- Hero -->
 <section id="hero" class="hero-3">
     <div class="hero-3-content">
-      <h2>Fedezd fel az idők varázsát</h2>
-      <p>Kézzel válogatott antik tárgyak egyenesen Önhöz</p>
+      <h2 data-i18n="hero.title_alt">Fedezd fel az idők varázsát</h2>
+      <p data-i18n="hero.subtitle_alt">Kézzel válogatott antik tárgyak egyenesen Önhöz</p>
     </div>
     <div class="overlay"></div>
   </section>
@@ -62,25 +62,25 @@
         <img src="pics/about-me.jpg" alt="Rólunk">
       </div>
       <div class="about-intro-text">
-        <h2>Rólunk</h2>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+        <h2 data-i18n="about.about_us">Rólunk</h2>
+        <p data-i18n="about.description1">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
           At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, </p>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+        <p data-i18n="about.description2">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
           At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
           sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
           sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.  
         </p>
-        <a href="kapcsolat.html" class="btn-style"><span>Írj nekünk</span></a>
+        <a href="kapcsolat.html" class="btn-style"><span data-i18n="hero.btn_contact">Írj nekünk</span></a>
       </div>
     </div>
   </section>
 
   <section class="gallery-section">
     <div class="container">
-      <h2>Galéria – Pillanatok a régiségek világából</h2>
-      <p class="subtitle">Tekints be a régiségek árusításának hangulatába és a vállalkozás kulisszái mögé!</p>
+      <h2 data-i18n="sections.gallery">Galéria – Pillanatok a régiségek világából</h2>
+      <p class="subtitle" data-i18n="sections.gallery_subtitle">Tekints be a régiségek árusításának hangulatába és a vállalkozás kulisszái mögé!</p>
       <div class="gallery-grid">
         <div class="gallery-item">
           <img src="pics/hero-bg-3.jpg" alt="Galéria kép 1">
@@ -159,6 +159,7 @@
 </div>
 
   <!-- JS: ugyanaz az admin.js, ami kezeli auth, feltöltés, kirenderelést -->
+  <script type="module" src="js/language.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
   <script type="module" src="js/nav.js"></script>
   <script type="module" src="js/pagetransition.js"></script>

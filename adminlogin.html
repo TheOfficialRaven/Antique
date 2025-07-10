@@ -9,18 +9,19 @@
 </head>
 <body>
   <main class="login-form">
-    <h2>Admin Belépés</h2>
+    <h2 data-i18n="admin.admin_login">Admin Belépés</h2>
     <form id="loginForm">
-      <label for="email">Email cím</label>
-      <input id="email" type="email" placeholder="Email" required>
+      <label for="email" data-i18n="admin.email">Email cím</label>
+      <input id="email" type="email" placeholder="Email" data-i18n="admin.email_placeholder" required>
 
-      <label for="password">Jelszó</label>
-      <input id="password" type="password" placeholder="Jelszó" required>
+      <label for="password" data-i18n="admin.password">Jelszó</label>
+      <input id="password" type="password" placeholder="Jelszó" data-i18n="admin.password_placeholder" required>
 
-      <button id="loginBtn" type="submit">Belépés</button>
+      <button id="loginBtn" type="submit" data-i18n="admin.login">Belépés</button>
       <p id="loginError" class="error"></p>
     </form>
   </main>
+  <script type="module" src="js/language.js"></script>
   <script type="module" src="js/login.js"></script>
   <script type="module" src="js/pagetransition.js"></script>
 </body>

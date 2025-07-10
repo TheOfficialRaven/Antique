@@ -1,0 +1,120 @@
+{
+  "nav": {
+    "home": "Home",
+    "antiques": "Antiques", 
+    "about": "About Us",
+    "contact": "Contact",
+    "back_to_homepage": "Back to Homepage",
+    "logout": "Logout"
+  },
+  "hero": {
+    "title": "Discover the Treasures of the Past",
+    "subtitle": "Curated antiques with unique stories",
+    "title_alt": "Discover the Magic of Time",
+    "subtitle_alt": "Hand-selected antique items directly to you",
+    "btn_antiques": "Antiques",
+    "btn_contact": "Write to Us"
+  },
+  "sections": {
+    "recent_products": "Recently Uploaded Antiques",
+    "recent_products_subtitle": "Discover the latest unique additions",
+    "all_products": "All Products",
+    "categories": "Categories",
+    "categories_subtitle": "Browse antique items by type",
+    "testimonials": "What Our Customers Say?",
+    "testimonials_subtitle": "They have already found their favorite antiques",
+    "get_to_know": "Get to Know",
+    "contact_us": "Get in Touch with Us",
+    "contact_subtitle": "If you have questions or would like to sell your items, feel free to write to us!",
+    "write_to_us": "Write to Us",
+    "faq": "Frequently Asked Questions about Buying and Selling",
+    "gallery": "Gallery – Moments from the World of Antiques",
+    "gallery_subtitle": "Take a look behind the scenes of antique trading and our business!"
+  },
+  "categories": {
+    "all": "All",
+    "furniture": "Furniture Antiques",
+    "furniture_desc": "Home Furnishing and Decorative Antiques",
+    "household": "Old Household Items",
+    "household_desc": "Collection of Old Household Items",
+    "decorative": "Decorative Items and Home Decorations",
+    "decorative_desc": "Antique Decorative Items and Decorations from the Past",
+    "folk": "Folk and Village Memories",
+    "folk_desc": "Folk Memories and Village Life Objects",
+    "military": "Military and Historical Pieces",
+    "military_desc": "Military Relics and Historical Treasures",
+    "technical": "Old Technical Devices",
+    "technical_desc": "World of Last Century Technical Devices",
+    "printed": "Printed Memories and Paper Items",
+    "printed_desc": "Printed Memories and Period Documents",
+    "personal": "Personal Items from the Past",
+    "personal_desc": "Personal Items and Memories from the Distant Past"
+  },
+  "filter": {
+    "main_category": "Main Category",
+    "additional_categories": "Additional Categories"
+  },
+  "contact": {
+    "reach_us": "Get in Touch with Us",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "schedule": "Weekday evenings and weekends",
+    "name": "Name",
+    "email": "E-mail",
+    "message": "Message",
+    "send": "Send"
+  },
+  "footer": {
+    "brand_description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+    "contact_info": "Contact Information",
+    "pages": "Pages",
+    "pages_home": "Home",
+    "pages_about": "About Us",
+    "pages_antiques": "Items",
+    "pages_contact": "Contact",
+    "copyright": "© 2025 Atique Shop – All rights reserved",
+    "back_to_top": "Back to top ↑"
+  },
+  "admin": {
+    "admin_login": "Admin Login",
+    "email": "Email Address",
+    "password": "Password",
+    "login": "Login",
+    "add_new_item": "+ Add New Item",
+    "new_antique": "New Antique Item",
+    "title": "Title",
+    "description": "Description",
+    "price": "Price (Ft)",
+    "images": "Images (multiple can be selected)",
+    "category": "Category",
+    "main_category": "Main Category",
+    "select_main_category": "-- Select Main Category --",
+    "secondary_category": "Secondary Category",
+    "select_category": "-- Select Category --",
+    "new_category": "New Category",
+    "add": "Add",
+    "save": "Save",
+    "delete_confirm": "Are you sure you want to delete this item?",
+    "yes_delete": "Yes, delete it",
+    "cancel": "Cancel",
+    "email_placeholder": "Email",
+    "password_placeholder": "Password"
+  },
+  "modal": {
+    "previous_image": "Previous Image",
+    "next_image": "Next Image",
+    "close": "Close",
+    "product_image": "Product Image",
+    "title": "Title",
+    "description": "Description",
+    "price": "Price"
+  },
+  "lorem": {
+    "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore",
+    "author": "Lorem ipsum"
+  },
+  "about": {
+    "about_us": "About Us",
+    "description1": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,",
+    "description2": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+  }
+} 

@@ -22,10 +22,10 @@
     </div>
   
     <nav class="desktop-nav">
-      <a href="index.html">Kezdőlap</a>
-      <a href="regisegek.html">Régiségek</a>
-      <a href="rolunk.html">Rólunk</a>
-      <a href="kapcsolat.html">Kapcsolat</a>
+      <a href="index.html" data-i18n="nav.home">Kezdőlap</a>
+      <a href="regisegek.html" data-i18n="nav.antiques">Régiségek</a>
+      <a href="rolunk.html" data-i18n="nav.about">Rólunk</a>
+      <a href="kapcsolat.html" data-i18n="nav.contact">Kapcsolat</a>
     </nav>
   
     <div class="hamburger" id="hamburger">
@@ -33,10 +33,10 @@
     </div>
   
     <nav class="nav-overlay" id="mobileNav">
-      <a href="index.html">Kezdőlap</a>
-      <a href="regisegek.html">Régiségek</a>
-      <a href="rolunk.html">Rólunk</a>
-      <a href="kapcsolat.html">Kapcsolat</a>
+      <a href="index.html" data-i18n="nav.home">Kezdőlap</a>
+      <a href="regisegek.html" data-i18n="nav.antiques">Régiségek</a>
+      <a href="rolunk.html" data-i18n="nav.about">Rólunk</a>
+      <a href="kapcsolat.html" data-i18n="nav.contact">Kapcsolat</a>
     </nav>
   </header>
 
@@ -72,11 +72,11 @@
 
     <!-- Fix szöveg minden slide felett -->
     <div class="carousel-fixed-caption">
-      <h2>Fedezd fel a múlt kincseit</h2>
-      <p>Válogatott régiségek, egyedi történetekkel</p>
+      <h2 data-i18n="hero.title">Fedezd fel a múlt kincseit</h2>
+      <p data-i18n="hero.subtitle">Válogatott régiségek, egyedi történetekkel</p>
       <div class="center-link-align">
-        <a href="regisegek.html" class="btn-style center-link"><span>Régiségek</span></a>
-        <a href="kapcsolat.html" class="btn-style-2 center-link"><span>Írj Nekünk</span></a>
+        <a href="regisegek.html" class="btn-style center-link"><span data-i18n="hero.btn_antiques">Régiségek</span></a>
+        <a href="kapcsolat.html" class="btn-style-2 center-link"><span data-i18n="hero.btn_contact">Írj Nekünk</span></a>
       </div>
     </div>
   </div>
@@ -85,11 +85,11 @@
         <!-- Legutóbb feltöltött régiségek -->
         <section id="recent-products" class="recent-products">
           <div class="container">
-            <h2>Legutóbb feltöltött régiségek</h2>
-            <p class="subtitle">Fedezd fel a frissen feltöltött különlegességeket</p>
+            <h2 data-i18n="sections.recent_products">Legutóbb feltöltött régiségek</h2>
+            <p class="subtitle" data-i18n="sections.recent_products_subtitle">Fedezd fel a frissen feltöltött különlegességeket</p>
             <div class="thumb-row-recent"></div>
             <div class="center-link-align">
-              <a href="regisegek.html" class="btn-style center-link"><span>Összes termék</span></a>
+              <a href="regisegek.html" class="btn-style center-link"><span data-i18n="sections.all_products">Összes termék</span></a>
             </div>
           </div>
         </section>
@@ -97,63 +97,63 @@
 <!-- ===== Kategóriák ===== -->
 <section id="categories" class="categories">
   <div class="container">
-    <h2>Kategóriák</h2>
-    <p class="subtitle">Böngéssz az antik tárgyak típusai szerint</p>
+    <h2 data-i18n="sections.categories">Kategóriák</h2>
+    <p class="subtitle" data-i18n="sections.categories_subtitle">Böngéssz az antik tárgyak típusai szerint</p>
     <div class="categories-grid">
 
       <a href="regisegek.html?category=Lakberendezési%20régiségek" class="category-card">
         <div class="image-wrapper">
           <img src="pics/old-forniture.jpg" alt="Lakberendezési régiségek">
-          <span class="category-label">Lakberendezési és dekoratív régiségek</span>
+          <span class="category-label" data-i18n="categories.furniture_desc">Lakberendezési és dekoratív régiségek</span>
         </div>
       </a>
 
       <a href="regisegek.html?category=Régi%20háztartási%20eszközök" class="category-card">
         <div class="image-wrapper">
           <img src="pics/haztartasi.jpg" alt="Régi háztartási eszközök">
-          <span class="category-label">Régi háztartási eszközök gyűjteménye</span>
+          <span class="category-label" data-i18n="categories.household_desc">Régi háztartási eszközök gyűjteménye</span>
         </div>
       </a>
 
       <a href="regisegek.html?category=Dísztárgyak%20és%20lakásdekorációk" class="category-card">
         <div class="image-wrapper">
           <img src="pics/hero-bg-2.jpg" alt="Dísztárgyak és lakásdekorációk">
-          <span class="category-label">Antik dísztárgyak és dekorációk a múltból</span>
+          <span class="category-label" data-i18n="categories.decorative_desc">Antik dísztárgyak és dekorációk a múltból</span>
         </div>
       </a>
 
       <a href="regisegek.html?category=Népi%20és%20falusi%20emlékek" class="category-card">
         <div class="image-wrapper">
           <img src="pics/Village-items.jpg" alt="Népi és falusi emlékek">
-          <span class="category-label">Népi emlékek és falusi élet tárgyai</span>
+          <span class="category-label" data-i18n="categories.folk_desc">Népi emlékek és falusi élet tárgyai</span>
         </div>
       </a>
 
       <a href="regisegek.html?category=Katonai%20és%20történelmi%20darabok" class="category-card">
         <div class="image-wrapper">
           <img src="pics/army-documents.jpg" alt="Katonai és történelmi darabok">
-          <span class="category-label">Katonai relikviák és történelmi kincsek</span>
+          <span class="category-label" data-i18n="categories.military_desc">Katonai relikviák és történelmi kincsek</span>
         </div>
       </a>
 
       <a href="regisegek.html?category=Régi%20technikai%20eszközök" class="category-card">
         <div class="image-wrapper">
           <img src="pics/old-tech.jpg" alt="Régi technikai eszközök">
-          <span class="category-label">Múlt századi technikai eszközök világa</span>
+          <span class="category-label" data-i18n="categories.technical_desc">Múlt századi technikai eszközök világa</span>
         </div>
       </a>
 
       <a href="regisegek.html?category=Nyomtatott%20emlékek%20és%20papíripáságok" class="category-card">
         <div class="image-wrapper">
           <img src="pics/old-letters.jpg" alt="Nyomtatott emlékek és papíripáságok">
-          <span class="category-label">Nyomtatott emlékek és korabeli dokumentumok</span>
+          <span class="category-label" data-i18n="categories.printed_desc">Nyomtatott emlékek és korabeli dokumentumok</span>
         </div>
       </a>
 
       <a href="regisegek.html?category=Személyes%20tárgyak%20a%20múltból" class="category-card">
         <div class="image-wrapper">
           <img src="pics/old-memories.jpg" alt="Személyes tárgyak a múltból">
-          <span class="category-label">Személyes tárgyak és emlékek a régmúltból</span>
+          <span class="category-label" data-i18n="categories.personal_desc">Személyes tárgyak és emlékek a régmúltból</span>
         </div>
       </a>
 
@@ -164,8 +164,8 @@
 <!-- Testimonials Section -->
 <section class="testimonials-section">
   <div class="container">
-    <h2>Mit mondanak a vásárlóink?</h2>
-    <p class="subtitle">Ők már megtalálták a kedvenc régiségüket</p>
+    <h2 data-i18n="sections.testimonials">Mit mondanak a vásárlóink?</h2>
+    <p class="subtitle" data-i18n="sections.testimonials_subtitle">Ők már megtalálták a kedvenc régiségüket</p>
 
     <div class="carousel-wrapper">
       <div class="carousel-track">
@@ -221,14 +221,14 @@
         <img src="pics/about-me.jpg" alt="Rólunk">
       </div>
       <div class="about-intro-text">
-        <h2>Ismerj meg</h2>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
+        <h2 data-i18n="sections.get_to_know">Ismerj meg</h2>
+        <p data-i18n="about.description1">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
           sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
-        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+        <p data-i18n="about.description2">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
           At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
           sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-        <a href="rolunk.html" class="btn-style"><span>Rólunk</span></a>
+        <a href="rolunk.html" class="btn-style"><span data-i18n="nav.about">Rólunk</span></a>
       </div>
     </div>
   </section>
@@ -238,22 +238,22 @@
 <section class="contact-section">
   <div class="contact-container">
     <div class="contact-form-wrapper">
-      <h2>Lépj kapcsolatba velünk</h2>
-      <p>Ha kérdésed van, vagy eladnád tárgyaidat, írj nekünk bátran!</p>
+      <h2 data-i18n="sections.contact_us">Lépj kapcsolatba velünk</h2>
+      <p data-i18n="sections.contact_subtitle">Ha kérdésed van, vagy eladnád tárgyaidat, írj nekünk bátran!</p>
       <form class="contact-form">
         <div class="form-group">
-          <label for="name">Név</label>
+          <label for="name" data-i18n="contact.name">Név</label>
           <input type="text" id="name" name="name" required>
         </div>
         <div class="form-group">
-          <label for="email">E-mail</label>
+          <label for="email" data-i18n="contact.email">E-mail</label>
           <input type="email" id="email" name="email" required>
         </div>
         <div class="form-group">
-          <label for="message">Üzenet</label>
+          <label for="message" data-i18n="contact.message">Üzenet</label>
           <textarea id="message" name="message" rows="5" required></textarea>
         </div>
-        <button type="submit" class="btn-style"><span>Küldés</span></button>
+        <button type="submit" class="btn-style"><span data-i18n="contact.send">Küldés</span></button>
       </form>
     </div>
     <div class="contact-image-wrapper">
@@ -265,7 +265,7 @@
     <!-- GYIK Szekció -->
     <section id="faq" class="faq-section" aria-labelledby="faq-heading">
       <div class="container">
-        <h2 id="faq-heading" class="section-title">Gyakori kérdések a vásárlásról és értékesítésről</h2>
+        <h2 id="faq-heading" class="section-title" data-i18n="sections.faq">Gyakori kérdések a vásárlásról és értékesítésről</h2>
         <div class="faq-columns">
           <!-- Bal oszlop -->
           <div class="faq-col">
@@ -316,7 +316,7 @@
         <!-- Bal oszlop: Márka / bemutatkozás -->
         <div class="footer-col footer-brand">
           <h2>Atique Shop</h2>
-          <p>
+          <p data-i18n="footer.brand_description">
           Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
           sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, 
           sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
@@ -325,7 +325,7 @@
     
         <!-- Középső oszlop: Kapcsolat -->
         <div class="footer-col footer-contact">
-          <h3>Elérhetőség</h3>
+          <h3 data-i18n="footer.contact_info">Elérhetőség</h3>
           <ul>
             <li><span class="icon"><i class="fa-solid fa-map-pin"></i></span>1092 Budapest, Ráday u. 30.</li>
             <li><span class="icon"><i class="fas fa-envelope icon"></i></span><a href="mailto:hello@domained.hu">hello@domained.hu</a></li>
@@ -335,12 +335,12 @@
     
         <!-- Jobb oszlop: Linkek -->
         <div class="footer-col footer-links">
-          <h3>Oldalak</h3>
+          <h3 data-i18n="footer.pages">Oldalak</h3>
           <ul>
-            <li><a href="index.html">Főoldal</a></li>
-            <li><a href="rolunk.html">Rólunk</a></li>
-            <li><a href="regisegek.html">Régiségek</a></li>
-            <li><a href="kapcsolat.html">Kapcsolat</a></li>
+            <li><a href="index.html" data-i18n="footer.pages_home">Főoldal</a></li>
+            <li><a href="rolunk.html" data-i18n="footer.pages_about">Rólunk</a></li>
+            <li><a href="regisegek.html" data-i18n="footer.pages_antiques">Régiségek</a></li>
+            <li><a href="kapcsolat.html" data-i18n="footer.pages_contact">Kapcsolat</a></li>
           </ul>
         </div>
     
@@ -348,8 +348,8 @@
     </footer>
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
-        <p class="copyright">© 2025 Atique Shop – Minden jog fenntartva</p>
-        <a href="#top" class="back-to-top">Vissza az oldal tetejére ↑</a>
+        <p class="copyright" data-i18n="footer.copyright">© 2025 Atique Shop – Minden jog fenntartva</p>
+        <a href="#top" class="back-to-top" data-i18n="footer.back_to_top">Vissza az oldal tetejére ↑</a>
       </div>
     </div>
 
@@ -373,6 +373,7 @@
   </script>
   
   <!-- JS: ugyanaz az admin.js, ami kezeli auth, feltöltés, kirenderelést -->
+  <script type="module" src="js/language.js"></script>
   <script type="module" src="js/index.js"></script>
   <script type="module" src="js/nav.js"></script>
   <script type="module" src="js/pagetransition.js"></script>
